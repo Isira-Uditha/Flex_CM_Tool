@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1tDpXyd5AkxwyD62C9iTjSAAKCW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\Client" />
+      <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\Client\src" />
+      <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\client\src" />
+      <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\Rest-Services\src\models" />
+      <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="" />
+      <created>1622313558045</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622313558045</updated>
+      <workItem from="1622313559173" duration="3384000" />
+      <workItem from="1622317359397" duration="4173000" />
+      <workItem from="1622321581359" duration="698000" />
+      <workItem from="1622356915891" duration="3613000" />
+      <workItem from="1622807518965" duration="3802000" />
+      <workItem from="1622812144223" duration="164000" />
+      <workItem from="1622824412035" duration="4211000" />
+      <workItem from="1622869140938" duration="538000" />
+      <workItem from="1623084264473" duration="645000" />
+      <workItem from="1623084924551" duration="12000" />
+      <workItem from="1623084951165" duration="1290000" />
+      <workItem from="1623086270782" duration="43000" />
+      <workItem from="1623176991088" duration="2000" />
+      <workItem from="1623177066702" duration="455000" />
+      <workItem from="1623213040756" duration="5000" />
+      <workItem from="1623518354830" duration="1085000" />
+      <workItem from="1624378193922" duration="3066000" />
+      <workItem from="1624381309074" duration="909000" />
+      <workItem from="1624382254705" duration="717000" />
+    </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1622313882516</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1622313882516</updated>
+    </task>
+    <task id="LOCAL-00002" summary="backend_conference_controller">
+      <created>1622321076122</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622321076122</updated>
+    </task>
+    <task id="LOCAL-00003" summary="database_name_changed_30052021">
+      <created>1622357482973</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622357482973</updated>
+    </task>
+    <task id="LOCAL-00004" summary="front_end_init_20210607">
+      <created>1623086164852</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1623086164852</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="development" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="init" />
+    <MESSAGE value="backend_conference_controller" />
+    <MESSAGE value="database_name_changed_30052021" />
+    <MESSAGE value="front_end_init_20210607" />
+    <option name="LAST_COMMIT_MESSAGE" value="front_end_init_20210607" />
+  </component>
+</project>
