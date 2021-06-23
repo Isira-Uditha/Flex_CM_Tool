@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const ConferenceSchema = new mongoose.Schema({
     code: { type: String, required: true, trim: true },
+    title: { type: String, trim: true },
     description: { type: String, required: true, trim: true },
     date: { type: String, required: true },
     time: { type: String, required: true },
