@@ -3,10 +3,7 @@ import Select from 'react-select';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
-// const initialSpeakers = [
-//     {speaker: '', url: ''},
-// ]
+import GuestList from "../guestList/guestList";
 
 const initialState = {
     title: '',
@@ -15,26 +12,22 @@ const initialState = {
     time: '',
     location: '',
     tracks: '',
-    speakers: [{speaker: '', url: ''}],
+    speakers: [{index: Math.random(),speaker: '', url: ''}],
     ticket_price: '',
-    k_speaker: [],
-    g_speaker: [],
-    k_url: [],
-    g_url: [],
+    g_speaker: '',
+    g_url: '',
 }
-
-
 
 class AddConference extends Component{
     constructor(props) {
         super(props);
         this.onChange = this.onChange.bind(this);
-        this.handleSpeakerChange = this.handleSpeakerChange.bind(this);
-        this.handleUrlChange = this.handleUrlChange.bind(this);
+        this.onHandle = this.onHandle.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.handleAddField = this.handleAddField.bind(this);
-        this.handleRemoveField = this.handleRemoveField.bind(this);
         this.onClear = this.onClear.bind(this);
+        this.addNewRow  = this.addNewRow .bind(this);
+        this.quillChange = this.quillChange.bind(this);
+        this. clickOnDelete  = this.clickOnDelete.bind(this);
         this.state = initialState;
     }
 
@@ -42,43 +35,19 @@ class AddConference extends Component{
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    handleAddField(e){
-        e.preventDefault();
-        this.setState({speakers: [...this.state.speakers,{speaker: '', url: ''}]});
-    }
-    handleSpeakerChange(e,index){
-        e.preventDefault();
-        console.log(e.target.value);
-        this.state.k_speaker[index] = e.target.value;
-        this.setState({k_speaker: this.state.k_speaker});
-    }
-
-    handleUrlChange(e,index){
-        e.preventDefault();
-        console.log(e.target.value);
-        this.state.k_urls[index] = e.target.value;
-        this.setState({k_urls: this.state.k_urls});
+    quillChange(value) {
+        this.setState({ tracks: value })
     }
 
 
-    handleRemoveField(e,index){
-        e.preventDefault();
-        console.log(index);
-        this.state.k_speaker.splice(index,1)
-        this.setState({k_speaker: this.state.k_speaker});
-        this.state.k_url.splice(index,1)
-        this.setState({k_url: this.state.k_url});
-        this.state.speakers.splice(index,1)
-        this.setState({speakers: this.state.speakers});
-
-
+    onHandle(e){
+        if (["speaker", "url"].includes(e.target.name)) {
+            let speakers = [...this.state.speakers]
+            speakers[e.target.dataset.id][e.target.name] = e.target.value;
+        } else {
+            this.setState({ [e.target.name]: e.target.value })
+        }
     }
-
-
-
-
-
-
 
     onClear(e) {
         this.setState({
@@ -87,10 +56,25 @@ class AddConference extends Component{
             date: '',
             time: '',
             location: '',
-            speakers: '',
+            speakers: [{index: Math.random(),speaker: '', url: ''}],
             ticket_price: '',
+            tracks: '',
+            g_url: '',
+            g_speaker: '',
         })
     };
+
+    addNewRow = () => {
+        this.setState((prevState) => ({
+            speakers: [...prevState.speakers, { index: Math.random(), speaker: "", url: ""}],
+        }));
+    }
+
+    clickOnDelete(record) {
+        this.setState({
+            speakers: this.state.speakers.filter(r => r !== record)
+        });
+    }
 
 
     onSubmit(e) {
@@ -101,20 +85,23 @@ class AddConference extends Component{
             date: this.state.date,
             time: this.state.time,
             location: this.state.location,
-            k_url: this.state.k_url,
-            k_speaker: this.state.k_speaker,
+            speakers: this.state.speakers,
             ticket_price: this.state.ticket_price,
+            tracks: this.state.tracks,
+            g_url: this.state.g_url,
+            g_speaker: this.state.g_speaker,
+            status: 'P'
         };
         console.log('DATA TO SEND', conference);
-        // axios.post('http://localhost:8085/conference/create', conference)
-        //     .then(response => {
-        //         alert('Conference Data successfully inserted')
-        //         this.onClear();
-        //     })
-        //     .catch(error => {
-        //         console.log(error.message);
-        //         alert(error.message)
-        //     })
+        axios.post('http://localhost:8087/conference/create', conference)
+            .then(response => {
+                alert('Conference Data successfully inserted')
+                // this.onClear();
+            })
+            .catch(error => {
+                console.log(error.message);
+                alert(error.message)
+            })
     }
 
     render(){
@@ -122,7 +109,7 @@ class AddConference extends Component{
             <div className="container"><br/>
                 <div className={"card p-4"}>
                     <h5 htmlFor="title"  className="form-label mb-4" style={{textAlign:"left"}}>Add Conference</h5>
-                    <form onSubmit={this.onSubmit}>
+                    <form onSubmit={this.onSubmit} onChange={this.onHandle}>
                         <div className={"row"}>
                             <div className={"col-md-6"}>
                                 <div className="mb-3" style={{textAlign:"left"}}>
@@ -197,47 +184,21 @@ class AddConference extends Component{
                             </div>
                         </div>
 
-                            <div  style={{textAlign: "left"}}><label htmlFor="speaker" className="form-label">Key Note Speakers</label></div>
-                            { this.state.speakers.map((speakers, index) => (
-                                <div className={"row"} key={index}>
-                                    <div className={"col-md-4"}>
-                                        <div className="mb-3">
-                                            <input
-                                                type="String"
-                                                className="form-control"
-                                                id="speaker"
-                                                name="speaker"
-                                                value={this.state.speakers.speaker}
-                                                onChange={(e)=>this.handleSpeakerChange(e,index)}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className={"col-md-4"}>
-                                        <div className="mb-3">
-                                            <input
-                                                type="File"
-                                                className="form-control"
-                                                id="urls"
-                                                name="urls"
-                                                value={this.state.speakers.url}
-                                                onChange={(e)=>this.handleUrlChange(e,index)}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className={"col-md-4"}>
-                                        <div className="mb-3">
-                                            <div className={"row"}>
-                                                <div className={"col-md-2"} style={{textAlign:"left"}}>
-                                                    <button type="button" className="btn btn-warning" onClick={this.handleAddField} style={{color:"white"}}>Add</button>
-                                                </div>
-                                                <div className={"col-md-6"} style={{textAlign:"left"}}>
-                                                    <button type="button" className="btn btn-danger" onClick={(e)=> this.handleRemoveField(e,index)}>Remove</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                        <div  style={{textAlign: "left"}}><label htmlFor="speaker" className="form-label">Key Note Speakers</label></div>
+                        <table className="table table-borderless">
+                            <thead>
+                            <tr>
+                                <th className="required" style={{textAlign:"left"}} >Speaker</th>
+                                <th className="required" style={{textAlign:"left"}}>Image</th>
+                                <th className="required" style={{textAlign:"left"}} >Option</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <GuestList add={this.addNewRow} delete={this.clickOnDelete} guestList={this.state.speakers} />
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
                         <div className={"row"}>
                             <label htmlFor="g_speaker" style={{textAlign: "left"}} className="form-label">Guest Speaker</label>
                             <div className={"col-md-4"}>
@@ -257,8 +218,8 @@ class AddConference extends Component{
                                     <input
                                         type="File"
                                         className="form-control"
-                                        id="g_urls"
-                                        name="g_urls"
+                                        id="g_url"
+                                        name="g_url"
                                         value={this.state.g_url}
                                         onChange={this.onChange}
                                     />
@@ -268,7 +229,7 @@ class AddConference extends Component{
                         <div className={"row mb-5"}>
                             <div className={"col-md-12"} style={{textAlign: "left"}}>
                                 <label htmlFor="tracks" className="form-label">Conference Tracks</label>
-                                <ReactQuill value={this.state.tracks} onChange={this.onChange} style={{height: '300px'}}/>
+                                <ReactQuill value={this.state.tracks} onChange={(e)=>this.quillChange(e)} style={{height: '300px'}}/>
                             </div>
                         </div>
                         <br/>
@@ -277,7 +238,7 @@ class AddConference extends Component{
                                 <div className={"col-md-12"} style={{textAlign:"right"}}>
                                     <button type="submit" className="btn btn-success">Add</button>
                                     &nbsp;&nbsp;&nbsp;
-                                    <button type="button" className="btn btn-secondary">Reset</button>
+                                    <button type="button" className="btn btn-secondary" onClick={this.onClear}>Reset</button>
                                 </div>
 
                             </div>
