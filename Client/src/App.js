@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import NavBar from "./components/navBar/navBar";
+import Auth from "./components/auth/auth";
+import Attendee from "./components/attendee/attendee";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -11,6 +13,8 @@ function App() {
                 <section>
                     <Switch>
                         {/*<Route path="/" component={} exact/>*/}
+                        <Route path="/auth" exact component={Auth} />
+                        <Route path="/attendee/:id" exact component={Attendee} />
                     </Switch>
                 </section>
             </Router>

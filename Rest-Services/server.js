@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const userAPI = require('./src/api/user.api');
 const conferenceAPI = require('./src/api/conference.api');
 
 
@@ -33,7 +34,9 @@ app.route('/').get((req, res) => {
     res.send('SLIIT AF FINAL API BY SE2021 BATCH');
 });
 
+app.use('/user', userAPI());
 app.use('/conference', conferenceAPI());
+
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on PORT ${PORT}`);
