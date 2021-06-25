@@ -7,7 +7,7 @@ const ConferenceSchema = new mongoose.Schema({
     date: { type: String },
     time: { type: String },
     location: { type: String,  trim: true },
-    speakers: [{speaker: {type: String,trim: true}, url: {type: String,trim: true}}],
+    speakers: [{index:{type: Number,trim: true}, speaker: {type: String,trim: true}, url: {type: String,trim: true}}],
     ticket_price: { type: Number },
     g_speaker: { type: String, trim: true },
     g_url: { type: String, trim: true },

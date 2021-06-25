@@ -16,6 +16,8 @@ const initialState = {
     ticket_price: '',
     g_speaker: '',
     g_url: '',
+    conference_id: '',
+    conference:[]
 }
 
 class AddConference extends Component{
@@ -27,8 +29,46 @@ class AddConference extends Component{
         this.onClear = this.onClear.bind(this);
         this.addNewRow  = this.addNewRow .bind(this);
         this.quillChange = this.quillChange.bind(this);
-        this. clickOnDelete  = this.clickOnDelete.bind(this);
+        this.getConference = this.getConference.bind(this);
+        this.clickOnDelete  = this.clickOnDelete.bind(this);
         this.state = initialState;
+
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.conference_id !== prevProps.conference_id) {
+            this.setState({conference_id:this.props.conference_id},this.getConference)
+        }
+
+    }
+
+    getConference(){
+        axios.get(`http://localhost:8087/conference/${this.state.conference_id}`)
+            .then(response => {
+                    this.setState({ conference: response.data.data });
+                }
+            ).then(() => {
+                console.log(this.state.conference)
+                this.setState({ title: this.state.conference.title });
+                this.setState({ location: this.state.conference.location });
+                this.setState({ description: this.state.conference.description });
+                this.setState({ ticket_price: this.state.conference.ticket_price });
+                this.setState({ tracks: this.state.conference.tracks });
+                this.setState({ time: this.state.conference.time });
+                this.setState({ date: this.state.conference.date });
+                // this.setState(() => ({
+                //     speakers: [...this.state.conference.speakers, { index: Math.random(), speaker: this.state.conference.speakers.speaker, url: this.state.conference.speakers.url}],
+                // }));
+                this.setState({
+                    speakers: this.state.conference.speakers,
+                });
+                this.setState({ g_speaker: this.state.conference.g_speaker });
+                // this.setState({ g_url: this.state.conference.g_url });
+                console.log(this.state.speakers)
+
+
+            }
+        );
     }
 
     onChange(e) {
@@ -65,9 +105,9 @@ class AddConference extends Component{
     };
 
     addNewRow = () => {
-        this.setState((prevState) => ({
-            speakers: [...prevState.speakers, { index: Math.random(), speaker: "", url: ""}],
-        }));
+            this.setState((prevState) => ({
+                speakers: [...prevState.speakers, { index: Math.random(), speaker: "", url: ""}],
+            }));
     }
 
     clickOnDelete(record) {
@@ -108,7 +148,15 @@ class AddConference extends Component{
         return (
             <div className="container"><br/>
                 <div className={"card p-4"}>
-                    <h5 htmlFor="title"  className="form-label mb-4" style={{textAlign:"left"}}>Add Conference</h5>
+                    <h5 htmlFor="title"  className="form-label mb-4" style={{textAlign:"left"}}>
+                        {(()=>{
+                            if(this.props.conference_id === 'null'){
+                                return 'Add Conference'
+                            }else{
+                                return 'Edit Conference'
+                            }
+                        })()}
+                    </h5>
                     <form onSubmit={this.onSubmit} onChange={this.onHandle}>
                         <div className={"row"}>
                             <div className={"col-md-6"}>
@@ -155,7 +203,7 @@ class AddConference extends Component{
                                         className="form-control"
                                         id="date"
                                         name="date"
-                                        value={this.state.date}
+                                        value ={this.state.date}
                                         onChange={this.onChange}
                                     />
                                 </div>
@@ -194,7 +242,7 @@ class AddConference extends Component{
                             </tr>
                             </thead>
                             <tbody>
-                                <GuestList add={this.addNewRow} delete={this.clickOnDelete} guestList={this.state.speakers} />
+                            <GuestList add={this.addNewRow} delete={this.clickOnDelete} guestList={this.state.speakers} />
                             </tbody>
                             <tfoot>
                             </tfoot>
@@ -236,11 +284,21 @@ class AddConference extends Component{
                         <div className="card-footer">
                             <div className="row">
                                 <div className={"col-md-12"} style={{textAlign:"right"}}>
-                                    <button type="submit" className="btn btn-success">Add</button>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <button type="button" className="btn btn-secondary" onClick={this.onClear}>Reset</button>
-                                </div>
+                                    {(()=>{
+                                        if(this.props.conference_id === 'null'){
+                                            return <button type="submit" className="btn btn-success">Add</button>
 
+                                        }else{
+                                            return <button type="submit" className="btn btn-success">Update</button>
+                                        }
+                                    })()}
+                                    &nbsp;&nbsp;&nbsp;
+                                    {(()=>{
+                                        if(this.props.conference_id === 'null'){
+                                            return <button type="button" className="btn btn-secondary" onClick={this.onClear}>Reset</button>
+                                        }
+                                    })()}
+                                </div>
                             </div>
                         </div>
                     </form>

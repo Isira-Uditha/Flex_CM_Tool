@@ -87,7 +87,7 @@ class ViewConference extends Component{
             {
                 name: 'Options',
                 cell: row => <div>
-                    <input  className="btn btn-primary"  value="Edit" type="button" disabled aria-disabled="true"/>
+                    <input  className="btn btn-primary" onClick={() => this.props.editConference(row._id)}  value="Edit" type="button" aria-disabled="true"/>
                     &nbsp;&nbsp;
                     <input className="btn btn-danger" onClick={(e) => this.deleteConference(e,row._id)}  value="Delete" type="button" aria-disabled="true"/>
                 </div>,

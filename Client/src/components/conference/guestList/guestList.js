@@ -1,8 +1,8 @@
 import React from "react"
 const GuestList = (props) => {
-    console.log(props.guestList);
     return (
         props.guestList.map((val, idx) => {
+            console.log(val.url)
             let speaker = `speaker-${idx}`, url = `url-${idx}`
             return (
                 <tr key={val.index}>
@@ -13,6 +13,7 @@ const GuestList = (props) => {
                             className="form-control"
                             data-id={idx}
                             id={speaker}
+                            {...(val.speaker !== '' ? {defaultValue: val.speaker} : {})}
                         />
                     </td>
                     <td style={{width:"450px"}}>
@@ -23,6 +24,7 @@ const GuestList = (props) => {
                                 id={url}
                                 data-id={idx}
                                 name="url"
+                                {...(val.url !== '' ? {defaultValue: val.url} : {})}
                             />
                         </div>
                     </td>
