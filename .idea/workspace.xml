@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="insert_delete_20210625">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/.cache/37/adc48d968a1d4c933dd24df277225f.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/37/adc48d968a1d4c933dd24df277225f.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/dist/src.a2b27638.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/src.a2b27638.js" afterDir="false" />
+    <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +17,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="ProjectId" id="1tDpXyd5AkxwyD62C9iTjSAAKCW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -37,11 +27,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../AF_Final_Papers/PracticePaper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -49,21 +38,16 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex" />
       <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\Client" />
       <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\Client\src" />
       <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\client\src" />
       <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\Rest-Services\src\models" />
-      <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\AFProject\AF\Flex_CM_Tool\Client\src\components\userProfile\userProfile" />
-      <recent name="D:\AFProject\AF\Flex_CM_Tool\Client\src\components\userProfile\postTable" />
-      <recent name="D:\AFProject\AF\Flex_CM_Tool\Client\src\components\userProfile\postForm" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -93,16 +77,6 @@
       <workItem from="1624378193922" duration="3066000" />
       <workItem from="1624381309074" duration="909000" />
       <workItem from="1624382254705" duration="717000" />
-      <workItem from="1624455131806" duration="1002000" />
-      <workItem from="1624471020341" duration="20000" />
-      <workItem from="1624471041539" duration="131000" />
-      <workItem from="1624471195082" duration="17000" />
-      <workItem from="1624471213648" duration="2443000" />
-      <workItem from="1624506727973" duration="13255000" />
-      <workItem from="1624592714066" duration="8609000" />
-      <workItem from="1624602984682" duration="461000" />
-      <workItem from="1624603619223" duration="337000" />
-      <workItem from="1624630301704" duration="391000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1622313882516</created>
@@ -132,14 +106,7 @@
       <option name="project" value="LOCAL" />
       <updated>1623086164852</updated>
     </task>
-    <task id="LOCAL-00005" summary="insert_delete_submissions_20210625">
-      <created>1624603901719</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1624603901719</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,13 +142,6 @@
     <MESSAGE value="backend_conference_controller" />
     <MESSAGE value="database_name_changed_30052021" />
     <MESSAGE value="front_end_init_20210607" />
-    <MESSAGE value="insert_delete_20210625" />
-    <MESSAGE value="insert_delete_submissions_20210625" />
-    <MESSAGE value="pull_1_20210625" />
-    <option name="LAST_COMMIT_MESSAGE" value="pull_1_20210625" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <option name="LAST_COMMIT_MESSAGE" value="front_end_init_20210607" />
   </component>
 </project>
