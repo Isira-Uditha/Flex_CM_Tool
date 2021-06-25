@@ -24,7 +24,6 @@ const GuestList = (props) => {
                                 id={url}
                                 data-id={idx}
                                 name="url"
-                                {...(val.url !== '' ? {defaultValue: val.url} : {})}
                             />
                         </div>
                     </td>
