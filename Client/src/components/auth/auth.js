@@ -1,8 +1,9 @@
 import axios from "axios";
-
+import Swal from "sweetalert2";
 import Select from "react-select";
-
+import UserSession from "./userSession";
 import React, { Component } from "react";
+import {common} from "@material-ui/core/colors";
 
 const options = [
     { value: 'Attendee', label: 'Attendee' },
@@ -93,7 +94,11 @@ class Auth extends React.Component{
                 console.log("Data to Send ", user);
                  axios.post('http://localhost:8087/user/create', user)
                      .then(response => {
-                         alert("Successfully Added")
+                         Swal.fire({
+                             icon: 'success',
+                             title: 'Welcome to Flex Conference',
+                             text: 'Your account is successfully created as Attendee',
+                         })
                      })
                      .catch(error => {
                          console.log(error.message)
@@ -109,9 +114,17 @@ class Auth extends React.Component{
             };
             axios.post('http://localhost:8087/user/login', user)
                 .then(response => {
-                    alert("Successfully "+response.data.data.name)
+                  /*  Swal.fire({
+                        icon: 'success',
+                        title: 'Welcome to Flex Conference',
+                        text: 'Your account is successfully created as Attendee',
+                    })*/
+                    UserSession.setName(response.data.data._id)
+
+
+
                     if(response.data.data.role == "Attendee"){
-                        window.location = `/attendee/${response.data.data._id}`
+                        window.location = `/attendee`
                     }
                 })
                 .catch(error => {
@@ -335,6 +348,7 @@ class Auth extends React.Component{
                                 }
                                 <a href="#" onClick={this.switchSignUp}>Do Not have an Account? Click here for
                                     Sign Up</a>*/}
+                                <br/>
                                 { this.state.isSignUp ? <a href="#" onClick={this.switchSignIn}>Already Have an Account? Click here for
                                     Sign In</a> :  <a href="#" onClick={this.switchSignUp}>Do Not have an Account? Click here for
                                     Sign Up</a>}
