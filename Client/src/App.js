@@ -1,10 +1,8 @@
 import React from 'react';
 import './App.css';
 import NavBar from "./components/navBar/navBar";
+import Conference from "./components/conference/conference";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ConferencesAdmin from './components/admin/adminViewConferences/adminViewConferences';
-import RejectedConferencesAdmin  from './components/admin/adminRejectedConferences/adminRejectedConferences';
-import ApprovedConferencesAdmin from './components/admin/adminApprovedConferences/adminApprovedConferences';
 
 function App() {
     return (
@@ -13,12 +11,7 @@ function App() {
                 <NavBar/>
                 <section>
                     <Switch>
-                        {/*<Route path="/" component={} exact/>*/}
-                        <Route path="/" component={ConferencesAdmin} exact />
-                        <Route path="/approved-conferences" component={ApprovedConferencesAdmin}/>
-                        <Route path="/rejected-conferences" component={RejectedConferencesAdmin}/>
-
-
+                        <Route path="/conference" component={Conference} exact/>
                     </Switch>
                 </section>
             </Router>

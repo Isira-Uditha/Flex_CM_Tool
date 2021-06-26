@@ -17,7 +17,7 @@ class NavBar extends React.Component{
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link active" style={{color:"whitesmoke"}} aria-current="page" href="/"></a>
+                                <a className="nav-link active" style={{color:"whitesmoke"}} aria-current="page" href="/conference">Conference</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" style={{color:"whitesmoke"}} href="/"></a>
