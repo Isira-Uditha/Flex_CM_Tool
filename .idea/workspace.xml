@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Rest-Services/src/controllers/stripe.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/userProfile/postForm/postForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/userProfile/postForm/postForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/userProfile/postTable/postTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/userProfile/postTable/postTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/userProfile/userProfile/userProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/userProfile/userProfile/userProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../AF_Final_Papers/PracticePaper" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -77,6 +87,7 @@
       <workItem from="1624378193922" duration="3066000" />
       <workItem from="1624381309074" duration="909000" />
       <workItem from="1624382254705" duration="717000" />
+      <workItem from="1624687976809" duration="9127000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1622313882516</created>

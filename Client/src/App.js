@@ -12,7 +12,7 @@ function App() {
                 <section>
                     <Switch>
                         {/*<Route path="/" component={} exact/>*/}
-                        <Route path="/profile" component={UserProfile} />
+                        <Route path="/userPage" component={UserProfile} />
                     </Switch>
                 </section>
             </Router>

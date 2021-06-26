@@ -5,7 +5,9 @@ const initialState = {
     title: '',
     type: '',
     pdf: '',
-    status: 'pending'
+    status: 'pending',
+    post_id: 'null',
+    fetchedData: []
 }
 
 class PostForm extends Component {
@@ -14,6 +16,23 @@ class PostForm extends Component {
         this.state = initialState;
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.fetchData = this.fetchData.bind(this);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.postId != prevProps.postId) {
+            this.setState({post_id: this.props.postId}, this.fetchData);
+        }
+    }
+
+    fetchData() {
+        axios.get(`http://localhost:8087/post/${this.state.post_id}`).then(response => {
+            this.setState({fetchedData: response.data.data});
+        }).then(() => {
+            this.setState({title: this.state.fetchedData.title});
+            this.setState({type: this.state.fetchedData.type});
+            // this.setState({pdf: this.state.fetchedData.pdf_url});
+        })
     }
 
     onChange(e) {
@@ -21,7 +40,7 @@ class PostForm extends Component {
     }
 
     onSubmit(e) {
-        // e.preventDefault();
+        e.preventDefault();
         let submission = {
             title: this.state.title,
             type: this.state.type,
@@ -54,7 +73,7 @@ class PostForm extends Component {
                                                value={this.state.title}
                                                onChange={this.onChange}
                                         />
-                                    <label htmlFor="title">Title</label>
+                                        <label htmlFor="title">Title</label>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +107,13 @@ class PostForm extends Component {
                         <div className="card-footer">
                             <div className="row">
                                 <div className="col-md-12" style={{textAlign: "right"}}>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                    {(()=>{
+                                        if(this.state.post_id === 'null'){
+                                            return <button type="submit" className="btn btn-primary">Submit</button>
+                                        } else {
+                                            return <button type="submit" className="btn btn-primary">Update</button>
+                                        }
+                                    })()}
                                 </div>
                             </div>
                         </div>

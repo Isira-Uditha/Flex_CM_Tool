@@ -4,6 +4,7 @@ import DataTable from 'react-data-table-component';
 import DataTableExtension from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
 import Swal from 'sweetalert2';
+import Stripe from "react-stripe-checkout";
 
 const initialState = {
     entries: []
@@ -14,15 +15,13 @@ class PostTable extends Component {
         super(props);
         this.state = initialState;
         this.deletePost = this.deletePost.bind(this);
-        this.editPost = this.editPost.bind(this);
-        this.makePayment = this.makePayment.bind(this);
+        this.handleToken = this.handleToken.bind(this);
+        this.tokenHandler = this.tokenHandler.bind(this);
     }
 
     componentDidMount() {
         axios.get('http://localhost:8087/post').then(response => {
-            console.log(response.data.data);
             this.setState({entries: response.data.data});
-            console.log('LENGTH', this.state.entries.length);
         })
     }
 
@@ -37,12 +36,17 @@ class PostTable extends Component {
         })
     }
 
-    editPost(e, id){
-
+    handleToken(totalAmount, token){
+        axios.post('http://localhost:8087/payment/pay', {
+            token: token.id,
+            amount: totalAmount
+        }).catch(error => {
+            console.log({error: error.message});
+        })
     }
 
-    makePayment(){
-
+    tokenHandler(token){
+        this.handleToken(100, token);
     }
 
     render() {
@@ -97,7 +101,8 @@ class PostTable extends Component {
                 cell: row => <div>
                     <div className="btn-group">
                         <button className="btn btn-danger" onClick={e => this.deletePost(e, row._id)}>Delete</button>
-                        <button className="btn btn-primary" onClick={e => this.editPost(e, row._id)}>Edit</button>
+                        {/*<button className="btn btn-primary" onClick={e => this.editPost(e, row._id)}>Edit</button>*/}
+                        <button className="btn btn-primary" onClick={() => this.props.editPost(row._id)}>Edit</button>
                     </div>
                 </div>,
                 selector: 'options',
@@ -111,7 +116,12 @@ class PostTable extends Component {
                         if(row.status === 'pending'){
                             return <input type="button" className="btn btn-success" value="Pay" disabled={true} />
                         } else {
-                            return <input type="button" className="btn btn-success" value="Pay" onClick={this.makePayment()}/>
+                            // return <input type="button" className="btn btn-success" value="Pay" onClick={e => this.makePayment(e)}/>
+                            // return <a href="/pay" className="btn btn-success">Pay</a>
+                            return <Stripe
+                                stripeKey="pk_test_51J5ViHAHA9nESvo0LpVRniSH1A8hx0Gq3uBya8uswpVIOaz1FeeRyRicbUXd5RYFpnJj6WKuf0HOwZIDXzGYjIJa008q7s35RK"
+                                token={this.tokenHandler}
+                            />
                         }
                     })()}
                 </div>,
@@ -131,7 +141,7 @@ class PostTable extends Component {
         return (
             <div className="container mt-4">
                 <div className="card p-4">
-                    <h5 htmlfor="title" className="form-label" style={{textAlign: "left"}}>Uploads</h5>
+                    <h5 htmlFor="title" className="form-label" style={{textAlign: "left"}}>Uploads</h5>
                     <DataTableExtension {...tableData}>
                         <DataTable columns={columns}
                                    data={data}
