@@ -4,12 +4,14 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const conferenceAPI = require('./src/api/conference.api');
-
+const postAPI = require('./src/api/post.api');
+const stripeRoutes = require('./src/controllers/stripe.controller');
 
 dotenv.config();
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}));
 
 const PORT = process.env.PORT || 8087;
 const MONGODB_URL = process.env.MONGODB_URL;
@@ -34,6 +36,8 @@ app.route('/').get((req, res) => {
 });
 
 app.use('/conference', conferenceAPI());
+app.use('/post', postAPI());
+app.use('/payment', stripeRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on PORT ${PORT}`);
