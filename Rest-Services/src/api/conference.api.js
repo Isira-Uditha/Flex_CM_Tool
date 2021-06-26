@@ -4,7 +4,7 @@ const controller = require('../controllers/conference.controller');
 
 module.exports = function () {
     router.post('/create', controller.createConference);
-    router.patch('/update/:id', controller.updateConference);
+    router.patch('/:id', controller.updateConference);
     router.get('/', controller.getAllConference);
     router.get('/:id', controller.getConference);
     router.delete('/:id', controller.deleteConference);
