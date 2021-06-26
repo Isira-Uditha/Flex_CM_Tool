@@ -17,7 +17,11 @@ const initialState = {
     g_speaker: '',
     g_url: '',
     conference_id: '',
-    conference:[]
+    conference:[],
+    alert: [],
+    alert_type: 'alert-success',
+    hidden: 'hidden',
+    res: false
 }
 
 class AddConference extends Component{
@@ -31,6 +35,9 @@ class AddConference extends Component{
         this.quillChange = this.quillChange.bind(this);
         this.getConference = this.getConference.bind(this);
         this.clickOnDelete  = this.clickOnDelete.bind(this);
+        this.onUpdate  = this.onUpdate.bind(this);
+        this.displayAlert  = this.displayAlert.bind(this);
+        this.validation  = this.validation.bind(this);
         this.state = initialState;
 
     }
@@ -40,6 +47,54 @@ class AddConference extends Component{
             this.setState({conference_id:this.props.conference_id},this.getConference)
         }
 
+    }
+
+    validation(conference){
+        let array = [];
+        let i = 0;
+        if(conference.title === ''){
+            // this.setState({alert: this.state.alert.concat('Title field is required')})
+            array[i] = 'Title field is required';
+            i++;
+        }
+        if(conference.date === ''){
+            // this.setState({alert: this.state.alert.concat('Date field is required')})
+            array[i] = 'Date field is required';
+            i++;
+        }
+        if(conference.time === ''){
+            // this.setState({alert: this.state.alert.concat('Time field is required')})
+            array[i] = 'Time field is required';
+            i++;
+        }
+        if(conference.ticket_price === ''){
+            // this.setState({alert: this.state.alert.concat('Ticket Price field is required')})
+            array[i] = 'Ticket field is required';
+            i++;
+        }
+        if(conference.description === ''){
+            // this.setState({alert: this.state.alert.concat('Description field is required')})
+            array[i] = 'Description field is required';
+            i++;
+        }
+
+        this.setState({ alert: conference ? array.map(array => array) : [] });
+
+        setTimeout(() => {
+                // console.log(this.state.alert);
+                if(this.state.alert == []){
+                    alert('cccc');
+                    this.setState({res:true})
+                    console.log(this.state.res);
+
+                }
+        },2000)
+    }
+
+    displayAlert(message,type){
+        this.setState({alert_type:type});
+        this.setState({alert:message});
+        this.setState({hidden:''});
     }
 
     getConference(){
@@ -63,10 +118,6 @@ class AddConference extends Component{
                     speakers: this.state.conference.speakers,
                 });
                 this.setState({ g_speaker: this.state.conference.g_speaker });
-                // this.setState({ g_url: this.state.conference.g_url });
-                console.log(this.state.speakers)
-
-
             }
         );
     }
@@ -105,9 +156,9 @@ class AddConference extends Component{
     };
 
     addNewRow = () => {
-            this.setState((prevState) => ({
-                speakers: [...prevState.speakers, { index: Math.random(), speaker: "", url: ""}],
-            }));
+        this.setState((prevState) => ({
+            speakers: [...prevState.speakers, { index: Math.random(), speaker: "", url: ""}],
+        }));
     }
 
     clickOnDelete(record) {
@@ -132,11 +183,56 @@ class AddConference extends Component{
             g_speaker: this.state.g_speaker,
             status: 'P'
         };
-        console.log('DATA TO SEND', conference);
-        axios.post('http://localhost:8087/conference/create', conference)
+        console.log('DATA TO SEND ADD', conference);
+        this.validation(conference)
+        setTimeout(() => {
+            console.log(this.state.alert);
+            console.log('statsu ' + this.state.res);
+        },2000)
+
+        if(this.state.res){
+                this.displayAlert(this.state.alert,'alert-danger')
+            }else {
+                alert("xx");
+                // axios.post('http://localhost:8087/conference/create', conference)
+                //     .then(response => {
+                //         console.log(response);
+                //         this.displayAlert('Conference successfully inserted', 'alert-success')
+                //         // alert('Conference Data successfully inserted')
+                //         // this.onClear();
+                //     })
+                //     .catch(error => {
+                //         console.log(error.message);
+                //         alert(error.message)
+                //     })
+            }
+    }
+
+    onUpdate(e) {
+        e.preventDefault();
+        let conference = {
+            title: this.state.title,
+            description: this.state.description,
+            date: this.state.date,
+            time: this.state.time,
+            location: this.state.location,
+            speakers: this.state.speakers,
+            ticket_price: this.state.ticket_price,
+            tracks: this.state.tracks,
+            g_speaker: this.state.g_speaker,
+            status: 'P'
+        };
+        if(this.state.g_url !== ''){
+            conference.g_url = this.state.g_url;
+        }else{
+            conference.g_url = this.state.conference.g_url;
+        }
+
+        console.log('DATA TO SEND Update', conference);
+        axios.patch(`http://localhost:8087/conference/${this.props.conference_id}`, conference)
             .then(response => {
-                alert('Conference Data successfully inserted')
-                // this.onClear();
+                alert('Conference Data successfully Updated')
+                this.onClear();
             })
             .catch(error => {
                 console.log(error.message);
@@ -144,10 +240,18 @@ class AddConference extends Component{
             })
     }
 
+
     render(){
         return (
             <div className="container"><br/>
                 <div className={"card p-4"}>
+                    {/*{this.state.alert.map((item) => (*/}
+                    {/*    <div key={item} className={`alert ${this.state.alert_type} alert-dismissible fade show`} role="alert" hidden={this.state.hidden}>*/}
+                    {/*        <strong>{item.alert}</strong>*/}
+                    {/*        <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>*/}
+                    {/*    </div>*/}
+                    {/*))}*/}
+
                     <h5 htmlFor="title"  className="form-label mb-4" style={{textAlign:"left"}}>
                         {(()=>{
                             if(this.props.conference_id === 'null'){
@@ -157,7 +261,7 @@ class AddConference extends Component{
                             }
                         })()}
                     </h5>
-                    <form onSubmit={this.onSubmit} onChange={this.onHandle}>
+                    <form {...(this.props.conference_id === 'null' ? {onSubmit: this.onSubmit} : {onSubmit: this.onUpdate})} onChange={this.onHandle}>
                         <div className={"row"}>
                             <div className={"col-md-6"}>
                                 <div className="mb-3" style={{textAlign:"left"}}>
