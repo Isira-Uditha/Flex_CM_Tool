@@ -13,6 +13,8 @@
     "parcel-bundler": "^1.12.5"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@types/react": "^17.0.11",
     "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-data-table-component": "^6.11.7",
