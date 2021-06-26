@@ -61,10 +61,22 @@ const deleteConference = async (req, res) => {
     }
 }
 
+const getConferenceForPost = async (req, res) => {
+    console.log("xxxx")
+    await Conference.find({status: "A"})
+        .then(data => {
+            res.status(200).send({ data: data });
+        })
+        .catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+}
+
 module.exports = {
     createConference,
     updateConference,
     deleteConference,
     getAllConference,
     getConference,
+    getConferenceForPost,
 };

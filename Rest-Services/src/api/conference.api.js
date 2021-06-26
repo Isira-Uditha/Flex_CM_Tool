@@ -7,6 +7,7 @@ module.exports = function () {
     router.patch('/:id', controller.updateConference);
     router.get('/', controller.getAllConference);
     router.get('/:id', controller.getConference);
+    router.get('/post/conference', controller.getConferenceForPost);
     router.delete('/:id', controller.deleteConference);
     return router;
 }
