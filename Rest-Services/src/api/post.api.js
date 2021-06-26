@@ -7,6 +7,7 @@ module.exports = () => {
     router.get('/', postController.getAllPosts);
     router.get('/:id', postController.getPost);
     router.patch('/update/:id', postController.updatePost);
+    router.patch('/approvePost/:id', postController.approvePost);
     router.delete('/delete/:id', postController.deletePost);
     return router;
 }

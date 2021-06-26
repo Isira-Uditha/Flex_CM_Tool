@@ -58,10 +58,22 @@ const getPost = async (req, res) => {
     }
 }
 
+const approvePost = async (req, res) => {
+    if (req.params && req.params.id) {
+        const {id} = req.params; //fetching the id of the post item
+        const post = req.body;
+
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post With That id'); //Validating the Post id
+        const approvedPost = await Post.findByIdAndUpdate(id, post,{new : true}); //Find and Update operation
+        res.json(approvedPost);
+    }
+}
+
 module.exports = {
     createPost,
     updatePost,
     deletePost,
     getAllPosts,
-    getPost
+    getPost,
+    approvePost
 };

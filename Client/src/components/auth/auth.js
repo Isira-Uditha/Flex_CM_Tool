@@ -123,13 +123,13 @@ class Auth extends React.Component{
                     if(response.data.data.role == RoleTypes.ATTENDEE){
                         window.location = `/attendee`
                     }else if(response.data.data.role == RoleTypes.RESEARCHER){
-                      /*  window.location = `/attendee`*/
+                        window.location = `/userPage`
                     }else if(response.data.data.role == RoleTypes.WORKSHOP_PRESENTEE){
                        /* window.location = `/attendee`*/
                     }else if(response.data.data.role == RoleTypes.ADMIN){
                         /*window.location = `/attendee`*/
                     }else if(response.data.data.role == RoleTypes.REVIEWER){
-                     /*   window.location = `/attendee`*/
+                        window.location = `/reviewer`
                     }else if(response.data.data.role == RoleTypes.EDITOR){
                         /*window.location = `/attendee`*/
                     }
