@@ -4,6 +4,7 @@ import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import GuestList from "../guestList/guestList";
+import Swal from 'sweetalert2'
 
 const initialState = {
     title: '',
@@ -185,7 +186,11 @@ class AddConference extends Component{
                 .then(response => {
                     console.log(response);
                     this.displayAlert('Conference successfully inserted', 'alert-success')
-                    alert('Conference Data successfully inserted')
+                    Swal.fire(
+                        'Success',
+                        'Conference Data successfully inserted',
+                        'success'
+                    )
                     this.onClear();
                 })
                 .catch(error => {
@@ -221,7 +226,11 @@ class AddConference extends Component{
             console.log('DATA TO SEND Update', conference);
             axios.patch(`http://localhost:8087/conference/${this.props.conference_id}`, conference)
                 .then(response => {
-                    alert('Conference Data successfully Updated')
+                    Swal.fire(
+                        'Success',
+                        'Conference Data successfully updated',
+                        'success'
+                    )
                     this.onClear();
                 })
                 .catch(error => {
