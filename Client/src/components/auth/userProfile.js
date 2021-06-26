@@ -12,8 +12,10 @@ const options = [
 ]
 
 const initialState = {
+    id: '',
     firstName: '',
     lastName: '',
+    fullName: '',
     email: '',
     password: '',
     contact: '',
@@ -31,7 +33,7 @@ class UserProfile extends React.Component{
         this.state = { disabled: true }
         this.onChange = this.onChange.bind(this);
         this.switchToEdit = this.switchToEdit.bind(this);
-
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange(e) {
@@ -46,12 +48,25 @@ class UserProfile extends React.Component{
 
     }
 
+
     componentDidMount() {
         const user = UserSession.getName();
 
       axios.get(`http://localhost:8087/user/getUser/${user}`)
            .then(response => {
+               this.setState({id:response.data.data._id})
                this.setState({email:response.data.data.email})
+               this.setState({fullName:response.data.data.name})
+               this.setState({contact:response.data.data.contact})
+               this.setState({address:response.data.data.address})
+               this.setState({organization:response.data.data.organization})
+               this.setState({selectedRole:response.data.data.role})
+
+               const names = this.state.fullName.split(" ")
+               this.setState({firstName:names[0]})
+               this.setState({lastName:names[1]})
+
+
                console.log(response.data.data)
            })
            .catch(error => {
@@ -60,12 +75,39 @@ class UserProfile extends React.Component{
 
     }
 
+
+    onSubmit(e){
+        e.preventDefault();
+
+
+                let user = {
+                    name: this.state.firstName + " " + this.state.lastName,
+                    email: this.state.email,
+                    contact: this.state.contact,
+                    address: this.state.address,
+                    organization: this.state.organization,
+                    role: this.state.selectedRole,
+                };
+                console.log("Data to Send ", user);
+                axios.patch(`http://localhost:8087/user/updateUser/${this.state.id}`, user)
+                    .then(response => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successfully Updated',
+                            text: 'Your account is successfully updated as'+ this.state.selectedRole,
+                        })
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+
+                        alert(error.message)
+                    })
+
+    }
+
     switchToEdit(e) {
        console.log("rrr");
         this.setState( {disabled: !this.state.disabled} )
-
-
-
     }
 
 
@@ -82,9 +124,25 @@ class UserProfile extends React.Component{
                     <div className="alert alert-danger" role="alert" style={{display:"none"}} id="InvalidPasswordMatchAlert">
                         Password and Confirm Passwords are mismatched!
                     </div>
-                    <h5 htmlFor="title"  className="form-label mb-4" style={{textAlign:"center"}}>Profile</h5>
-                 <label onClick={this.switchToEdit}>Edit</label>
+                    <i>
+                        <svg onClick={this.ProfileNavigate} xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                             fill="currentColor"
+                             className="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fillRule="evenodd"
+                                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                    </i>
+                    <br/>
+                    <h5 htmlFor="title"  className="form-label mb-4" style={{textAlign:"center"}}>{this.state.fullName} </h5>
 
+                    <div style={{ position: 'absolute',
+                        right: 5,
+                        top: 35,}}>
+                    <button type="button" className="btn btn-link" onClick={this.switchToEdit}>Edit</button>
+                    </div>
+
+                    <br/>
                     <form onSubmit={this.onSubmit}>
 
                                 <div className={"row"}>
@@ -117,6 +175,7 @@ class UserProfile extends React.Component{
                                                     placeholder="LastName"
                                                     value={this.state.lastName}
                                                     onChange={this.onChange}
+                                                    disabled = {(this.state.disabled)? "disabled" : ""}
                                                     required
                                                 />
                                                 <label htmlFor="lastName" className="form-label">Last Name</label>
@@ -154,6 +213,7 @@ class UserProfile extends React.Component{
                                                 pattern="^\d{10}$"
                                                 value={this.state.contact}
                                                 onChange={this.onChange}
+                                                disabled = {(this.state.disabled)? "disabled" : ""}
                                                 required
 
                                             /><label htmlFor="contactNumber" className="form-label">Contact
@@ -171,6 +231,7 @@ class UserProfile extends React.Component{
                                                 placeholder="Example Place , Example Country"
                                                 value={this.state.address}
                                                 onChange={this.onChange}
+                                                disabled = {(this.state.disabled)? "disabled" : ""}
                                                 required
 
                                             />
@@ -188,6 +249,7 @@ class UserProfile extends React.Component{
                                                 placeholder="OrganizationName"
                                                 value={this.state.organization}
                                                 onChange={this.onChange}
+                                                disabled = {(this.state.disabled)? "disabled" : ""}
                                                 required
 
                                             />
@@ -201,9 +263,10 @@ class UserProfile extends React.Component{
                                             className="basic-single"
                                             classNamePrefix="select"
                                             name="selectedRole"
-                                            placeholder={"Select the Role"}
+                                            placeholder={this.state.selectedRole}
                                             onChange={this.onRoleSelect}
                                             options={options}
+                                            isDisabled = {(this.state.disabled)? "disabled" : ""}
                                             required
                                         />
 
@@ -217,13 +280,15 @@ class UserProfile extends React.Component{
                         <div className="row">
 
                             <div className="col-md-12" style={{textAlign:"center"}}>
-                                {/* {
-                                        this.state.isSignUp && (
-                                            <button type="submit" className="btn btn-primary">Submit</button>
+                           {/*  {
+                                        this.state.disabled && (
+                                            <button type="submit" className="btn btn-primary" hidden>Submit</button>
                                         )
                                     }
-                                    <button type="submit" className="btn btn-primary">Sign In</button>*/}
 
+                                    <button type="submit" className="btn btn-primary">Update</button>
+*/}
+                                { this.state.disabled ? "" : <button type="submit" className="btn btn-primary">Update</button>}
 
                             </div>
                             {/*{

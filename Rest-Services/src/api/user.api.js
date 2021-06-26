@@ -8,6 +8,7 @@ module.exports = function () {
     router.post('/login', controller.validateUser);
     router.post('/create', controller.createUser);
     router.get('/getUser/:id', controller.getUser);
+    router.patch('/updateUser/:id', controller.updateUser);
 
 
     return router;

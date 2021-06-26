@@ -4,6 +4,7 @@ import Select from "react-select";
 import UserSession from "./userSession";
 import React, { Component } from "react";
 import {common} from "@material-ui/core/colors";
+import * as RoleTypes from "./rolesTypes.constants"
 
 const options = [
     { value: 'Attendee', label: 'Attendee' },
@@ -57,12 +58,13 @@ class Auth extends React.Component{
 
     onRoleSelect(e) {
         this.setState({selectedRole:e.value})
-
         console.log("Author Selected :",this.state.selectedRole)
     }
 
     switchSignIn(e){
         this.setState({isSignUp:false})
+        this.setState({email:''})
+        this.setState({password:''})
     }
 
     switchSignUp(e){
@@ -76,20 +78,21 @@ class Auth extends React.Component{
         e.preventDefault();
 
         if(this.state.isSignUp) {
-
             if (this.state.password != this.state.confirmPassword) {
                 document.getElementById("InvalidPasswordMatchAlert").style.display = "block";
-            } else {
+            }else if(this.state.contact.length<10){
+                document.getElementById("InvalidContactAlert").style.display = "block";
+            }
+            else {
                 document.getElementById("InvalidPasswordMatchAlert").style.display = "none";
                 let user = {
-                    name: this.state.firstName + this.state.lastName,
+                    name: this.state.firstName + " " + this.state.lastName,
                     email: this.state.email,
                     password: this.state.password,
                     contact: this.state.contact,
                     address: this.state.address,
                     organization: this.state.organization,
                     role: this.state.selectedRole,
-
                 };
                 console.log("Data to Send ", user);
                  axios.post('http://localhost:8087/user/create', user)
@@ -99,10 +102,10 @@ class Auth extends React.Component{
                              title: 'Welcome to Flex Conference',
                              text: 'Your account is successfully created as Attendee',
                          })
+                         this.setState({isSignUp:false})
                      })
                      .catch(error => {
                          console.log(error.message)
-
                          alert(error.message)
                      })
             }
@@ -114,22 +117,25 @@ class Auth extends React.Component{
             };
             axios.post('http://localhost:8087/user/login', user)
                 .then(response => {
-                  /*  Swal.fire({
-                        icon: 'success',
-                        title: 'Welcome to Flex Conference',
-                        text: 'Your account is successfully created as Attendee',
-                    })*/
                     UserSession.setName(response.data.data._id)
+                    UserSession.setRole(response.data.data.role)
 
-
-
-                    if(response.data.data.role == "Attendee"){
+                    if(response.data.data.role == RoleTypes.ATTENDEE){
                         window.location = `/attendee`
+                    }else if(response.data.data.role == RoleTypes.RESEARCHER){
+                      /*  window.location = `/attendee`*/
+                    }else if(response.data.data.role == RoleTypes.WORKSHOP_PRESENTEE){
+                       /* window.location = `/attendee`*/
+                    }else if(response.data.data.role == RoleTypes.ADMIN){
+                        /*window.location = `/attendee`*/
+                    }else if(response.data.data.role == RoleTypes.REVIEWER){
+                     /*   window.location = `/attendee`*/
+                    }else if(response.data.data.role == RoleTypes.EDITOR){
+                        /*window.location = `/attendee`*/
                     }
                 })
                 .catch(error => {
                     console.log(error.message)
-
                     alert(error.message)
                 })
             console.log("Data to Send ", user);
@@ -141,7 +147,7 @@ class Auth extends React.Component{
                 <center> <div className="col-md-4 ml-auto mr-auto">
                     <div className={"card p-4"} >
                         <div className="alert alert-danger" role="alert" style={{display:"none"}} id="InvalidContactAlert">
-                          Invalid Contact Number!
+                          Invalid Contact Number! Contact Number should contain 10 digits
                         </div>
                         <div className="alert alert-danger" role="alert" style={{display:"none"}} id="InvalidPasswordMatchAlert">
                            Password and Confirm Passwords are mismatched!
@@ -353,11 +359,7 @@ class Auth extends React.Component{
                                     Sign In</a> :  <a href="#" onClick={this.switchSignUp}>Do Not have an Account? Click here for
                                     Sign Up</a>}
                             </div>
-
-
                             {/* </div>*/}
-
-
                         </form>
 
                     </div>
