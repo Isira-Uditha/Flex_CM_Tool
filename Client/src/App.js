@@ -3,7 +3,10 @@ import './App.css';
 import NavBar from "./components/navBar/navBar";
 import Conference from "./components/conference/conference";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import UserProfile from "./components/userProfile/userProfile/userProfile";
+import UserPage from "./components/userProfile/userProfile/userProfile";
+import Auth from "./components/auth/auth";
+import Attendee from "./components/attendee/attendee";
+import UserProfile from "./components/auth/userProfile";
 
 function App() {
     return (
@@ -12,9 +15,11 @@ function App() {
                 <NavBar/>
                 <section>
                     <Switch>
-                        {/*<Route path="/" component={} exact/>*/}
-                        <Route path="/userPage" component={UserProfile} />
+                        <Route path="/userPage" component={UserPage} />
                         <Route path="/conference" component={Conference} exact/>
+                        <Route path="/auth" exact component={Auth} />
+                        <Route path="/attendee" exact component={Attendee} />
+                        <Route path="/profile" exact component={UserProfile} />
                     </Switch>
                 </section>
             </Router>
