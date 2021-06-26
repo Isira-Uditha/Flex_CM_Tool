@@ -3,12 +3,14 @@ const mongoose = require("mongoose");
 
 const createConference = async (req, res) => {
     if (req.body) {
+        console.log(req.body)
         const conference = new Conference(req.body);
         await conference.save()
             .then(data => {
                 res.status(200).send({ data: data });
             })
             .catch(error => {
+                console.log(error.message);
                 res.status(500).send({ error: error.message });
             });
     }

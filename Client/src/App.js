@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import NavBar from "./components/navBar/navBar";
+import Conference from "./components/conference/conference";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
                 <NavBar/>
                 <section>
                     <Switch>
-                        {/*<Route path="/" component={} exact/>*/}
+                        <Route path="/conference" component={Conference} exact/>
                     </Switch>
                 </section>
             </Router>
