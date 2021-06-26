@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import NavBar from "./components/navBar/navBar";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import UserProfile from "./components/userProfile/userProfile/userProfile";
 
 function App() {
     return (
@@ -12,7 +11,6 @@ function App() {
                 <section>
                     <Switch>
                         {/*<Route path="/" component={} exact/>*/}
-                        <Route path="/userPage" component={UserProfile} />
                     </Switch>
                 </section>
             </Router>
