@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init" />
+    <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,11 +43,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex" />
       <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\Client" />
       <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\Client\src" />
       <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\client\src" />
       <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex\Rest-Services\src\models" />
-      <recent name="C:\Users\ISIRA_PC\WebstormProjects\flex" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
