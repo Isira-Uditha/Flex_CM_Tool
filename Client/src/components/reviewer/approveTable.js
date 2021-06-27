@@ -98,6 +98,7 @@ class ApproveTable extends React.Component{
         }, () => {
             let approvedPost = {
                 status: this.state.status,
+                notify: "2"
             };
             Swal.fire({
                 title: 'Are you sure?',
