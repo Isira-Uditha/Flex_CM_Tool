@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import PostForm from "../postForm/postForm";
 import PostTable from "../postTable/postTable";
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const initialState = {
     postId: null
@@ -17,10 +22,18 @@ class UserProfile extends Component{
         this.setState({postId: id});
     }
 
+
+
     render(){
+
+
         return(
             <div className="container">
+
                 <br/>
+
+
+
                 <h5 style={{textAlign:"left"}}>Welcome back "User Name"</h5>
                 <PostForm postId = {this.state.postId} />
                 <PostTable editPost = {this.editPost} />

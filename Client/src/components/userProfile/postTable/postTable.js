@@ -5,9 +5,12 @@ import DataTableExtension from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
 import Swal from 'sweetalert2';
 import Stripe from "react-stripe-checkout";
+import Notification from "../../reviewer/notification";
 
 const initialState = {
-    entries: []
+    entries: [],
+    notified: [],
+    loading: false
 }
 
 class PostTable extends Component {
@@ -17,13 +20,37 @@ class PostTable extends Component {
         this.deletePost = this.deletePost.bind(this);
         this.handleToken = this.handleToken.bind(this);
         this.tokenHandler = this.tokenHandler.bind(this);
+      /*  this.x = this.x.bind(this);*/
+        this.renderNotification = this.renderNotification.bind(this);
     }
 
     componentDidMount() {
         axios.get('http://localhost:8087/post').then(response => {
             this.setState({entries: response.data.data});
+          /* this.x();*/
         })
     }
+
+   /* x(){
+        let data = [];
+        for(let i =0 ; i < this.state.entries.length ; i++) {
+            console.log(this.state.entries[i].notify);
+            if (this.state.entries[i].notify == "1") {
+                let n = {
+                    value: this.state.entries[i]._id,
+                    label: this.state.entries[i].title
+                }
+                data.push(n)
+            }
+        }
+
+        this.setState({
+            notified: "data"
+        }, () => {
+          console.log(this.state.notified.length)
+            this.setState({loading: true});
+        })
+    }*/
 
     deletePost(e, id){
         axios.delete(`http://localhost:8087/post/delete/${id}`)
@@ -48,8 +75,14 @@ class PostTable extends Component {
     tokenHandler(token){
         this.handleToken(100, token);
     }
+    renderNotification(){
+            return <Notification/>
+
+    }
 
     render() {
+
+
         const columns = [
             {
                 name: 'Title',
@@ -138,8 +171,13 @@ class PostTable extends Component {
             data
         }
 
-        return (
+
+
+      return (
             <div className="container mt-4">
+                {this.renderNotification()}
+
+
                 <div className="card p-4">
                     <h5 htmlFor="title" className="form-label" style={{textAlign: "left"}}>Uploads</h5>
                     <DataTableExtension {...tableData}>

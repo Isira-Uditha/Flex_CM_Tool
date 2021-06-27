@@ -13,7 +13,10 @@ const initialState = {
     show: false,
     id: '',
     title: '',
-    type: ''
+    type: '',
+    pdf_url: '',
+    created_date: '',
+    statusView: ''
 }
 
 class ApproveTable extends React.Component{
@@ -25,6 +28,8 @@ class ApproveTable extends React.Component{
         this.view = this.view.bind(this);
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
+        this.rejectPaper = this.rejectPaper.bind(this);
+        this.renderLabel = this.renderLabel.bind(this);
     }
 
     componentDidMount() {
@@ -35,6 +40,10 @@ class ApproveTable extends React.Component{
             axios.get('http://localhost:8087/post').then(response => {
                 this.setState({entries: response.data.data});
                 console.log(this.state.entries)
+                {this.state.entries.length > 0 && this.state.entries.map((item,index) => (
+                    console.log(item.user_id.name)
+
+                ))}
             })
         }
 
@@ -46,8 +55,7 @@ class ApproveTable extends React.Component{
         console.log("id ", paperId);
         axios.patch(`http://localhost:8087/post/approvePost/${paperId}`, approvedPost)
             .then(response => {
-                window.location.reload ();
-                alert("Success");
+                window.location.reload ()
             })
             .catch(error => {
                 console.log(error.message)
@@ -63,18 +71,65 @@ class ApproveTable extends React.Component{
         }, () => {
             let approvedPost = {
                 status: this.state.status,
+                notify: "1"
             };
-            this.sendApproval(paperId , approvedPost)
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Approve it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.sendApproval(paperId , approvedPost)
+
+                }
+            })
+
         })
     }
 
-    view(e , paperId, title, type, pdf_url, status){
+    rejectPaper(e , paperId) {
+        /*     e.preventDefault()*/
+        this.setState({
+            status: "reject"
+        }, () => {
+            let approvedPost = {
+                status: this.state.status,
+            };
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Reject it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.sendApproval(paperId , approvedPost)
+
+                }
+            })
+
+
+        })
+    }
+
+    view(e , paperId, title, type, pdf_url, status , created_date){
         console.log("Model",paperId)
         this.setState({ id: paperId });
 
         this.setState({
             id: paperId,
-            title: title
+            title: title,
+            type: type,
+            pdf_url: pdf_url,
+            created_date: created_date,
+            statusView: status
+
         }, () => {
             console.log("Model123id",this.state.title)
         })
@@ -90,9 +145,24 @@ class ApproveTable extends React.Component{
         this.setState({ show: false });
     };
 
+    renderLabel(){
+        if(this.state.statusView == "pending"){
+            return <span className="badge bg-warning text-dark">Pending Paper</span>
+        }else if(this.state.statusView == "reject"){
+            return <span className="badge bg-danger">Rejected Paper</span>
+        }else if(this.state.statusView == "approved"){
+            return <span  className="badge bg-success">Approved Paper</span>
+        }
+    }
+
 
     render(){
         const columns = [
+            {
+                name: 'Researcher',
+                selector: 'user_id.name',
+                sortable: true,
+            },
             {
                 name: 'Title',
                 selector: 'title',
@@ -114,20 +184,34 @@ class ApproveTable extends React.Component{
                 selector: 'pdf_url',
                 sortable: true,
                 left: true,
+            },{
+                name: 'View',
+                cell: row => <div>
+                    {(()=>{
+                        return  <input type="button" className="btn btn-primary" value="View"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop" onClick={e => this.view(e, row._id, row.title, row.type, row.pdf_url, row.status, row.createdAt)}  disabled={false} />
+                    })()}
+                </div>,
+                selector: ' ',
+                sortable: true,
+                left: true,
             },
             {
                 name: 'Approval Status',
                 cell: row => <div>
                     {(()=>{
                         if(row.status === 'pending'){
-                            return <input type="button" className="btn btn-warning" value="Approve"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop" onClick={e => this.view(e, row._id, row.title, row.type, row.pdf_url, row.status)}  disabled={false} />
+                          /*  return <input type="button" className="btn btn-warning" value="Pending"  data-bs-toggle="modal"  disabled={true} />*/
+                            return <h4><span style={{width:"100px"}} className="badge bg-warning">Pending</span></h4>
                         /*    <input type="button" className="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</input>*/
 
                         } else if(row.status === 'approved'){
-                            return <input type="button" className="btn btn-success"  value="Approved" disabled={true} />
+                         /*   return <input type="button" className="btn btn-success"  value="Approved" disabled={true} />*/
+                            return <h4><span style={{width:"100px"}}  className="badge bg-success">Approved</span></h4>
+
                         } else {
-                            return <input type="button" className="btn btn-danger" value="Rejected" disabled={true} />
+                            return <h4><span style={{width:"100px"}}  className="badge bg-danger">Reject</span></h4>
+
                         }
                     })()}
                 </div>,
@@ -164,6 +248,8 @@ class ApproveTable extends React.Component{
             data
         }
 
+        const s = this.state.statusView
+
         return(
             <div className="container mt-4">
                 <div className="card p-4">
@@ -191,41 +277,60 @@ class ApproveTable extends React.Component{
                                         aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
-                                <form>
+                                <div className={"col-md-12"}>
+                                <form >
+                                    <div className={"row"}>
+
+
+
+                                        {this.renderLabel()}
+                                        {/*<label htmlFor="recipient-name" className="col-form-label">{this.state.statusView} </label>*/}
+
+                                    </div>
+
+
                                     <div className={"row"}>
 
                                         <div className={"col-md-6"}>
                                         <label htmlFor="recipient-name" className="col-form-label">Title:</label>
                                         </div>
+                                        <div className={"col-md-6"} style={{textAlign: "left"}}>
+                                            <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.title} </b></label>
+                                        </div>
+                                    </div>
+                                    <div className={"row"}>
+
                                         <div className={"col-md-6"}>
-                                        <label htmlFor="recipient-name" className="col-form-label">{this.state.title} </label>
+                                            <label htmlFor="recipient-name" className="col-form-label">Type:</label>
                                         </div>
-
-                                      {/*  <div className={"col-md-6"}>
-                                    <div className="mb-3">
-                                        <label htmlFor="message-text" className="col-form-label">Type:</label>
-                                        <input type="text" className="form-control" id="recipient-name"/>
-                                    </div>
-                                        </div>*/}
+                                        <div className={"col-md-6"} style={{textAlign: "left"}}>
+                                            <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.type} </b></label>
                                         </div>
-                                   {/* <div className="mb-3">
-                                        <label htmlFor="message-text" className="col-form-label">File:</label>
-                                        <input type="text" className="form-control" id="recipient-name"/>
                                     </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="message-text" className="col-form-label">Created Date:</label>
-                                        <input type="text" className="form-control" id="recipient-name"/>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label htmlFor="message-text" className="col-form-label">Status:</label>
-                                        <input type="text" className="form-control" id="recipient-name" value={this.state.id} disabled={true}/>
-                                    </div>*/}
+                                    <div className={"row"}>
 
+                                        <div className={"col-md-6"} >
+                                            <label htmlFor="recipient-name" className="col-form-label">File:</label>
+                                        </div>
+                                        <div className={"col-md-6"} style={{textAlign: "left"}}>
+                                            <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.pdf_url} </b></label>
+                                        </div>
+                                    </div>
+                                    <div className={"row"}>
+
+                                        <div className={"col-md-6"} >
+                                            <label htmlFor="recipient-name" className="col-form-label">Created Date:</label>
+                                        </div>
+                                        <div className={"col-md-6"} style={{textAlign: "left"}}>
+                                            <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.created_date} </b></label>
+                                        </div>
+                                    </div>
 
                                 </form>
+                                </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Reject
+                                <button type="button" className="btn btn-danger" onClick={e => this.rejectPaper(e,this.state.id)} >Reject
                                 </button>
                                 <button type="button" className="btn btn-primary" onClick={e => this.approvePaper(e,this.state.id)} >Approve</button>
                             </div>
