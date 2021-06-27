@@ -38,6 +38,7 @@ const deletePost = async (req, res) => {
 const getAllPosts = async (req, res) => {
     //retrieve all the posts available in the database
     await Post.find({})
+        .populate('user_id', 'name')
         .then(data => {
             res.status(200).send({data: data})
         })
