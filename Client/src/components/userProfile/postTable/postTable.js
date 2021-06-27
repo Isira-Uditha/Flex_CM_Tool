@@ -6,6 +6,7 @@ import 'react-data-table-component-extensions/dist/index.css';
 import Swal from 'sweetalert2';
 import Stripe from "react-stripe-checkout";
 import UserSession from "../../auth/userSession";
+import Notification from "../../reviewer/notification";
 
 const initialState = {
     entries: [],
@@ -13,7 +14,9 @@ const initialState = {
     userDetails: [],
     payment: 'pending',
     current_post: 'null',
-    postDetails: []
+    postDetails: [],
+    notified: [],
+    loading: false
 }
 
 class PostTable extends Component {
@@ -25,6 +28,7 @@ class PostTable extends Component {
         this.tokenHandler = this.tokenHandler.bind(this);
         this.currentPayPost = this.currentPayPost.bind(this);
         this.paymentHandler = this.paymentHandler.bind(this);
+        this.renderNotification = this.renderNotification.bind(this);
     }
 
     componentDidMount() {
@@ -125,6 +129,10 @@ class PostTable extends Component {
         }).catch(error => {
             console.log(error.message);
         })
+    }
+
+    renderNotification(){
+        return <Notification/>
     }
 
     render() {
@@ -236,6 +244,7 @@ class PostTable extends Component {
 
         return (
             <div className="container mt-4">
+                {this.renderNotification()}
                 <div className="card p-4">
                     <h5 htmlFor="title" className="form-label" style={{textAlign: "left"}}>Uploads</h5>
                     <DataTableExtension {...tableData}>

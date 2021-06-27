@@ -3,6 +3,8 @@ import PostForm from "../postForm/postForm";
 import PostTable from "../postTable/postTable";
 import UserSession from "../../auth/userSession";
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialState = {
     postId: 'null',
