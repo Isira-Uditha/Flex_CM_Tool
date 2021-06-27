@@ -213,7 +213,6 @@ class AddConference extends Component{
             ticket_price: this.state.ticket_price,
             tracks: this.state.tracks,
             g_speaker: this.state.g_speaker,
-            status: 'P'
         };
         if(this.state.g_url !== ''){
             conference.g_url = this.state.g_url;

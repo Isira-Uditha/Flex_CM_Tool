@@ -32,7 +32,7 @@ class NavBar extends React.Component{
     render() {
         return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light fixed-top" style={{background:"rgb(1,71,132,0.5)"}} >
+            <nav className="navbar navbar-expand-lg navbar-light fixed-top w-100" style={{background:"rgb(1,71,132,0.5)"}} >
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#" style={{color:"yellow"}}><b>FLEX</b></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

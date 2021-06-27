@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import ConferenceImg from "../../../assets/header-bg.jpg"
+import ConferenceImg from "../../../assets/header-bg.jpg";
+
 
 const initialState = {
     hidden: "",
@@ -24,30 +25,28 @@ class Home extends Component{
         return (
             // <div style={{marginTop:"56px"}}>
             <div>
-            <div className={"text-white align-middle"} style={{background:"rgb(1,71,132,0.7)",backgroundImage:`url(${ConferenceImg})`,backgroundSize: "cover",height:"700px"}}  >
+            <div className={"text-white align-middle"} style={{background:"rgb(1,71,132,0.7)",backgroundImage:`url(${ConferenceImg})`,backgroundSize: "cover",height:"650px"}}  >
                 <div className={"row"}>
-                    <div className={"col-md-12"} style={{fontFamily:"Georgia",fontSize:"6rem"}}>
-
-                        <div className={"mb-5"}></div>
-                        <div className={"row mb-5"}></div>
+                    <div className={"col-md-12"}>
+                        <div className={"row mb-5"}>&nbsp;</div>
+                        <div className={"row mb-5"}>&nbsp;</div>
                         <div className={"row mb-5"}>
                             <span className={"align-middle border-5"}  style={{fontSize:"2rem",fontStyle: 'italic'}} >Welcome To Flex Conference</span>
                         </div>
-                        <span className={"align-middle border border-5 p-3"}>{this.props.title}</span>
+                        <span className={"align-middle border border-5 p-3 mb-5"} style={{fontFamily:"Georgia",fontSize:"6rem"}}>{this.props.title}</span>
                         <div className={"row"}>
-                            <div className={"text-center  mt-3"}>
-                                <button type={"button"} style={{fontSize:"2rem",fontFamily:"Monospace",fontStyle:"bold"}} onClick={(e) => {this.canvasRender(e)}}  className="btn btn-warning text-white">Tell Me More</button>
+                            <div className={"mt-5"}>
+                                <div className={"row mb-3"}></div>
+                                <button type={"button"} style={{fontSize:"2rem",fontFamily:"Monospace",fontStyle:"bold"}} onClick={(e) => {this.canvasRender(e),this.props.displayCollapse(e)}}  className="btn btn-warning text-white">{(this.state.hidden == "" ?("Tell Me More") : "Close")}</button>
                             </div>
                         </div>
-                        <div className={"row"}>
-                            <div className={`collapse ${this.state.hidden} container col-md-6`} id="collapseExample">
-                                <div className="card card-body">
-                                    <label className={"text-primary"}>Some placeholder content for the collapse component. This panel is hidden by default but
-                                        revealed when the user activates the relevant trigger.</label>
-                                </div>
-                            </div>
-                        </div>
-
+                        {/*<div className={"row mt-3 text-start"}>*/}
+                        {/*    <div className={`collapse ${this.state.hidden} container col-md-5`} id="collapseExample">*/}
+                        {/*        <div className="card card-body bg-secondary text-white">*/}
+                        {/*            <div dangerouslySetInnerHTML={{ __html: this.props.tracks }}/>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </div>

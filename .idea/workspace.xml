@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init">
+    <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="homepage_init_20210626">
       <change afterPath="$PROJECT_DIR$/Client/.cache/01/8419d6c9b833f7ff223cf71fd87db7.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/04/1f1046d0e43cc98ca1bfd932540bde.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/05/0adfd7b962375f4359126cdac7be8a.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/23/34d8828ff328631df28babc064c621.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/25/634fe90f57e64265163db042f91fd1.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/2f/f4d7c0702f578d74cc1121dec1a967.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/38/50ae09fa81f2443777cbaa71c7b75b.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/3c/1d2b353899a69edf5da3391ba0d54a.json" afterDir="false" />
@@ -15,18 +16,34 @@
       <change afterPath="$PROJECT_DIR$/Client/.cache/4f/5813c1d2306427042274f4f76953b2.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/59/6af96fb20fc08c9463b71230ac04b5.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/5f/5dc130a691d4b394e6f34e990ce15c.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/62/5fb5ce1158b75d0296bd3915ec808e.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/6d/24449575e9d66b0e3555b6ac56ab72.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/77/9c0511b81ef6e26165256f35bb9619.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/79/605b4dd6239270307df09dadecf429.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/7a/90b822e21b796c70a8ed283dd77e6c.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/83/c6b89579db01fa95adcd6523943170.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/8b/46a95fa8e22d913dba08fa0604e1df.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/8e/f37fa6efeb13b7fcc9dc3b074ebe5c.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/8f/a4b2c5c59e24cbe750e5d4476f1c47.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/90/ece89c89529ca09a80bd4e5644e53d.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/b0/dec6bc42d82e9e749d643bff2bf613.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/b5/47b7a6b8b3f981d04bce53e2e32e2c.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/b9/131c6d8fa40fb066986a2848cc8f4b.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/c0/72d39ce236ec513f3b39a181ec9130.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/ce/0b18ca637bf5bfceadad67c82b7399.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/d8/c0d7536cc27bda7131ce2276aaad73.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/db/f3436f76221c7b78f464a405e7dfc8.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/e2/30e1e41afb421e72f112b3a57e2f4d.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/e4/ffde1b436efdbd38ffcfba88379f1f.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/ec/74618ff3e46c40a024cebfba2ee5e9.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/f2/4903dd66ebd4059165d790ab1f5704.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/f9/574a2ac5963311d0d1c4a90e2d0644.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/dist/header-bg.20a321fc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/components/home/countdown/countdown.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/components/home/description/description.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/components/home/description/description.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/components/home/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/src/components/home/speakers/speakers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/02/960dea8abc6230c26f0b0badb03e1e.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/02/960dea8abc6230c26f0b0badb03e1e.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/03/f0429551d6059a78fdd7781b2ce8c4.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/03/f0429551d6059a78fdd7781b2ce8c4.json" afterDir="false" />
@@ -234,7 +251,6 @@
       <change beforePath="$PROJECT_DIR$/Client/.cache/c4/ea0c5b1a93059fe035aef672312f33.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c4/ea0c5b1a93059fe035aef672312f33.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/c5/429f143b7f4bb6b1081347981a61b4.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c5/429f143b7f4bb6b1081347981a61b4.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/c5/4f7ee60565ccdb05f0f4938b550700.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c5/4f7ee60565ccdb05f0f4938b550700.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/.cache/c5/65525e585464335146def266676e31.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c5/65525e585464335146def266676e31.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/c6/b686f95f3e9fee355c294e4a2c0cb7.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c6/b686f95f3e9fee355c294e4a2c0cb7.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/c7/69d1455d7a278ae9ec61911c6e8c55.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c7/69d1455d7a278ae9ec61911c6e8c55.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/c7/cb2779ce7b20d27a06a0b389c88580.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c7/cb2779ce7b20d27a06a0b389c88580.json" afterDir="false" />
@@ -293,14 +309,18 @@
       <change beforePath="$PROJECT_DIR$/Client/.cache/fe/4f89a040c11b3a1f757cdbb5e0f8cf.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/fe/4f89a040c11b3a1f757cdbb5e0f8cf.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/ff/00d64da403b326f9c04f0705db3b24.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/ff/00d64da403b326f9c04f0705db3b24.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/ff/a7fe325639e9a2c642acff6f96cca4.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/ff/a7fe325639e9a2c642acff6f96cca4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/dist/src.a2b27638.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/src.a2b27638.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/dist/src.a2b27638.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/src.a2b27638.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/dist/src.a2b27638.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/src.a2b27638.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/dist/src.a2b27638.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/src.a2b27638.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/conference/viewConference/viewConference.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/conference/viewConference/viewConference.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/home/heading/heading.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/home/heading/heading.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/home/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/navBar/navBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/navBar/navBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/src/controllers/conference.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/controllers/conference.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,6 +334,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1tDpXyd5AkxwyD62C9iTjSAAKCW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -378,6 +406,9 @@
       <workItem from="1624382254705" duration="717000" />
       <workItem from="1624687976809" duration="9127000" />
       <workItem from="1624713167328" duration="619000" />
+      <workItem from="1624767168989" duration="17844000" />
+      <workItem from="1624785207960" duration="4178000" />
+      <workItem from="1624790159266" duration="6320000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1622313882516</created>
@@ -414,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624713761815</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="homepage_init_20210626">
+      <created>1624745791487</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1624745791487</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,6 +489,7 @@
     <MESSAGE value="database_name_changed_30052021" />
     <MESSAGE value="front_end_init_20210607" />
     <MESSAGE value="login, conference and user page merged 20210626" />
-    <option name="LAST_COMMIT_MESSAGE" value="login, conference and user page merged 20210626" />
+    <MESSAGE value="homepage_init_20210626" />
+    <option name="LAST_COMMIT_MESSAGE" value="homepage_init_20210626" />
   </component>
 </project>
