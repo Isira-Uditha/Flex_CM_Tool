@@ -4,6 +4,7 @@ import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import GuestList from "../guestList/guestList";
+import Swal from 'sweetalert2'
 
 const initialState = {
     title: '',
@@ -17,7 +18,10 @@ const initialState = {
     g_speaker: '',
     g_url: '',
     conference_id: '',
-    conference:[]
+    conference:[],
+    alert: [],
+    alert_type: 'alert-success',
+    hidden: 'hidden',
 }
 
 class AddConference extends Component{
@@ -31,6 +35,9 @@ class AddConference extends Component{
         this.quillChange = this.quillChange.bind(this);
         this.getConference = this.getConference.bind(this);
         this.clickOnDelete  = this.clickOnDelete.bind(this);
+        this.onUpdate  = this.onUpdate.bind(this);
+        this.displayAlert  = this.displayAlert.bind(this);
+        this.validation  = this.validation.bind(this);
         this.state = initialState;
 
     }
@@ -40,6 +47,50 @@ class AddConference extends Component{
             this.setState({conference_id:this.props.conference_id},this.getConference)
         }
 
+    }
+
+    validation(conference){
+        let array = [];
+        let i = 0;
+        if(conference.title === ''){
+            array[i] = 'Title field is required';
+            i++;
+        }
+        if(conference.date === ''){
+            array[i] = 'Date field is required';
+            i++;
+        }
+        if(conference.location === ''){
+            array[i] = 'Location field is required';
+            i++;
+        }
+        if(conference.time === ''){
+            array[i] = 'Time field is required';
+            i++;
+        }
+        if(conference.ticket_price === ''){
+            array[i] = 'Ticket field is required';
+            i++;
+        }
+        if(conference.description === ''){
+            array[i] = 'Description field is required';
+            i++;
+        }
+
+        this.setState({ alert: conference ? array.map(array => array) : [] });
+        console.log(conference);
+        if(array[0]){
+            this.displayAlert(this.state.alert,"alert-danger")
+            return(false)
+        }
+
+        return(true)
+
+    }
+
+    displayAlert(message,type){
+        this.setState({alert_type:type});
+        this.setState({hidden:''});
     }
 
     getConference(){
@@ -63,10 +114,6 @@ class AddConference extends Component{
                     speakers: this.state.conference.speakers,
                 });
                 this.setState({ g_speaker: this.state.conference.g_speaker });
-                // this.setState({ g_url: this.state.conference.g_url });
-                console.log(this.state.speakers)
-
-
             }
         );
     }
@@ -105,9 +152,9 @@ class AddConference extends Component{
     };
 
     addNewRow = () => {
-            this.setState((prevState) => ({
-                speakers: [...prevState.speakers, { index: Math.random(), speaker: "", url: ""}],
-            }));
+        this.setState((prevState) => ({
+            speakers: [...prevState.speakers, { index: Math.random(), speaker: "", url: ""}],
+        }));
     }
 
     clickOnDelete(record) {
@@ -132,22 +179,78 @@ class AddConference extends Component{
             g_speaker: this.state.g_speaker,
             status: 'P'
         };
-        console.log('DATA TO SEND', conference);
-        axios.post('http://localhost:8087/conference/create', conference)
-            .then(response => {
-                alert('Conference Data successfully inserted')
-                // this.onClear();
-            })
-            .catch(error => {
-                console.log(error.message);
-                alert(error.message)
-            })
+        let res = this.validation(conference)
+        if(res){
+
+            axios.post('http://localhost:8087/conference/create', conference)
+                .then(response => {
+                    console.log(response);
+                    this.displayAlert('Conference successfully inserted', 'alert-success')
+                    Swal.fire(
+                        'Success',
+                        'Conference Data successfully inserted',
+                        'success'
+                    )
+                    this.onClear();
+                })
+                .catch(error => {
+                    console.log(error.message);
+                    alert(error.message)
+                })
+        }
+
     }
+
+    onUpdate(e) {
+        e.preventDefault();
+        let conference = {
+            title: this.state.title,
+            description: this.state.description,
+            date: this.state.date,
+            time: this.state.time,
+            location: this.state.location,
+            speakers: this.state.speakers,
+            ticket_price: this.state.ticket_price,
+            tracks: this.state.tracks,
+            g_speaker: this.state.g_speaker,
+            status: 'P'
+        };
+        if(this.state.g_url !== ''){
+            conference.g_url = this.state.g_url;
+        }else{
+            conference.g_url = this.state.conference.g_url;
+        }
+
+        let res = this.validation(conference)
+        if(res) {
+            console.log('DATA TO SEND Update', conference);
+            axios.patch(`http://localhost:8087/conference/${this.props.conference_id}`, conference)
+                .then(response => {
+                    Swal.fire(
+                        'Success',
+                        'Conference Data successfully updated',
+                        'success'
+                    )
+                    this.onClear();
+                })
+                .catch(error => {
+                    console.log(error.message);
+                    alert(error.message)
+                })
+        }
+    }
+
 
     render(){
         return (
             <div className="container"><br/>
                 <div className={"card p-4"}>
+                    {this.state.alert.map((item) => (
+                        <div key={item} className={`alert ${this.state.alert_type} alert-dismissible fade show`} role="alert" hidden={this.state.hidden}>
+                            <strong>{item}</strong>
+                            <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    ))}
                     <h5 htmlFor="title"  className="form-label mb-4" style={{textAlign:"left"}}>
                         {(()=>{
                             if(this.props.conference_id === 'null'){
@@ -157,7 +260,7 @@ class AddConference extends Component{
                             }
                         })()}
                     </h5>
-                    <form onSubmit={this.onSubmit} onChange={this.onHandle}>
+                    <form {...(this.props.conference_id === 'null' ? {onSubmit: this.onSubmit} : {onSubmit: this.onUpdate})} onChange={this.onHandle}>
                         <div className={"row"}>
                             <div className={"col-md-6"}>
                                 <div className="mb-3" style={{textAlign:"left"}}>
