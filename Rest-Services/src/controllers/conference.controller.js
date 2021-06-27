@@ -43,10 +43,27 @@ const updateConference = async (req, res) => {
     if (req.params && req.params.id) {
         const {id} = req.params; //fetching the id of the post item
         const conference = req.body;
+        console.log(conference)
+        console.log(id)
 
         if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Category With That id'); //Validating the Conference id
         const updatedConference = await Conference.findByIdAndUpdate(id, conference,{new : true}); //Find and Update operation
         res.json(updatedConference);
+    }
+}
+
+const updatePost = async (req, res) => {
+    if (req.params && req.params.id) {
+        const id = req.params.id; //fetching the id of the post item
+        const post = await Conference.find({post_status : "1"});
+        const previousId = post[0]._id;
+
+        console.log("previous", previousId)
+        console.log("id", id)
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Category With That id'); //Validating the Conference id
+        const updatedFormerPost = await Conference.findByIdAndUpdate(previousId, {post_status: "0"},{new : true});
+        const updatedPost = await Conference.findByIdAndUpdate(id, {post_status: "1"},{new : true});
+        res.status(200).send({ data : updatedPost });
     }
 }
 
@@ -67,4 +84,5 @@ module.exports = {
     deleteConference,
     getAllConference,
     getConference,
+    updatePost,
 };

@@ -148,7 +148,7 @@ class AddConference extends Component{
             tracks: '',
             g_url: '',
             g_speaker: '',
-        })
+        },this.props.updateComponent())
     };
 
     addNewRow = () => {
@@ -177,7 +177,8 @@ class AddConference extends Component{
             tracks: this.state.tracks,
             g_url: this.state.g_url,
             g_speaker: this.state.g_speaker,
-            status: 'P'
+            status: 'P',
+            post_status: '0'
         };
         let res = this.validation(conference)
         if(res){
@@ -191,8 +192,12 @@ class AddConference extends Component{
                         'Conference Data successfully inserted',
                         'success'
                     )
+                }).then(response =>{
+                setTimeout(() => {
                     this.onClear();
-                })
+                    this.props.updateComponent();
+                },2000)
+            })
                 .catch(error => {
                     console.log(error.message);
                     alert(error.message)
@@ -213,7 +218,6 @@ class AddConference extends Component{
             ticket_price: this.state.ticket_price,
             tracks: this.state.tracks,
             g_speaker: this.state.g_speaker,
-            status: 'P'
         };
         if(this.state.g_url !== ''){
             conference.g_url = this.state.g_url;
@@ -231,8 +235,12 @@ class AddConference extends Component{
                         'Conference Data successfully updated',
                         'success'
                     )
-                    this.onClear();
-                })
+                }).then(response =>{
+                    setTimeout(() => {
+                        this.onClear();
+                        this.props.updateComponent();
+                    },2000)
+            })
                 .catch(error => {
                     console.log(error.message);
                     alert(error.message)

@@ -14,6 +14,7 @@ class ViewConference extends Component{
         super(props);
         this.state = initialState;
         this.deleteConference = this.deleteConference.bind(this);
+        this.postConference = this.postConference.bind(this);
     }
 
     componentDidMount() {
@@ -22,6 +23,40 @@ class ViewConference extends Component{
                 this.setState({ conference: response.data.data });
                 console.log(this.state.conference);
             });
+    }
+
+    postConference(e,id){
+        e.preventDefault()
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.patch(`http://localhost:8087/conference/post/${id}`)
+                    .then(response => {
+                        console.log(response)
+                        Swal.fire(
+                            'Success',
+                            'Conference Posted Successfully',
+                            'success'
+                        )
+                    }).then(response =>{
+                    setTimeout(() => {
+                        this.props.updateComponent();
+                    },2000)
+                })
+                    .catch(error => {
+                        console.log(error.message);
+                        alert(error.message)
+                    })
+            }
+        })
+
     }
 
     deleteConference(e,value) {
@@ -50,6 +85,11 @@ class ViewConference extends Component{
                             'Your file has been deleted.',
                             'success'
                         )
+                    })
+                    .then(response => {
+                        setTimeout(() => {
+                            this.props.updateComponent();
+                        },2000)
                     })
                     .catch(error => {
                         console.log(error.message);
@@ -110,11 +150,29 @@ class ViewConference extends Component{
                 left: true,
             },
             {
-                name: 'Options',
+                name: 'Edit',
                 cell: row => <div>
                     <input  className="btn btn-primary" onClick={() => this.props.editConference(row._id)}  value="Edit" type="button" aria-disabled="true"/>
-                    &nbsp;&nbsp;
+                </div>,
+                selector: 'options',
+                sortable: true,
+                left: true,
+            },
+            {
+                name: 'Delete',
+                cell: row => <div>
                     <input className="btn btn-danger" onClick={(e) => this.deleteConference(e,row._id)}  value="Delete" type="button" aria-disabled="true"/>
+                </div>,
+                selector: 'options',
+                sortable: true,
+                left: true,
+            },
+            {
+                name: 'Post',
+                cell: row => <div>
+                    <input onClick={(e) => this.postConference(e,row._id)}
+                           {...(row.post_status === '1' ? {className: "btn btn-success",value: "Posted",disabled:"disabled"} : {className: "btn btn-primary",value: "Post"})}
+                           {...(row.status === 'A' ? {hidden: ""} : {hidden: "hidden"})} type="button" aria-disabled="true"/>
                 </div>,
                 selector: 'options',
                 sortable: true,
