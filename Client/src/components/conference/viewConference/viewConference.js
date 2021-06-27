@@ -3,6 +3,7 @@ import axios from "axios";
 import DataTable from 'react-data-table-component';
 import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
+import Swal from 'sweetalert2'
 
 const initialState = {
     conference: [],
@@ -25,14 +26,38 @@ class ViewConference extends Component{
 
     deleteConference(e,value) {
         console.log(value);
-        axios.delete(`http://localhost:8087/conference/${value}`)
-            .then(response => {
-                alert('Author deleted successfully');
-            })
-            .catch(error => {
-                console.log(error.message);
-                alert(error.message);
-            })
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:8087/conference/${value}`)
+                    .then(response => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                        alert(error.message);
+                    })
+            }
+        })
+
     }
 
     render(){
