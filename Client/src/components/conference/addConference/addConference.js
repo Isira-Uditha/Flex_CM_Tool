@@ -119,7 +119,19 @@ class AddConference extends Component{
     }
 
     onChange(e) {
-        this.setState({ [e.target.name]: e.target.value })
+        console.log(e.target.type)
+        if(e.target.type == "file") {
+            console.log("xxxx")
+            const scope = this
+            let reader = new FileReader();
+            let value = reader.readAsDataURL(e.target.files[0]);
+            reader.onload = function () {
+                console.log(reader.result)
+            };
+            this.setState({g_url: reader.result})
+        }else {
+            this.setState({ [e.target.name]: e.target.value })
+        }
     }
 
     quillChange(value) {
@@ -130,7 +142,16 @@ class AddConference extends Component{
     onHandle(e){
         if (["speaker", "url"].includes(e.target.name)) {
             let speakers = [...this.state.speakers]
-            speakers[e.target.dataset.id][e.target.name] = e.target.value;
+            if(e.target.type === "file"){
+                let reader = new FileReader();
+                let value = reader.readAsDataURL(e.target.files[0]);
+                reader.onload = function () {
+                    speakers[e.target.dataset.id][e.target.name] = reader.result;
+
+                };
+            }else{
+                speakers[e.target.dataset.id][e.target.name] = e.target.value;
+            }
         } else {
             this.setState({ [e.target.name]: e.target.value })
         }
@@ -148,7 +169,7 @@ class AddConference extends Component{
             tracks: '',
             g_url: '',
             g_speaker: '',
-        })
+        },this.props.updateComponent())
     };
 
     addNewRow = () => {
@@ -177,7 +198,8 @@ class AddConference extends Component{
             tracks: this.state.tracks,
             g_url: this.state.g_url,
             g_speaker: this.state.g_speaker,
-            status: 'P'
+            status: 'P',
+            post_status: '0'
         };
         let res = this.validation(conference)
         if(res){
@@ -191,8 +213,12 @@ class AddConference extends Component{
                         'Conference Data successfully inserted',
                         'success'
                     )
+                }).then(response =>{
+                setTimeout(() => {
                     this.onClear();
-                })
+                    this.props.updateComponent();
+                },2000)
+            })
                 .catch(error => {
                     console.log(error.message);
                     alert(error.message)
@@ -213,8 +239,8 @@ class AddConference extends Component{
             ticket_price: this.state.ticket_price,
             tracks: this.state.tracks,
             g_speaker: this.state.g_speaker,
-            status: 'P'
         };
+        console.log(conference)
         if(this.state.g_url !== ''){
             conference.g_url = this.state.g_url;
         }else{
@@ -231,8 +257,12 @@ class AddConference extends Component{
                         'Conference Data successfully updated',
                         'success'
                     )
-                    this.onClear();
-                })
+                }).then(response =>{
+                    setTimeout(() => {
+                        this.onClear();
+                        this.props.updateComponent();
+                    },2000)
+            })
                 .catch(error => {
                     console.log(error.message);
                     alert(error.message)
