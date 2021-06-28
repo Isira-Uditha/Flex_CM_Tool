@@ -2,7 +2,6 @@ import React from "react"
 const GuestList = (props) => {
     return (
         props.guestList.map((val, idx) => {
-            console.log(val.url)
             let speaker = `speaker-${idx}`, url = `url-${idx}`
             return (
                 <tr key={val.index}>

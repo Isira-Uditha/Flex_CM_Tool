@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment=".gitignore_2021060">
+    <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/reviewer/notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/reviewer/notification.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/src/models/Conference.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/models/Conference.model.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +15,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="home" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -27,10 +30,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../AF_Final_Papers/PracticePaper" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -77,7 +81,12 @@
       <workItem from="1624378193922" duration="3066000" />
       <workItem from="1624381309074" duration="909000" />
       <workItem from="1624382254705" duration="717000" />
-      <workItem from="1624649694470" duration="8000" />
+      <workItem from="1624687976809" duration="9127000" />
+      <workItem from="1624713167328" duration="619000" />
+      <workItem from="1624805460355" duration="1682000" />
+      <workItem from="1624821618358" duration="69000" />
+      <workItem from="1624846641519" duration="3496000" />
+      <workItem from="1624850596628" duration="2712000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1622313882516</created>
@@ -107,14 +116,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623086164852</updated>
     </task>
-    <task id="LOCAL-00005" summary="edit_populate_20210626">
-      <created>1624649459947</created>
+    <task id="LOCAL-00005" summary="login, conference and user page merged 20210626">
+      <created>1624713761815</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1624649459947</updated>
+      <updated>1624713761815</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="image_upload_completed_20210628">
+      <created>1624852862286</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1624852862286</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,7 +166,8 @@
     <MESSAGE value="backend_conference_controller" />
     <MESSAGE value="database_name_changed_30052021" />
     <MESSAGE value="front_end_init_20210607" />
-    <MESSAGE value="edit_populate_20210626" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit_populate_20210626" />
+    <MESSAGE value="login, conference and user page merged 20210626" />
+    <MESSAGE value="image_upload_completed_20210628" />
+    <option name="LAST_COMMIT_MESSAGE" value="image_upload_completed_20210628" />
   </component>
 </project>

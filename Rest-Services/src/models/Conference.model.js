@@ -13,6 +13,8 @@ const ConferenceSchema = new mongoose.Schema({
     g_url: { type: String, trim: true },
     tracks: { type: String, trim: true },
     status: { type: String, trim: true },
+    post_status: { type: String, trim: true },
+    notify: { type: String, trim: true },
 });
 
 const ConferenceModel = mongoose.model('conferences', ConferenceSchema);

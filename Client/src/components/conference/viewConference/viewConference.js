@@ -3,6 +3,7 @@ import axios from "axios";
 import DataTable from 'react-data-table-component';
 import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
+import Swal from 'sweetalert2'
 
 const initialState = {
     conference: [],
@@ -13,6 +14,7 @@ class ViewConference extends Component{
         super(props);
         this.state = initialState;
         this.deleteConference = this.deleteConference.bind(this);
+        this.postConference = this.postConference.bind(this);
     }
 
     componentDidMount() {
@@ -23,16 +25,79 @@ class ViewConference extends Component{
             });
     }
 
+    postConference(e,id){
+        e.preventDefault()
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Update it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.patch(`http://localhost:8087/conference/post/${id}`)
+                    .then(response => {
+                        console.log(response)
+                        Swal.fire(
+                            'Success',
+                            'Conference Posted Successfully',
+                            'success'
+                        )
+                    }).then(response =>{
+                    setTimeout(() => {
+                        this.props.updateComponent();
+                    },2000)
+                })
+                    .catch(error => {
+                        console.log(error.message);
+                        alert(error.message)
+                    })
+            }
+        })
+
+    }
+
     deleteConference(e,value) {
         console.log(value);
-        axios.delete(`http://localhost:8087/conference/${value}`)
-            .then(response => {
-                alert('Author deleted successfully');
-            })
-            .catch(error => {
-                console.log(error.message);
-                alert(error.message);
-            })
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:8087/conference/${value}`)
+                    .then(response => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                    })
+                    .then(response => {
+                        setTimeout(() => {
+                            this.props.updateComponent();
+                        },2000)
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                        alert(error.message);
+                    })
+            }
+        })
+
     }
 
     render(){
@@ -85,11 +150,29 @@ class ViewConference extends Component{
                 left: true,
             },
             {
-                name: 'Options',
+                name: 'Edit',
                 cell: row => <div>
                     <input  className="btn btn-primary" onClick={() => this.props.editConference(row._id)}  value="Edit" type="button" aria-disabled="true"/>
-                    &nbsp;&nbsp;
+                </div>,
+                selector: 'options',
+                sortable: true,
+                left: true,
+            },
+            {
+                name: 'Delete',
+                cell: row => <div>
                     <input className="btn btn-danger" onClick={(e) => this.deleteConference(e,row._id)}  value="Delete" type="button" aria-disabled="true"/>
+                </div>,
+                selector: 'options',
+                sortable: true,
+                left: true,
+            },
+            {
+                name: 'Post',
+                cell: row => <div>
+                    <input onClick={(e) => this.postConference(e,row._id)}
+                           {...(row.post_status === '1' ? {className: "btn btn-success",value: "Posted",disabled:"disabled"} : {className: "btn btn-primary",value: "Post"})}
+                           {...(row.status === 'A' ? {hidden: ""} : {hidden: "hidden"})} type="button" aria-disabled="true"/>
                 </div>,
                 selector: 'options',
                 sortable: true,

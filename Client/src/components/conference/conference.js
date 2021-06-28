@@ -11,18 +11,22 @@ class Conference extends Component{
         super(props);
         this.state = initialState;
         this.editConference = this.editConference.bind(this)
+        this.updateComponent = this.updateComponent.bind(this)
     }
 
     editConference(id){
         this.setState({conference_id: id})
     }
 
+    updateComponent(){
+        window.location.reload ();
+    }
+
     render(){
         return (
             <div className={"container mt-4"}>
-                <span className="border border-info border-5 p-2" style={{fontSize:"20px"}}><b>Conference</b></span>
-                <AddConference conference_id={this.state.conference_id}/>
-                <ViewConference editConference={this.editConference}/>
+                <AddConference updateComponent={this.updateComponent} conference_id={this.state.conference_id}/>
+                <ViewConference updateComponent={this.updateComponent} editConference={this.editConference}/>
             </div>
         )
     }
