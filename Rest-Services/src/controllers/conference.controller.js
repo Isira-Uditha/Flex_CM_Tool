@@ -1,4 +1,5 @@
 const Conference = require('../models/Conference.model');
+const Workshop = require('../models/Workshop.model');
 const mongoose = require("mongoose");
 
 const createConference = async (req, res) => {
@@ -88,6 +89,21 @@ const getConferenceForPost = async (req, res) => {
         });
 }
 
+const getWorkshopsForConference = async (req, res) => {
+    if (req.params && req.params.id) {
+        let id = req.params.id;
+        console.log(id)
+        await Workshop.find({conference_id: id})
+            .then(data => {
+                console.log(data)
+                res.status(200).send({data: data});
+            })
+            .catch(error => {
+                res.status(500).send({error: error.message});
+            });
+    }
+}
+
 module.exports = {
     createConference,
     updateConference,
@@ -96,4 +112,5 @@ module.exports = {
     getConference,
     updatePost,
     getConferenceForPost,
+    getWorkshopsForConference,
 };
