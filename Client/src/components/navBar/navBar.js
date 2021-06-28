@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserSession from "../auth/userSession";
+import Notification from "../reviewer/notification";
 
 const initialState = {
     session: true,
@@ -28,18 +29,25 @@ class NavBar extends React.Component{
             this.setState({session:false})
     }
 
+    renderNotification(){
+        return <Notification/>
+    }
+
 
     render() {
         return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-primary" >
+            <nav className="navbar navbar-expand-lg navbar-light fixed-top w-100" style={{background:"rgb(1,71,132,0.5)"}} >
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#" style={{color:"whitesmoke"}}><b>FLEX</b></a>
+                    <a className="navbar-brand" href="#" style={{color:"yellow"}}><b>FLEX</b></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link active" style={{color:"whitesmoke"}} aria-current="page" href="/home">Home</a>
+                            </li>
                             {this.state.session ?
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"
@@ -52,8 +60,12 @@ class NavBar extends React.Component{
                             <li className="nav-item">
                                 <a className="nav-link" style={{color:"whitesmoke"}} href="/"></a>
                             </li>
+                            <li className="nav-item">
+                                {this.renderNotification()}
+                            </li>
 
                         </ul>
+
 
                         <div style={{ position: 'absolute',
                             right: 5,

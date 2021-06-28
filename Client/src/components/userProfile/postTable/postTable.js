@@ -244,7 +244,7 @@ class PostTable extends Component {
 
         return (
             <div className="container mt-4">
-                {this.renderNotification()}
+
                 <div className="card p-4">
                     <h5 htmlFor="title" className="form-label" style={{textAlign: "left"}}>Uploads</h5>
                     <DataTableExtension {...tableData}>

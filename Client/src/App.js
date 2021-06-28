@@ -10,6 +10,8 @@ import Conference from "./components/conference/conference";
 import UserPage from "./components/userProfile/userProfile/userProfile";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ResearchPresenter from "./components/researchPresenter/presenter/researchPresenter";
+import Home from "./components/home/home";
+
 
 function App() {
     return (
@@ -18,6 +20,7 @@ function App() {
                 <NavBar/>
                 <section>
                     <Switch>
+                        <Route path="/home" component={Home} />
                         <Route path="/userPage" component={UserPage} />
                         <Route path="/conference" component={Conference} exact/>
                         <Route path="/auth" exact component={Auth} />
