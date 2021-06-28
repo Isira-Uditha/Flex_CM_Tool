@@ -211,7 +211,7 @@ class ApproveTable extends React.Component{
                             return <h4><span style={{width:"100px"}}  className="badge bg-success">Approved</span></h4>
 
                         } else {
-                            return <h4><span style={{width:"100px"}}  className="badge bg-danger">Reject</span></h4>
+                            return <h4><span style={{width:"100px"}}  className="badge bg-danger">Rejected</span></h4>
 
                         }
                     })()}
@@ -254,7 +254,7 @@ class ApproveTable extends React.Component{
         return(
             <div className="container mt-4">
                 <div className="card p-4">
-                    <h5 htmlFor="title" className="form-label" style={{textAlign: "left"}}>Uploads</h5>
+                    <h5 htmlFor="title" className="form-label" style={{textAlign: "left"}}>Research Paper Uploads</h5>
                     <DataTableExtension {...tableData}>
                         <DataTable columns={columns}
                                    data={data}

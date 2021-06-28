@@ -7,6 +7,7 @@ const userAPI = require('./src/api/user.api');
 const conferenceAPI = require('./src/api/conference.api');
 const postAPI = require('./src/api/post.api');
 const stripeRoutes = require('./src/controllers/stripe.controller');
+const reviewerAPI = require('./src/api/reviewer.api');
 
 dotenv.config();
 const app = express();
@@ -40,6 +41,7 @@ app.use('/user', userAPI());
 app.use('/conference', conferenceAPI());
 app.use('/post', postAPI());
 app.use('/payment', stripeRoutes);
+app.use('/reviewer', reviewerAPI());
 
 
 app.listen(PORT, () => {

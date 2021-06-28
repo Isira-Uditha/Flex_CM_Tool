@@ -4,6 +4,7 @@ import Select from "react-select";
 import React, { Component } from "react";
 import ApproveTable from "./approveTable";
 
+
 const initialState = {
     approveResearch: true,
     approveWorkshop:false,
@@ -63,7 +64,9 @@ class Reviewer extends React.Component{
 
                     this.state.approveResearch && (
                         <div>
+                        <br/>
 
+                            <br/>
                     <ApproveTable  isResearch = {this.state.isResearch} />
                         </div>
                     )
