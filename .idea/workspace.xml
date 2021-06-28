@@ -4,11 +4,6 @@
     <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/conference/conference.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/conference/conference.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/conference/viewConference/viewConference.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/conference/viewConference/viewConference.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rest-Services/src/api/conference.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/api/conference.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rest-Services/src/controllers/conference.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/controllers/conference.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rest-Services/src/models/Conference.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/models/Conference.model.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +82,9 @@
       <workItem from="1624687976809" duration="9127000" />
       <workItem from="1624713167328" duration="619000" />
       <workItem from="1624805460355" duration="1682000" />
+      <workItem from="1624821618358" duration="69000" />
+      <workItem from="1624846641519" duration="3496000" />
+      <workItem from="1624850596628" duration="1955000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1622313882516</created>
