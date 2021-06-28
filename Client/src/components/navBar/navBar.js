@@ -30,6 +30,9 @@ class NavBar extends React.Component{
                             </li>
 
                             <li className="nav-item">
+                                <a className="nav-link" style={{color:"whitesmoke"}} href=" /admin-dashboard">Admin DashBoard</a>
+                            </li>
+                            <li className="nav-item">
                                 {/*<a className="nav-link" style={{color:"whitesmoke"}} href="/"></a>*/}
                             </li>
                         </ul>

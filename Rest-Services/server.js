@@ -4,6 +4,8 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const conferenceAPI = require('./src/api/conference.api');
+const adminAPI = require('./src/api/adminApprove.api');
+
 
 
 dotenv.config();
@@ -34,6 +36,7 @@ app.route('/').get((req, res) => {
 });
 
 app.use('/conference', conferenceAPI());
+app.use('/admin', adminAPI());
 
 app.listen(PORT, () => {
     console.log(`Server is up and running on PORT ${PORT}`);

@@ -28,6 +28,38 @@
   color: #61dafb;
 }
 
+.sidenav1{
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 55px;
+  left: 0;
+  background-color: #61dafb;
+  overflow-x: hidden;
+  padding-top: 15px;
+}
+
+.sidenav1 a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #0066cc;
+  display: block;
+}
+
+.sidenav1 a {
+  color: #cccccc;
+}
+
+.mixed-chart {
+  align-self: center;
+}
+
+.donut{
+  right: -111px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

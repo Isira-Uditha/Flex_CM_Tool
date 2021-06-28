@@ -7,6 +7,7 @@ import ApprovedConferencesAdmin from "./components/admin/adminApprovedConference
 import RejectedConferencesAdmin from "./components/admin/adminRejectedConferences/adminRejectedConferences";
 import AdminView from "./components/admin/adminViewConferences/adminViewAllConferences";
 import EditConferenceAdmin from "./components/admin/adminEditConferences/adminEditConferences";
+import AdminDashboard from "./components/admin/adminDashboard/adminDashboard";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
@@ -23,6 +24,7 @@ function App() {
                         <Route path="/rejected-conferences" component={RejectedConferencesAdmin}/>
                         <Route path="/Edit-admin-conferences/:id" component={EditConferenceAdmin}/>
                         <Route path="/admin-view" component={AdminView}/>
+                        <Route path="/admin-dashboard" component={AdminDashboard}/>
                     </Switch>
                 </section>
             </Router>
