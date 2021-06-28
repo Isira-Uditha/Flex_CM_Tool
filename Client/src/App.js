@@ -11,6 +11,7 @@ import UserPage from "./components/userProfile/userProfile/userProfile";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from "./components/home/home";
 
+
 function App() {
     return (
         <div className="App">

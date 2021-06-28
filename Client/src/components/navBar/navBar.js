@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserSession from "../auth/userSession";
+import Notification from "../reviewer/notification";
 
 const initialState = {
     session: true,
@@ -26,6 +27,10 @@ class NavBar extends React.Component{
     componentDidMount() {
         if(UserSession.getName() == "null")
             this.setState({session:false})
+    }
+
+    renderNotification(){
+        return <Notification/>
     }
 
 
@@ -55,8 +60,12 @@ class NavBar extends React.Component{
                             <li className="nav-item">
                                 <a className="nav-link" style={{color:"whitesmoke"}} href="/"></a>
                             </li>
+                            <li className="nav-item">
+                                {this.renderNotification()}
+                            </li>
 
                         </ul>
+
 
                         <div style={{ position: 'absolute',
                             right: 5,

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
+import UserSession from "../auth/userSession";
 import 'react-toastify/dist/ReactToastify.css';
 
 const initialState = {
@@ -18,22 +19,31 @@ class Notification extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8087/post').then(response => {
+
+        const user = UserSession.getName();
+
+        axios.get(`http://localhost:8087/post/user/${user}`).then(response => {
             this.setState({entries: response.data.data});
             this.setData();
         })
+
+        /*axios.get('http://localhost:8087/post').then(response => {
+            this.setState({entries: response.data.data});
+            this.setData();
+        })*/
     }
 
     setData(){
         let data = [];
         for(let i =0 ; i < this.state.entries.length ; i++) {
             console.log(this.state.entries[i].notify);
-            if (this.state.entries[i].notify == "1") {
+            if (this.state.entries[i].notify == "1" || this.state.entries[i].notify == "2" ) {
 
                 console.log("fff"+this.state.entries[i].title);
                 let n = {
                     value: this.state.entries[i]._id,
-                    label: this.state.entries[i].title
+                    label: this.state.entries[i].title,
+                    notifyStatus: this.state.entries[i].notify
                 }
                 data.push(n)
             }
@@ -50,10 +60,14 @@ class Notification extends React.Component{
 
     show(e){
         for(let i =0 ; i < this.state.notified.length ; i++) {
-            toast.success('This Reaserach Paper is Approved '+ this.state.notified[i].label)
-            console.log(this.state.notified[i].value)
+            console.log("ss"+this.state.notified[i].notifyStatus)
+            if(this.state.notified[i].notifyStatus == "1") {
+                toast.success('Your' + this.state.notified[i].label +  + 'Research Paper is approved by the Official Reviewer of ICAF')
+                console.log(this.state.notified[i].value)
+            }else   if(this.state.notified[i].notifyStatus == "2"){
+                toast.error('Your ' + this.state.notified[i].label + 'Research Paper is declined by the Official Reviewer of ICAF')
+            }
             let approvedPost = {
-
                 notify: "-1"
             };
           axios.patch(`http://localhost:8087/post/approvePost/${this.state.notified[i].value}`, approvedPost)
@@ -74,9 +88,20 @@ class Notification extends React.Component{
 
     return(
         <div>
-                <button  className="btn btn-success btnspace" onClick={e => this.show(e)}>Notifications -
-                    {this.state.notified.length}
-                </button>
+                {/*<button  type="button" className="btn btn-primary " onClick={e => this.show(e)}>Notifications
+                    <span className="badge bg-secondary">{this.state.notified.length}</span>
+                </button>*/}
+            <button type="button" className="btn btn-primary" onClick={e => this.show(e)}>
+                Notifications <span className="badge bg-secondary">{this.state.notified.length}</span>
+            </button>
+
+           {/* <button type="button" className="btn btn-primary position-relative">
+                Inbox
+                <span className="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger">
+    99+
+    <span className="visually-hidden">unread messages</span>
+  </span>
+            </button>*/}
               {/*  <button   className="btn btn-info btnspace" onClick={()=>toast.info('Info Message')}>Info Message</button>
                 <button  className="btn btn-danger btnspace" onClick={()=>toast.error('Error Message')}>Error Message</button>
                 <button  className="btn btn-warning btnspace" onClick={()=>toast.warning('Success Message')}>Warning Message</button>*/}
