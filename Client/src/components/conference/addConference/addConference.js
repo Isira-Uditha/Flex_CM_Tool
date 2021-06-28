@@ -198,7 +198,8 @@ class AddConference extends Component{
             g_url: this.state.g_url,
             g_speaker: this.state.g_speaker,
             status: 'P',
-            post_status: '0'
+            post_status: '0',
+            notify: '0'
         };
         let res = this.validation(conference)
         if(res){

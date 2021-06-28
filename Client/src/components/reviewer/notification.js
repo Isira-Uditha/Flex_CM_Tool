@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import UserSession from "../auth/userSession";
 import 'react-toastify/dist/ReactToastify.css';
+import * as RoleTypes from "../auth/rolesTypes.constants"
 
 const initialState = {
     items: [],
@@ -21,11 +22,24 @@ class Notification extends React.Component{
     componentDidMount() {
 
         const user = UserSession.getName();
+        const role = UserSession.getRole();
+        if(role === RoleTypes.RESEARCHER){
+            axios.get(`http://localhost:8087/post/user/${user}`).then(response => {
+                this.setState({entries: response.data.data});
+                this.setData();
+            })
+        }else if(role === RoleTypes.EDITOR){
+            axios.get(`http://localhost:8087/conference/`).then(response => {
+                this.setState({entries: response.data.data});
+                this.setData();
+            })
+        }else if(role === RoleTypes.WORKSHOP_PRESENTEE){
+            axios.get(`http://localhost:8087/workshop/user/${user}`).then(response => {
+                this.setState({entries: response.data.data});
+                this.setData();
+            })
+        }
 
-        axios.get(`http://localhost:8087/post/user/${user}`).then(response => {
-            this.setState({entries: response.data.data});
-            this.setData();
-        })
 
         /*axios.get('http://localhost:8087/post').then(response => {
             this.setState({entries: response.data.data});
@@ -70,14 +84,37 @@ class Notification extends React.Component{
             let approvedPost = {
                 notify: "-1"
             };
-          axios.patch(`http://localhost:8087/post/approvePost/${this.state.notified[i].value}`, approvedPost)
-                .then(response => {
 
-                })
-                .catch(error => {
-                    console.log(error.message)
-                    alert(error.message)
-                })
+            const role = UserSession.getRole();
+
+            if(role === RoleTypes.RESEARCHER) {
+                axios.patch(`http://localhost:8087/post/approvePost/${this.state.notified[i].value}`, approvedPost)
+                    .then(response => {
+
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                        alert(error.message)
+                    })
+            }else if(role === RoleTypes.EDITOR){
+                axios.patch(`http://localhost:8087/conference/${this.state.notified[i].value}`, approvedPost)
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                        alert(error.message)
+                    })
+            }else if(role === RoleTypes.WORKSHOP_PRESENTEE){
+                axios.patch(`http://localhost:8087/workshop/update/${this.state.notified[i].value}`, approvedPost)
+                    .then(response => {
+                        console.log(response)
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                        alert(error.message)
+                    })
+            }
         }
       this.setState({notified: 0});
     }
