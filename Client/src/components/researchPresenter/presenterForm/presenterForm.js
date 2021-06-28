@@ -2,16 +2,26 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Swal from "sweetalert2";
 import UserSession from "../../auth/userSession";
+import Select from 'react-select';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const initialState = {
     title: '',
-    type: '',
+    description: '',
     pdf: '',
-    payment: 'pending',
     status: 'pending',
-    post_id: 'null',
+    workshop_id: 'null',
     user_id: 'null',
     notify: '0',
+    notes: '',
+    date: '',
+    time: '',
+    conference: [],
+    options: [],
+    selected: 'null',
+    fetchedSelect: '',
+    selectedConference: 'Select Conference',
     fetchedData: [],
     alert: [],
     userDetails: [],
@@ -19,7 +29,7 @@ const initialState = {
     hidden: 'hidden'
 }
 
-class PostForm extends Component {
+class PresenterForm extends Component {
     constructor(props) {
         super(props);
         this.state = initialState;
@@ -29,6 +39,8 @@ class PostForm extends Component {
         this.onReset = this.onReset.bind(this);
         this.onUpdate = this.onUpdate.bind(this);
         this.displayAlert = this.displayAlert.bind(this);
+        this.onConferenceSelect = this.onConferenceSelect.bind(this);
+        this.quillChange = this.quillChange.bind(this);
     }
 
     componentDidMount() {
@@ -42,19 +54,46 @@ class PostForm extends Component {
             this.setState({userDetails: response.data.data});
             this.setState({user_id: this.state.userDetails._id});
         })
+
+        axios.get('http://localhost:8087/conference/').then(response => {
+            console.log('CONFERENCE DATA', response.data.data);
+            this.setState({conference: response.data.data}, () => {
+                let data = [];
+                this.state.conference.map((item, index) => {
+                    let conference = {
+                        value: item._id,
+                        label: item.title
+                    }
+                    data.push(conference);
+                });
+                this.setState({options: data});
+            });
+        })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.postId != prevProps.postId) {
-            this.setState({post_id: this.props.postId}, this.fetchData);
+        if (this.props.workshopId != prevProps.workshopId) {
+            this.setState({workshop_id: this.props.workshopId}, this.fetchData);
         }
     }
 
     fetchData() {
-        axios.get(`http://localhost:8087/post/${this.state.post_id}`).then(response => {
+        axios.get(`http://localhost:8087/workshop/${this.state.workshop_id}`).then(response => {
+            console.log(response.data.data);
             this.setState({fetchedData: response.data.data});
             this.setState({title: response.data.data.title});
-            this.setState({type: response.data.data.type});
+            this.setState({description: response.data.data.description});
+            this.setState({date: response.data.data.date});
+            this.setState({time: response.data.data.time});
+            this.setState({notes: response.data.data.notes});
+            this.setState({fetchedSelect: response.data.data.conference_id});
+
+        }).then(response => {
+            console.log('ID',this.state.fetchedSelect);
+            axios.get(`http://localhost:8087/conference/${this.state.fetchedSelect}`).then(response => {
+                console.log(response.data.data);
+                this.setState({selectedConference: response.data.data.title});
+            })
         })
     }
 
@@ -65,33 +104,48 @@ class PostForm extends Component {
     onReset() {
         this.setState({
             title: '',
-            type: '',
+            description: '',
             pdf: '',
             status: 'pending',
             post_id: 'null',
-            payment: 'pending',
+            selected: '',
+            date: '',
+            time: '',
+            notes: '',
             notify: '0'
         })
     }
 
-    validation(post) {
+    validation(workshop) {
         let array = [];
         let i = 0;
-        if (post.title == '') {
+
+        if (workshop.title == '') {
             array[i] = 'Title field is required!';
             i++;
         }
-        if (post.type == '') {
+
+        if (workshop.description == '') {
             array[i] = 'Type field is required!';
             i++;
         }
 
-        if (post.pdf_url == '') {
-            array[i] = 'Research paper upload required!';
+        if (workshop.selected == '') {
+            array[i] = 'Conference required!';
             i++;
         }
 
-        this.setState({alert: post ? array.map(array => array) : []});
+        if (workshop.date == '') {
+            array[i] = 'Date required!';
+            i++;
+        }
+
+        if (workshop.time == '') {
+            array[i] = 'Time required!';
+            i++;
+        }
+
+        this.setState({alert: workshop ? array.map(array => array) : []});
 
         if (array[0]) {
             this.displayAlert(this.alert, "alert-danger");
@@ -105,15 +159,26 @@ class PostForm extends Component {
         this.setState({hidden: ''});
     }
 
+    onConferenceSelect(e) {
+        this.setState({selected: e ? e.value : ''});
+    }
+
+    quillChange(value) {
+        this.setState({notes: value})
+    }
+
     onSubmit(e) {
         e.preventDefault();
         let submission = {
             title: this.state.title,
-            type: this.state.type,
+            description: this.state.description,
             pdf_url: this.state.pdf,
             status: this.state.status,
-            user_id: this.state.user_id,
-            payment_status: this.state.payment,
+            notes: this.state.notes,
+            date: this.state.date,
+            time: this.state.time,
+            conductor_id: this.state.user_id,
+            conference_id: this.state.selected,
             notify: this.state.notify
         }
 
@@ -121,7 +186,7 @@ class PostForm extends Component {
 
         if (result) {
             console.log('DATA TO SEND ', submission);
-            axios.post('http://localhost:8087/post/create', submission).then(response => {
+            axios.post('http://localhost:8087/workshop/create', submission).then(response => {
                 console.log(response)
                 this.displayAlert('Uploaded Successfully', 'alert-success');
                 Swal.fire(
@@ -141,11 +206,21 @@ class PostForm extends Component {
         e.preventDefault();
         let submission = {
             title: this.state.title,
-            type: this.state.type,
+            description: this.state.type,
+            pdf_url: this.state.pdf,
             status: this.state.status,
-            user_id: this.state.user_id,
-            payment_status: this.state.payment,
+            notes: this.state.notes,
+            date: this.state.date,
+            time: this.state.time,
+            conductor_id: this.state.user_id,
+            conference_id: this.state.selected,
             notify: this.state.notify
+        }
+
+        if(this.state.selected != 'null'){
+            submission.conference_id = this.state.selected
+        } else {
+            submission.conference_id = this.state.fetchedData.conference_id
         }
 
         if (this.state.pdf_url != 'null') {
@@ -166,11 +241,10 @@ class PostForm extends Component {
             if (result.isConfirmed) {
                 if (res) {
                     console.log('UPDATE DATA', submission);
-                    axios.patch(`http://localhost:8087/post/update/${this.props.postId}`, submission).then(response => {
+                    axios.patch(`http://localhost:8087/workshop/update/${this.props.workshopId}`, submission).then(response => {
                         console.log(response);
                         Swal.fire('Saved!', '', 'success')
                         this.onReset();
-                        window.location.reload();
                     }).catch(error => {
                         console.log(error.message);
                         Swal.fire({
@@ -202,15 +276,16 @@ class PostForm extends Component {
                     ))}
                     <h5 className="card-title">
                         {(() => {
-                            if (this.props.postId == 'null') {
-                                return 'Add your Research Papers'
+                            if (this.props.workshopId == 'null') {
+                                return 'Add Workshop Details'
                             } else {
                                 return 'Edit your submission'
                             }
                         })()}
                     </h5>
+                    <br/>
                     <form
-                        {...(this.props.postId === 'null' ? {onSubmit: this.onSubmit} : {onSubmit: this.onUpdate})}
+                        {...(this.props.workshopId === 'null' ? {onSubmit: this.onSubmit} : {onSubmit: this.onUpdate})}
                         encType="multipart/form-data">
                         <div className="row">
                             <div className="col-md-6">
@@ -230,35 +305,72 @@ class PostForm extends Component {
                             <div className="col-md-6">
                                 <div className="mb-3" style={{textAlign: "left"}}>
                                     <div className="form-floating">
-                                        <input type="text"
-                                               name="type"
-                                               className="form-control"
-                                               placeholder="Type"
-                                               value={this.state.type}
-                                               onChange={this.onChange}
+                                        <textarea type="text"
+                                                  name="description"
+                                                  className="form-control"
+                                                  placeholder="Description"
+                                                  value={this.state.description}
+                                                  onChange={this.onChange}
                                         />
-                                        <label htmlFor="type">Type</label>
+                                        <label htmlFor="type">Description</label>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-12">
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
                                 <div className="mb-3" style={{textAlign: "left"}}>
-                                    <label htmlFor="file" className="form-label">Type</label>
-                                    <input type="file"
-                                           name="pdf"
-                                           className="form-control"
-                                           placeholder="Add your pdf here"
-                                           value={this.state.pdf}
-                                           onChange={this.onChange}
+                                    <label htmlFor="date" className="form-label">Date</label>
+                                    <input
+                                        type="Date"
+                                        className="form-control"
+                                        name="date"
+                                        value={this.state.date}
+                                        onChange={this.onChange}
                                     />
                                 </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="mb-3" style={{textAlign: "left"}}>
+                                    <label htmlFor="date" className="form-label">Date</label>
+                                    <input
+                                        type="Time"
+                                        className="form-control"
+                                        name="time"
+                                        value={this.state.time}
+                                        onChange={this.onChange}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="mb-3" style={{textAlign: "left"}}>
+                                    <label htmlFor="file" className="form-label">Conference</label>
+                                    <Select
+                                        placeholder={this.state.selectedConference}
+                                        options={this.state.options}
+                                        onChange={this.onConferenceSelect}
+                                        className={"basic-multi-select"}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row mb-5">
+                            <div className="col-md-12" style={{textAlign: "left"}}>
+                                <label htmlFor="notes" className="form-label">Notes</label>
+                                <ReactQuill
+                                    value={this.state.notes}
+                                    onChange={(e) => this.quillChange(e)}
+                                    style={{height: '200px'}}
+                                />
                             </div>
                         </div>
                         <div className="card-footer">
                             <div className="row">
                                 <div className="col-md-12" style={{textAlign: "right"}}>
                                     {(() => {
-                                        if (this.state.post_id === 'null') {
+                                        if (this.state.workshop_id === 'null') {
                                             return <button type="submit" className="btn btn-primary">Submit</button>
                                         } else {
                                             return <button type="submit" className="btn btn-primary">Update</button>
@@ -277,4 +389,4 @@ class PostForm extends Component {
     }
 }
 
-export default PostForm;
+export default PresenterForm;
