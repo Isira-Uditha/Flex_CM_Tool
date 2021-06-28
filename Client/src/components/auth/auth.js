@@ -143,7 +143,7 @@ class Auth extends React.Component{
     }
     render() {
         return(
-            <div className="container"><br/>
+            <div className="container"><br/><br/><br/><br/>
                 <center> <div className="col-md-4 ml-auto mr-auto">
                     <div className={"card p-4"} >
                         <div className="alert alert-danger" role="alert" style={{display:"none"}} id="InvalidContactAlert">

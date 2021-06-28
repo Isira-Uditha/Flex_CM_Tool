@@ -1,16 +1,13 @@
-import axios from "axios";
-import Swal from "sweetalert2";
-import Select from "react-select";
 import React, { Component } from "react";
 import ApproveTable from "./approveTable";
-
+import ApproveWorkshopTable from "./approveWorkshopTable";
+import Chart from "./chart";
 
 const initialState = {
     approveResearch: true,
     approveWorkshop:false,
     isResearch: true,
 }
-
 
 class Reviewer extends React.Component{
     constructor(props) {
@@ -19,7 +16,6 @@ class Reviewer extends React.Component{
         this.switchWorkshopApprove = this.switchWorkshopApprove.bind(this);
         this.switchResearchApprove = this.switchResearchApprove.bind(this);
     }
-
 
     switchWorkshopApprove(e) {
         this.setState({approveWorkshop:true})
@@ -32,11 +28,11 @@ class Reviewer extends React.Component{
         this.setState({approveWorkshop:false})
         this.setState({isResearch:true})
     }
+
     render(){
         return(
-
             <div className="container">
-            <br/>
+            <br/> <br/> <br/> <br/>
                 <div>
                     <ul className="nav nav-tabs">
                         <li className="nav-item" onClick={this.switchResearchApprove}>
@@ -47,39 +43,35 @@ class Reviewer extends React.Component{
                         </li>
                     </ul>
                 </div>
-<div>
+                <div>
+                    {
+                        this.state.approveWorkshop && (
+                    <div>
+                        <br/><br/>
+                        <ApproveWorkshopTable/>
 
-                {
-                    this.state.approveWorkshop && (
-<div>
-                        <h1>Approve Workshops</h1>
-    <ApproveTable  isResearch = {this.state.isResearch} />
-
-</div>
-
-                    )
-                }
-
-                {
-
-                    this.state.approveResearch && (
-                        <div>
-                        <br/>
-
-                            <br/>
-                    <ApproveTable  isResearch = {this.state.isResearch} />
-                        </div>
-                    )
-                }
-
-
-
-
-        </div>
+                    </div>
+                        )
+                    }
+                    {
+                        this.state.approveResearch && (
+                            <div>
+                            <br/><br/>
+                                <div  style={{
+                                    position: 'absolute',
+                                    right: 220,
+                                    top: 160,
+                                }}>
+                                <Chart/>
+                                </div>
+                        <ApproveTable  isResearch = {this.state.isResearch} />
+                            </div>
+                        )
+                    }
+                </div>
 
             </div>
         )
     }
 }
-
 export default Reviewer;

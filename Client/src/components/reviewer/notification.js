@@ -76,10 +76,10 @@ class Notification extends React.Component{
         for(let i =0 ; i < this.state.notified.length ; i++) {
             console.log("ss"+this.state.notified[i].notifyStatus)
             if(this.state.notified[i].notifyStatus == "1") {
-                toast.success('Your' + this.state.notified[i].label +  + 'Research Paper is approved by the Official Reviewer of ICAF')
+                toast.success('Approved' + this.state.notified[i].label)
                 console.log(this.state.notified[i].value)
             }else   if(this.state.notified[i].notifyStatus == "2"){
-                toast.error('Your ' + this.state.notified[i].label + 'Research Paper is declined by the Official Reviewer of ICAF')
+                toast.error('Decline ' + this.state.notified[i].label)
             }
             let approvedPost = {
                 notify: "-1"
@@ -128,8 +128,8 @@ class Notification extends React.Component{
                 {/*<button  type="button" className="btn btn-primary " onClick={e => this.show(e)}>Notifications
                     <span className="badge bg-secondary">{this.state.notified.length}</span>
                 </button>*/}
-            <button type="button" className="btn btn-primary" onClick={e => this.show(e)}>
-                Notifications <span className="badge bg-secondary">{this.state.notified.length}</span>
+            <button type="button" className="btn btn-dark" onClick={e => this.show(e)}>
+                Notifications <span className="badge bg-danger">{this.state.notified.length}</span>
             </button>
 
            {/* <button type="button" className="btn btn-primary position-relative">

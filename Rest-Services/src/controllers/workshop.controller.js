@@ -62,7 +62,7 @@ const getUserWorkshop = async (req, res) => {
 const getAllWorkshop = async (req, res) => {
     //retrieve all the workshops available in the database as per user
     await Workshop.find({})
-        .populate('user_id', 'name')
+        .populate('conductor_id', 'name')
         .then(data => {
             res.status(200).send({data: data})
         })

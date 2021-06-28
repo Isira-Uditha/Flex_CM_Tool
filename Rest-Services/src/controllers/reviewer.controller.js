@@ -1,4 +1,5 @@
 const Post = require('../models/Post.model');
+const Workshop = require('../models/Workshop.model');
 const mongoose = require("mongoose");
 
 
@@ -16,6 +17,19 @@ const getAmountOfResearchApproves = async (req, res) => {
         });
 }
 
+const getAmountOfResearchRejected = async (req, res) => {
+    await Post.find({
+        status: "reject",
+    })
+        .populate('user_id', 'name')
+        .then(data => {
+            const  amount = data.length
+            res.status(200).send({data: amount})
+        })
+        .catch(error => {
+            res.status(500).send({error: error.message})
+        });
+}
 const getAmountOfResearchRejected = async (req, res) => {
     await Post.find({
         status: "reject",
@@ -62,10 +76,20 @@ const summaryOfResearchesStatus = async (req, res) => {
         });
 }
 
+const approveWorkshopPaper = async (req, res) => {
+    if (req.params && req.params.id) {
+        const {id} = req.params; //fetching the id of the post item
+        const workshop = req.body;
 
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post With That id'); //Validating the Post id
+        const approvedWorkshop = await Workshop.findByIdAndUpdate(id, workshop,{new : true}); //Find and Update operation
+        res.json(approvedWorkshop);
+    }
+}
 
 module.exports = {
     getAmountOfResearchApproves,
     getAmountOfResearchRejected,
-    summaryOfResearchesStatus
+    summaryOfResearchesStatus,
+    approveWorkshopPaper
 };

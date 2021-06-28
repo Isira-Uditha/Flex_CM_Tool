@@ -158,7 +158,9 @@ class ApproveTable extends React.Component{
 
 
     render(){
+
         const columns = [
+
             {
                 name: 'Researcher',
                 selector: 'user_id.name',
@@ -202,13 +204,13 @@ class ApproveTable extends React.Component{
                     {(()=>{
                         if(row.status === 'pending'){
                           /*  return <input type="button" className="btn btn-warning" value="Pending"  data-bs-toggle="modal"  disabled={true} />*/
-                            return <h4><span style={{width:"100px"}} className="badge bg-warning">Pending</span></h4>
+                            return <h4><span style={{width:"100px"}} className="badge bg-warning ">Pending</span></h4>
                         /*    <input type="button" className="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</input>*/
 
                         } else if(row.status === 'approved'){
                          /*   return <input type="button" className="btn btn-success"  value="Approved" disabled={true} />*/
-                            return <h4><span style={{width:"100px"}}  className="badge bg-success">Approved</span></h4>
+                            return <h4><span style={{width:"100px"}}  className="badge bg-success text-small">Approved</span></h4>
 
                         } else {
                             return <h4><span style={{width:"100px"}}  className="badge bg-danger">Rejected</span></h4>
