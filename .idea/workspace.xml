@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,7 @@
       <workItem from="1624805460355" duration="1682000" />
       <workItem from="1624821618358" duration="69000" />
       <workItem from="1624846641519" duration="3496000" />
-      <workItem from="1624850596628" duration="1955000" />
+      <workItem from="1624850596628" duration="2712000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1622313882516</created>
@@ -121,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624713761815</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="image_upload_completed_20210628">
+      <created>1624852862286</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1624852862286</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +164,7 @@
     <MESSAGE value="database_name_changed_30052021" />
     <MESSAGE value="front_end_init_20210607" />
     <MESSAGE value="login, conference and user page merged 20210626" />
-    <option name="LAST_COMMIT_MESSAGE" value="login, conference and user page merged 20210626" />
+    <MESSAGE value="image_upload_completed_20210628" />
+    <option name="LAST_COMMIT_MESSAGE" value="image_upload_completed_20210628" />
   </component>
 </project>
