@@ -79,7 +79,7 @@ const deleteConference = async (req, res) => {
 }
 
 const getConferenceForPost = async (req, res) => {
-    await Conference.find({status: "A"})
+    await Conference.find({post_status: "1"})
         .then(data => {
             res.status(200).send({ data: data });
         })

@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-import NavBar from "./components/navBar/navBar";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Auth from "./components/auth/auth";
 import NavBar from "./components/navBar/navBar";
 import Attendee from "./components/attendee/attendee";

@@ -126,9 +126,8 @@ class AddConference extends Component{
             let reader = new FileReader();
             let value = reader.readAsDataURL(e.target.files[0]);
             reader.onload = function () {
-                console.log(reader.result)
+                scope.setState({g_url: reader.result})
             };
-            this.setState({g_url: reader.result})
         }else {
             this.setState({ [e.target.name]: e.target.value })
         }
@@ -401,7 +400,6 @@ class AddConference extends Component{
                                         className="form-control"
                                         id="g_url"
                                         name="g_url"
-                                        value={this.state.g_url}
                                         onChange={this.onChange}
                                     />
                                 </div>

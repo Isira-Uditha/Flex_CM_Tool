@@ -20,24 +20,15 @@ class CountDown extends Component{
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8087/conference/post/conference`)
-            .then(response => {
-                this.setState({ conference: response.data.data[0] });
-                console.log(this.state.conference);
-            }).then(
-            response =>{
-                this.countDown();
-            });
-
-
+        this.countDown();
     }
 
     countDown(){
-
+        console.log(this.props.date)
         let now = new Date()
-        let eventDate = new Date(this.state.conference.date.slice(0,4),this.state.conference.date.slice(5,7),this.state.conference.date.slice(8,10));
+        // let eventDate = new Date(this.state.conference.date.slice(0,4),this.state.conference.date.slice(5,7),this.state.conference.date.slice(8,10));
+        let eventDate = new Date(this.props.date.slice(0,4),this.props.date.slice(5,7),this.props.date.slice(8,10));
 
-        // console.log(eventDate);
         let currentTime = now.getTime();
         let eventTime = eventDate.getTime();
 
