@@ -125,7 +125,7 @@ class Auth extends React.Component{
                     }else if(response.data.data.role == RoleTypes.RESEARCHER){
                         window.location = `/userPage`
                     }else if(response.data.data.role == RoleTypes.WORKSHOP_PRESENTEE){
-                       /* window.location = `/attendee`*/
+                        window.location = `/presenter`
                     }else if(response.data.data.role == RoleTypes.ADMIN){
                         /*window.location = `/attendee`*/
                     }else if(response.data.data.role == RoleTypes.REVIEWER){

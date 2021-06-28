@@ -9,6 +9,7 @@ import Conference from "./components/conference/conference";
 
 import UserPage from "./components/userProfile/userProfile/userProfile";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ResearchPresenter from "./components/researchPresenter/presenter/researchPresenter";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                         <Route path="/attendee" exact component={Attendee} />
                         <Route path="/profile" exact component={UserProfile} />
                         <Route path="/reviewer" exact component={Reviewer} />
+                        <Route path="/presenter" exact component={ResearchPresenter} />
                     </Switch>
                 </section>
             </Router>

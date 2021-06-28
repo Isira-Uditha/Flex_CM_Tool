@@ -7,7 +7,7 @@ const PostSchema = new mongoose.Schema({
     pdf_url: { type: String, required: true, trim: true },
     status: { type: String, required: true, trim: true },
     payment_status: { type: String, required: true, trim: true },
-    notify: { type: String, required: true, trim: true },
+    notify: { type: String, trim: true },
     createdAt: {
         type: Date,
         default: new Date()
