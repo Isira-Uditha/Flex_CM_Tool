@@ -83,10 +83,10 @@ class NavBar extends React.Component{
                                                   d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                         </svg>
                                     </i>&nbsp;
-                                        <button type="button" className="btn btn-dark" onClick={this.logout}>Sign Out
+                                        <button type="button" className="btn btn-dark"  style={{ background:  "rgb(8, 48, 84, 0.5)"}} onClick={this.logout}>Sign Out
                                         </button>
                                     </div> : <a href="/auth">
-                                        <button type="button" className="btn btn-dark">Sign In</button>
+                                        <button type="button" className="btn btn-dark"  style={{ background:  "rgb(8, 48, 84, 0.5)"}}>Sign In</button>
                                     </a>}
                                 </div>
                             </li>

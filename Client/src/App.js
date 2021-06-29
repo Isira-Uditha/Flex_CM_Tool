@@ -11,6 +11,8 @@ import UserPage from "./components/userProfile/userProfile/userProfile";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ResearchPresenter from "./components/researchPresenter/presenter/researchPresenter";
 import Home from "./components/home/home";
+import Dashboard from "./components/reviewer/dashboard";
+import DownloadTemplate from "./components/downloadTemplates/downloadTemplate";
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
                         <Route path="/profile" exact component={UserProfile} />
                         <Route path="/reviewer" exact component={Reviewer} />
                         <Route path="/presenter" exact component={ResearchPresenter} />
+                        <Route path="/dashboard" exact component={Dashboard} />
+                        <Route path="/downloads" exact component={DownloadTemplate} />
                     </Switch>
                 </section>
             </Router>

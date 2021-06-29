@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import ApproveTable from "./approveTable";
 import ApproveWorkshopTable from "./approveWorkshopTable";
 import Chart from "./chart";
+import DrillDownChart from "./DrillDownChart";
+import UserSummaryChart from "./userSummaryChart";
 
 const initialState = {
     approveResearch: true,
@@ -36,10 +38,10 @@ class Reviewer extends React.Component{
                 <div>
                     <ul className="nav nav-tabs">
                         <li className="nav-item" onClick={this.switchResearchApprove}>
-                            <a className= {(this.state.approveResearch)? "nav-link active" : "nav-link"} aria-current="page" href="#">Research Paper Review</a>
+                            <a className= {(this.state.approveResearch)? "nav-link active" : "nav-link"} aria-current="page" href="#" style={{  color: "#000000"}}>Research Paper Review</a>
                         </li>
                         <li className="nav-item" onClick={this.switchWorkshopApprove}>
-                            <a className={(this.state.approveWorkshop)? "nav-link active" : "nav-link"}  href="#">Workshop Proposal Review</a>
+                            <a className={(this.state.approveWorkshop)? "nav-link active" : "nav-link"}  href="#"  style={{  color: "#000000"}}>Workshop Proposal Review</a>
                         </li>
                     </ul>
                 </div>
@@ -48,7 +50,16 @@ class Reviewer extends React.Component{
                         this.state.approveWorkshop && (
                     <div>
                         <br/><br/>
+
                         <ApproveWorkshopTable/>
+                        <div style={{
+                            position: 'absolute',
+                            right: 220,
+                            top: 160,
+                        }}
+                        >
+                            <DrillDownChart/>
+                        </div>
 
                     </div>
                         )
@@ -69,7 +80,6 @@ class Reviewer extends React.Component{
                         )
                     }
                 </div>
-
             </div>
         )
     }

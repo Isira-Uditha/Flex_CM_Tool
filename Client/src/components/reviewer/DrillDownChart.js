@@ -2,6 +2,7 @@ import CanvasJSReact from './canvasjs.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 import React, { Component } from "react";
+import  $ from 'jquery';
 import axios from "axios";
 
 const initialState = {
@@ -9,27 +10,30 @@ const initialState = {
     rejected: 0,
     pending: 0
 }
-class Chart extends Component {
+
+class DrillDownChart extends Component {
     constructor(props) {
         super(props);
         this.state = initialState;
     }
+
     componentDidMount() {
         //API call to fetch user added workshops
-        axios.get(`http://localhost:8087/reviewer/amountApprovesResearches`).then(response => {
+        axios.get(`http://localhost:8087/reviewer/amountApprovesWorkshops`).then(response => {
             console.log('USER ADDED WORKSHOPS', response.data.data);
             this.setState({approved: response.data.data});
-            axios.get(`http://localhost:8087/reviewer/amountRejectedResearches`).then(response => {
+            axios.get(`http://localhost:8087/reviewer/amountRejectedWorkshops`).then(response => {
                 console.log('USER ADDED WORKSHOPS', response.data.data);
                 this.setState({rejected: response.data.data});
                 console.log(response.data.data)
                 // this.setState({seriesPie: [this.state.rejected,this.state.approved]});
-                axios.get(`http://localhost:8087/reviewer/amountPendingResearches`).then(response => {
+                axios.get(`http://localhost:8087/reviewer/amountPendingWorkshops`).then(response => {
                     console.log('USER ADDED WORKSHOPS', response.data.data);
                     this.setState({pending: response.data.data});
                     console.log(response.data.data)
                     // this.setState({seriesPie: [this.state.rejected,this.state.approved]});
                 })
+
             })
         })
         console.log(this.state.rejected)
@@ -37,34 +41,40 @@ class Chart extends Component {
 
     render() {
         const options = {
-            animationEnabled: true,
-            exportEnabled: true,
             theme: "dark2", // "light1", "dark1", "dark2",
-            size: 1,
-            title:{
-                text: "Approval Status "
+            animationEnabled: true,
+            size: -2,
+            title: {
+                text: ""
             },
+            subtitles: [{
+                text: "Approval Status",
+                verticalAlign: "center",
+                fontSize: 20,
+                dockInsidePlotArea: true
+            }],
             data: [{
-                type: "pie",
-                indexLabel: "{label}: {y}%",
-                startAngle: -90,
-                dataPoints: [
-                    { y: this.state.approved, label: "Approve" },
-                    { y: this.state.rejected, label: "Rejected" },
-                    { y: this.state.pending, label: "Pending" },
+                type: "doughnut",
+                showInLegend: true,
+                indexLabel: "{name}: {y}",
+                yValueFormatString: "#,###'%'",
+                dataPoints:
+[
 
-                ]
+                { name: "Pending", y: this.state.pending},
+                { name: "Rejected", y: this.state.rejected },
+                { name: "Approved", y: this.state.approved },
+
+]
+
             }]
         }
-
         return (
-
-
             <div>
                 <input type="button" className="btn btn-primary" value="Summary"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop1" disabled={false} />
 
                 <div className="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false"
-                     tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                     tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
                     <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -73,19 +83,20 @@ class Chart extends Component {
                                         aria-label="Close"></button>
                             </div>
                             <div className="modal-body">
+                                <div className={"col-md-1"}>
                                 <CanvasJSChart options = {options}
+                                    /* onRef={ref => this.chart = ref} */
                                 />
+                                </div>
                             </div>
                             <div className="modal-footer">
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-    );
+        );
     }
 }
 
-export default Chart;
+export default DrillDownChart;

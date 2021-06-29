@@ -184,11 +184,14 @@ class ApproveWorkshopTable extends React.Component{
                 cell: row => <div>
                     {(() => {
                         if (row.status === 'pending') {
-                            return <h5><span style={{width: "100px"}} className="badge bg-warning">Pending</span></h5>
+                           /* return <h5><span style={{width: "100px"}} className="badge bg-warning">Pending</span></h5>*/
+                            return <input type="button" style={{width:"100px"}} className="btn btn-warning" value="Pending"  data-bs-toggle="modal"  disabled={true} />
                         } else if (row.status === 'approved') {
-                            return <h5><span style={{width: "100px"}} className="badge bg-success">Approved</span></h5>
+                            /*return <h5><span style={{width: "100px"}} className="badge bg-success">Approved</span></h5>*/
+                            return <input type="button" style={{width:"100px"}} className="btn btn-success"  value="Approved" disabled={true} />
                         } else {
-                            return <h5><span style={{width: "100px"}} className="badge bg-danger">Rejected</span></h5>
+                       /*     return <h5><span style={{width: "100px"}} className="badge bg-danger">Rejected</span></h5>*/
+                            return <input type="button" style={{width:"100px"}} className="btn btn-danger"  value="Rejected" disabled={true} />
                         }
                     })()}
                 </div>,
@@ -224,8 +227,6 @@ class ApproveWorkshopTable extends React.Component{
                         />
                     </DataTableExtension>
                 </div>
-
-
 
                 <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                      tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -288,7 +289,6 @@ class ApproveWorkshopTable extends React.Component{
             </div>
         )
     }
-
 }
 
 export default ApproveWorkshopTable;

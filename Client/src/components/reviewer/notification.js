@@ -39,12 +39,6 @@ class Notification extends React.Component{
                 this.setData();
             })
         }
-
-
-        /*axios.get('http://localhost:8087/post').then(response => {
-            this.setState({entries: response.data.data});
-            this.setData();
-        })*/
     }
 
     setData(){
@@ -119,35 +113,17 @@ class Notification extends React.Component{
       this.setState({notified: 0});
     }
 
-
-
     render(){
 
     return(
         <div>
-                {/*<button  type="button" className="btn btn-primary " onClick={e => this.show(e)}>Notifications
-                    <span className="badge bg-secondary">{this.state.notified.length}</span>
-                </button>*/}
-            <button type="button" className="btn btn-dark" onClick={e => this.show(e)}>
+            <button style={{ background:  "rgb(8, 48, 84, 0.5)"}} type="button" className="btn btn-dark" onClick={e => this.show(e)}>
                 Notifications <span className="badge bg-danger">{this.state.notified.length}</span>
             </button>
-
-           {/* <button type="button" className="btn btn-primary position-relative">
-                Inbox
-                <span className="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger">
-    99+
-    <span className="visually-hidden">unread messages</span>
-  </span>
-            </button>*/}
-              {/*  <button   className="btn btn-info btnspace" onClick={()=>toast.info('Info Message')}>Info Message</button>
-                <button  className="btn btn-danger btnspace" onClick={()=>toast.error('Error Message')}>Error Message</button>
-                <button  className="btn btn-warning btnspace" onClick={()=>toast.warning('Success Message')}>Warning Message</button>*/}
                 <ToastContainer />
         </div>
-
         )
     }
-
 }
 
 export default Notification;

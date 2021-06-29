@@ -52,8 +52,6 @@ class Auth extends React.Component{
         }else{
             document.getElementById("InvalidContactAlert").style.display = "none";
         }
-
-
     }
 
     onRoleSelect(e) {
@@ -93,6 +91,7 @@ class Auth extends React.Component{
                     address: this.state.address,
                     organization: this.state.organization,
                     role: this.state.selectedRole,
+
                 };
                 console.log("Data to Send ", user);
                  axios.post('http://localhost:8087/user/create', user)
@@ -144,8 +143,8 @@ class Auth extends React.Component{
     render() {
         return(
             <div className="container"><br/><br/><br/><br/>
-                <center> <div className="col-md-4 ml-auto mr-auto">
-                    <div className={"card p-4"} >
+                <center> <div className="col-md-4 ml-auto mr-auto" >
+                    <div className={"card p-4"} style={{background:"rgb(255,255,255,0.5)"}} >
                         <div className="alert alert-danger" role="alert" style={{display:"none"}} id="InvalidContactAlert">
                           Invalid Contact Number! Contact Number should contain 10 digits
                         </div>
@@ -160,7 +159,7 @@ class Auth extends React.Component{
                                     <div className={"row"}>
                                         <div className={"col-md-6"}>
                                             <div className="mb-3" style={{textAlign: "left"}}>
-                                                <div className="form-floating">
+                                                <div className="form-floating" >
                                                     <input
                                                         type="text"
                                                         className="form-control"
@@ -332,44 +331,22 @@ class Auth extends React.Component{
                                 }
                             </div>
 
-                            {/* <div className="card-footer">*/}
-
                             <div className="row">
-
                                 <div className="col-md-12" style={{textAlign:"center"}}>
-                                   {/* {
-                                        this.state.isSignUp && (
-                                            <button type="submit" className="btn btn-primary">Submit</button>
-                                        )
-                                    }
-                                    <button type="submit" className="btn btn-primary">Sign In</button>*/}
-
-                                    { this.state.isSignUp ?   <button type="submit" className="btn btn-primary">Submit</button> :    <button type="submit" className="btn btn-primary">Sign In</button>}
+                                    { this.state.isSignUp ?   <button type="submit" className="btn btn-primary">Sign Up</button> :    <button type="submit" className="btn btn-primary">Sign In</button>}
                                 </div>
-                                {/*{
-                                    this.state.isSignUp && (
-                                        <a href="#" onClick={this.switchSignIn}>Already Have an Account? Click here for
-                                            Sign In</a>
-                                    )
-                                }
-                                <a href="#" onClick={this.switchSignUp}>Do Not have an Account? Click here for
-                                    Sign Up</a>*/}
-                                <br/>
+                                <br/>      <br/>
                                 { this.state.isSignUp ? <a href="#" onClick={this.switchSignIn}>Already Have an Account? Click here for
                                     Sign In</a> :  <a href="#" onClick={this.switchSignUp}>Do Not have an Account? Click here for
                                     Sign Up</a>}
                             </div>
-                            {/* </div>*/}
                         </form>
-
                     </div>
                 </div>
                 </center>
             </div>
-
         )
     }
-
 }
 
 export default Auth;
