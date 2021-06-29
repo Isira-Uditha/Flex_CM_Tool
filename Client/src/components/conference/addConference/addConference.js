@@ -258,10 +258,10 @@ class AddConference extends Component{
                         'success'
                     )
                 }).then(response =>{
-                    setTimeout(() => {
-                        this.onClear();
-                        this.props.updateComponent();
-                    },2000)
+                setTimeout(() => {
+                    this.onClear();
+                    this.props.updateComponent();
+                },2000)
             })
                 .catch(error => {
                     console.log(error.message);

@@ -3,18 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init">
       <change afterPath="$PROJECT_DIR$/Client/.cache/01/1abcd902678d9984ffc4fd07a08b88.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/02/45469845cdcca85c2301fc20ad2d97.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/0c/c6c7fbc31753648377901ddbaf8116.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/10/3e500567656b89daee668ca70904b3.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/15/f23cedc5f7dbfd74b177249b021792.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/16/348ab863cc0275c27df8db9ee44526.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/25/634fe90f57e64265163db042f91fd1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/27/57da22a2961f668a1be765df332a8b.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/29/c675b27ff0e463c69c39f90eefb5fd.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/50/23df5b153f3cc5aeefa33346936ea4.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/50/8dce8032fbac9de3bf93f697730ae4.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/51/82eb37ed9d3eee1d7d2abef1d5eb54.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/62/5fb5ce1158b75d0296bd3915ec808e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/65/1432e4ea0619de6c78b668cccfb00b.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/66/6350e9eb322c4792879b29cba0ee76.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/79/605b4dd6239270307df09dadecf429.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/7a/90b822e21b796c70a8ed283dd77e6c.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/7d/69890b728f32ae5cf1a039d3c05dac.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/7e/dd7324c6bcd3d631bb76626ad17dac.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/83/c6b89579db01fa95adcd6523943170.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/8b/46a95fa8e22d913dba08fa0604e1df.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/8d/8384c551cf17bb1a49765a3400f11d.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/8f/a4b2c5c59e24cbe750e5d4476f1c47.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/95/d8f96e009b3ffe62f87efdee04c53d.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/98/8857ca73ed0c2b9d3a6663f9a74671.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/ae/b658cbf0f755fb063c60c97da66e9f.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/b0/e620bc9e5144a6901a5d6da71c4bca.json" afterDir="false" />
@@ -22,25 +33,24 @@
       <change afterPath="$PROJECT_DIR$/Client/.cache/b8/696939a3e24d510816b369a6aadb7d.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/b8/9168a05580fe75fcc9195d67d2cccb.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/c0/ed51b082022fcc77a17c3a009d42d6.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/c7/764c0bae190c857df4a0a6dd7eec6c.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/d6/51cf9abc4f0bb4f9850d7bdc86ff43.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/d7/02e60c9b2583045ce804b2af2744a0.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/d8/5de663dfcb9dacf57a62d97aa621f6.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/d8/c1ae64882137966a8cc3f325f39eab.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/db/f3436f76221c7b78f464a405e7dfc8.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/df/2ddb94b060841c5f8f53b5df4cd62c.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/e6/32a5737e5b393bf904436fb6e2ccf9.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/ec/74618ff3e46c40a024cebfba2ee5e9.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/ed/5f8c6ed1f1aafc52a8d55342efc752.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/f2/4903dd66ebd4059165d790ab1f5704.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/.cache/f3/07bdd4e7362fd777580a98c25c2272.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/.cache/fb/9c535e32c6285959a1f9017ab8baa5.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/dist/con1.ff70513d.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/dist/con2.32ae14f4.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/dist/con3.ac7854ef.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Client/dist/header-bg.20a321fc.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/assets/con1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/assets/con2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/assets/con3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/components/footer/footer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/components/footer/footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/components/home/carousel/carousel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/components/home/workshops/workshops.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Rest-Services/src/test/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/02/960dea8abc6230c26f0b0badb03e1e.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/02/960dea8abc6230c26f0b0badb03e1e.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/03/f0429551d6059a78fdd7781b2ce8c4.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/03/f0429551d6059a78fdd7781b2ce8c4.json" afterDir="false" />
@@ -248,7 +258,6 @@
       <change beforePath="$PROJECT_DIR$/Client/.cache/c4/ea0c5b1a93059fe035aef672312f33.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c4/ea0c5b1a93059fe035aef672312f33.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/c5/429f143b7f4bb6b1081347981a61b4.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c5/429f143b7f4bb6b1081347981a61b4.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/c5/4f7ee60565ccdb05f0f4938b550700.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c5/4f7ee60565ccdb05f0f4938b550700.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/.cache/c5/65525e585464335146def266676e31.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c5/65525e585464335146def266676e31.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/c6/b686f95f3e9fee355c294e4a2c0cb7.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c6/b686f95f3e9fee355c294e4a2c0cb7.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/c7/69d1455d7a278ae9ec61911c6e8c55.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c7/69d1455d7a278ae9ec61911c6e8c55.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/c7/cb2779ce7b20d27a06a0b389c88580.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c7/cb2779ce7b20d27a06a0b389c88580.json" afterDir="false" />
@@ -307,19 +316,14 @@
       <change beforePath="$PROJECT_DIR$/Client/.cache/fe/4f89a040c11b3a1f757cdbb5e0f8cf.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/fe/4f89a040c11b3a1f757cdbb5e0f8cf.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/ff/00d64da403b326f9c04f0705db3b24.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/ff/00d64da403b326f9c04f0705db3b24.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/.cache/ff/a7fe325639e9a2c642acff6f96cca4.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/ff/a7fe325639e9a2c642acff6f96cca4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/dist/src.a2b27638.css" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/src.a2b27638.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/dist/src.a2b27638.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/src.a2b27638.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/dist/src.a2b27638.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/src.a2b27638.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/dist/src.a2b27638.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/Client/dist/src.a2b27638.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/home/description/description.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/home/description/description.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/home/heading/heading.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/home/heading/heading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/home/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/home/speakers/speakers.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/home/speakers/speakers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rest-Services/src/api/conference.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/api/conference.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rest-Services/src/controllers/conference.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/controllers/conference.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

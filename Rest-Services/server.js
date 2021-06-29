@@ -56,3 +56,5 @@ app.use('/admin', adminAPI());
 app.listen(PORT, () => {
     console.log(`Server is up and running on PORT ${PORT}`);
 });
+
+module.exports = app;

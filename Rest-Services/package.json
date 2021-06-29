@@ -4,7 +4,11 @@
   "description": "AF Project",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "env-cmd .env nodemon server.js",
+    "test": "env-cmd .env jest --watchAll"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
@@ -29,5 +33,10 @@
     "stripe": "^8.156.0",
     "uuid": "^8.3.2",
     "express-validator": "^6.12.0"
+  },
+  "devDependencies": {
+    "env-cmd": "^8.0.2",
+    "jest": "^27.0.6",
+    "supertest": "^6.1.3"
   }
 }
