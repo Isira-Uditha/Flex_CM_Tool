@@ -38,6 +38,7 @@ class PostForm extends Component {
             window.location = '/auth';
         }
 
+        //API call to get the user that is currently
         axios.get(`http://localhost:8087/user/getUser/${user}`).then(response => {
             this.setState({userDetails: response.data.data});
             this.setState({user_id: this.state.userDetails._id});
@@ -51,6 +52,7 @@ class PostForm extends Component {
     }
 
     fetchData() {
+        // API call to fetch the post data for the update purpose
         axios.get(`http://localhost:8087/post/${this.state.post_id}`).then(response => {
             this.setState({fetchedData: response.data.data});
             this.setState({title: response.data.data.title});
@@ -59,7 +61,19 @@ class PostForm extends Component {
     }
 
     onChange(e) {
-        this.setState({[e.target.name]: e.target.value})
+        if(e.target.type == "file") {
+            console.log(e);
+            const scope = this
+            let reader = new FileReader(); // getting reader object to read uploaded file
+            let value = reader.readAsDataURL(e.target.files[0]); //Converting the uploaded file into base 64
+            reader.onload = function () {
+                //Setting the state
+                scope.setState({pdf: reader.result})
+                console.log('FILE CONVERTED');
+            };
+        }else {
+            this.setState({ [e.target.name]: e.target.value })
+        }
     }
 
     onReset() {
@@ -121,6 +135,7 @@ class PostForm extends Component {
 
         if (result) {
             console.log('DATA TO SEND ', submission);
+            //API call to create a new post
             axios.post('http://localhost:8087/post/create', submission).then(response => {
                 console.log(response)
                 this.displayAlert('Uploaded Successfully', 'alert-success');
@@ -129,7 +144,10 @@ class PostForm extends Component {
                     'Submission completed',
                     'success'
                 )
-                this.onReset();
+                setTimeout(() => {
+                    this.onReset();
+                    this.props.parentReload();
+                }, 3000);
             }).catch(error => {
                 console.log(error.message);
                 alert(error.message);
@@ -148,12 +166,14 @@ class PostForm extends Component {
             notify: this.state.notify
         }
 
+        // checking whether the pdf url should be updated or not
         if (this.state.pdf_url != 'null') {
             submission.pdf_url = this.state.pdf_url;
         } else {
             submission.pdf_url = this.state.fetchedData.pdf_url;
         }
 
+        // Validating the data inserted by the user
         let res = this.validation(submission);
 
         Swal.fire({
@@ -166,11 +186,16 @@ class PostForm extends Component {
             if (result.isConfirmed) {
                 if (res) {
                     console.log('UPDATE DATA', submission);
+                    // API call to update the post
                     axios.patch(`http://localhost:8087/post/update/${this.props.postId}`, submission).then(response => {
                         console.log(response);
                         Swal.fire('Saved!', '', 'success')
-                        this.onReset();
-                        window.location.reload();
+
+                        //After successful update, reload the page
+                        setTimeout(() => {
+                            this.onReset();
+                            this.props.parentReload();
+                        }, 3000);
                     }).catch(error => {
                         console.log(error.message);
                         Swal.fire({
@@ -191,6 +216,8 @@ class PostForm extends Component {
     render() {
         return (
             <div className="container">
+                <br />
+                <br />
                 <div className="card p-4">
                     {this.state.alert.map((item) => (
                         <div key={item} className={`alert ${this.state.alert_type} alert-dismissable fade show`}
@@ -200,7 +227,7 @@ class PostForm extends Component {
                                     aria-label="Close"></button>
                         </div>
                     ))}
-                    <h5 className="card-title">
+                    <h5 className="card-title" style={{textAlign: "left"}}>
                         {(() => {
                             if (this.props.postId == 'null') {
                                 return 'Add your Research Papers'
@@ -215,30 +242,26 @@ class PostForm extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="mb-3" style={{textAlign: "left"}}>
-                                    <div className="form-floating mb-3">
-                                        <input type="title"
-                                               name="title"
-                                               className="form-control"
-                                               placeholder="Title"
-                                               value={this.state.title}
-                                               onChange={this.onChange}
-                                        />
-                                        <label htmlFor="title">Title</label>
-                                    </div>
+                                    <label htmlFor="title" className="form-label">Title</label>
+                                    <input type="title"
+                                           name="title"
+                                           className="form-control"
+                                           placeholder="Title"
+                                           value={this.state.title}
+                                           onChange={this.onChange}
+                                    />
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3" style={{textAlign: "left"}}>
-                                    <div className="form-floating">
-                                        <input type="text"
-                                               name="type"
-                                               className="form-control"
-                                               placeholder="Type"
-                                               value={this.state.type}
-                                               onChange={this.onChange}
-                                        />
-                                        <label htmlFor="type">Type</label>
-                                    </div>
+                                    <label htmlFor="type" className="form-label">Type</label>
+                                    <input type="text"
+                                           name="type"
+                                           className="form-control"
+                                           placeholder="Type"
+                                           value={this.state.type}
+                                           onChange={this.onChange}
+                                    />
                                 </div>
                             </div>
                             <div className="col-md-12">
@@ -247,8 +270,7 @@ class PostForm extends Component {
                                     <input type="file"
                                            name="pdf"
                                            className="form-control"
-                                           placeholder="Add your pdf here"
-                                           value={this.state.pdf}
+                                           // value={this.state.pdf}
                                            onChange={this.onChange}
                                     />
                                 </div>

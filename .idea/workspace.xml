@@ -3,9 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/conference/addConference/addConference.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/components/reviewer/notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/reviewer/notification.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rest-Services/src/models/Conference.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/models/Conference.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/researchPresenter/presenter/researchPresenter.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/researchPresenter/presenter/researchPresenter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/researchPresenter/presenterForm/presenterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/researchPresenter/presenterForm/presenterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/researchPresenter/presenterTable/presenterTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/researchPresenter/presenterTable/presenterTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/userProfile/postForm/postForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/userProfile/postForm/postForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/userProfile/postTable/postTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/userProfile/postTable/postTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/components/userProfile/userProfile/userProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/components/userProfile/userProfile/userProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/src/controllers/post.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/controllers/post.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/src/controllers/stripe.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/controllers/stripe.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rest-Services/src/controllers/workshop.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/controllers/workshop.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +93,7 @@
       <workItem from="1624821618358" duration="69000" />
       <workItem from="1624846641519" duration="3496000" />
       <workItem from="1624850596628" duration="2712000" />
+      <workItem from="1624936070548" duration="17082000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1622313882516</created>

@@ -45,7 +45,6 @@ class ResearchPresenter extends Component {
         return (
             <div className="container">
                 <br/>
-                <h5 style={{textAlign: "left"}}>Welcome back {this.state.userDetails.name} </h5>
                 <PresenterForm
                     workshopId={this.state.workshopId}
                     parentReload={this.parentReload}
