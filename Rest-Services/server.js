@@ -10,6 +10,7 @@ const stripeRoutes = require('./src/controllers/stripe.controller');
 const workShopAPI = require('./src/api/workshop.api');
 const reviewerAPI = require('./src/api/reviewer.api');
 const adminAPI = require('./src/api/adminApprove.api');
+const adminMainUserAPI = require('./src/api/adminMainUser.api')
 
 
 
@@ -49,8 +50,9 @@ app.use('/payment', stripeRoutes);
 app.use('/workshop', workShopAPI());
 app.use('/reviewer', reviewerAPI());
 
-app.use('/admin', adminAPI());
+app.use('/adminMainUser', adminMainUserAPI());
 
+app.use('/admin', adminAPI());
 app.listen(PORT, () => {
     console.log(`Server is up and running on PORT ${PORT}`);
 });

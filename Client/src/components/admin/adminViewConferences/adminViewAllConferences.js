@@ -5,6 +5,7 @@ import DataTable from 'react-data-table-component';
 import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
 import Swal from "sweetalert2";
+import AdminPieChart from "../adminDashboard/adminPieChart";
 
 const initialState = {
     conference: [],
@@ -387,6 +388,7 @@ class All_Conferences extends React.Component{
                         </div>
                     </div>
                 </div>
+
 
             </div>
         )
