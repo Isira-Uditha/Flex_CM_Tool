@@ -24,8 +24,19 @@ const getAllUsers = async (req, res) => {
         });
 }
 
+const deleteUsers = async (req, res) => {
+    if (req.params && req.params.id) {
+        const {id} = req.params; //fetching the id of the post item
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`); //Validating the post id
+
+        await User.findByIdAndRemove(id); //Find and Remove operation
+
+        res.json({message: "Deleted successfully."});
+    }
+}
 
 module.exports = {
     createMainUser,
-    getAllUsers
+    getAllUsers,
+    deleteUsers
 };

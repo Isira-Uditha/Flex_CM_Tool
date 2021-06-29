@@ -22,7 +22,8 @@ const initialState = {
 
 class All_Users extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.deleteUsers = this.deleteUsers.bind(this);
         this.state = initialState;
 
     }
@@ -34,6 +35,20 @@ class All_Users extends React.Component {
                 console.log(this.state.users);
             });
     }
+
+    deleteUsers(e,value) {
+        console.log(value);
+        axios.delete(`http://localhost:8087/adminMainUser/${value}`)
+            .then(response => {
+                alert('Deleted successfully');
+                window.location.reload()
+            })
+            .catch(error => {
+                console.log(error.message);
+                alert(error.message);
+            })
+    }
+
 
 
     render() {
@@ -73,6 +88,17 @@ class All_Users extends React.Component {
                 name: 'role',
                 selector: 'role',
                 sortable: true,
+            },
+            {
+                name: 'Options',
+                cell: row => <div>
+                    <input  className="btn btn-primary" onClick={e => this.navigateToUserEdit(e, row._id)}  value="Edit" type="button" aria-disabled="true"/>
+                    &nbsp;&nbsp;
+                    <input className="btn btn-danger" onClick={(e) => this.deleteUsers(e,row._id)}  value="Delete" type="button" aria-disabled="true"/>
+                </div>,
+                selector: 'options',
+                sortable: true,
+                left: true,
             }
             ];
 
