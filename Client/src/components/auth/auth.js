@@ -85,15 +85,29 @@ class Auth extends React.Component{
             }
             else {
                 document.getElementById("InvalidPasswordMatchAlert").style.display = "none";
-                let user = {
-                    name: this.state.firstName + " " + this.state.lastName,
-                    email: this.state.email,
-                    password: this.state.password,
-                    contact: this.state.contact,
-                    address: this.state.address,
-                    organization: this.state.organization,
-                    role: this.state.selectedRole,
-                };
+                let user;
+                if(this.state.selectedRole == RoleTypes.ATTENDEE){
+                    user = {
+                        name: this.state.firstName + " " + this.state.lastName,
+                        email: this.state.email,
+                        password: this.state.password,
+                        contact: this.state.contact,
+                        address: this.state.address,
+                        organization: this.state.organization,
+                        role: this.state.selectedRole,
+                        payment_status:"pending"
+                    };
+                }else {
+                    user = {
+                        name: this.state.firstName + " " + this.state.lastName,
+                        email: this.state.email,
+                        password: this.state.password,
+                        contact: this.state.contact,
+                        address: this.state.address,
+                        organization: this.state.organization,
+                        role: this.state.selectedRole,
+                    };
+                }
                 console.log("Data to Send ", user);
                  axios.post('http://localhost:8087/user/create', user)
                      .then(response => {
