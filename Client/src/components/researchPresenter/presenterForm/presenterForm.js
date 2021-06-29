@@ -194,7 +194,10 @@ class PresenterForm extends Component {
                     'Submission completed',
                     'success'
                 )
-                this.onReset();
+                setTimeout(() => {
+                    this.onReset();
+                    this.props.parentReload();
+                }, 3000);
             }).catch(error => {
                 console.log(error.message);
                 alert(error.message);
@@ -244,7 +247,11 @@ class PresenterForm extends Component {
                     axios.patch(`http://localhost:8087/workshop/update/${this.props.workshopId}`, submission).then(response => {
                         console.log(response);
                         Swal.fire('Saved!', '', 'success')
-                        this.onReset();
+
+                        setTimeout(() => {
+                            this.onReset();
+                            this.props.parentReload();
+                        }, 3000);
                     }).catch(error => {
                         console.log(error.message);
                         Swal.fire({
@@ -265,6 +272,8 @@ class PresenterForm extends Component {
     render() {
         return (
             <div className="container">
+                <br />
+                <br />
                 <div className="card p-4">
                     {this.state.alert.map((item) => (
                         <div key={item} className={`alert ${this.state.alert_type} alert-dismissable fade show`}
@@ -274,7 +283,7 @@ class PresenterForm extends Component {
                                     aria-label="Close"></button>
                         </div>
                     ))}
-                    <h5 className="card-title">
+                    <h5 className="card-title" style={{textAlign: "left"}}>
                         {(() => {
                             if (this.props.workshopId == 'null') {
                                 return 'Add Workshop Details'
@@ -290,7 +299,7 @@ class PresenterForm extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="mb-3" style={{textAlign: "left"}}>
-                                    <div className="form-floating mb-3">
+                                        <label htmlFor="title" className="form-label">Title</label>
                                         <input type="title"
                                                name="title"
                                                className="form-control"
@@ -298,22 +307,17 @@ class PresenterForm extends Component {
                                                value={this.state.title}
                                                onChange={this.onChange}
                                         />
-                                        <label htmlFor="title">Title</label>
-                                    </div>
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3" style={{textAlign: "left"}}>
-                                    <div className="form-floating">
-                                        <textarea type="text"
-                                                  name="description"
-                                                  className="form-control"
-                                                  placeholder="Description"
-                                                  value={this.state.description}
-                                                  onChange={this.onChange}
-                                        />
-                                        <label htmlFor="type">Description</label>
-                                    </div>
+                                    <label htmlFor="file" className="form-label">Conference</label>
+                                    <Select
+                                        placeholder={this.state.selectedConference}
+                                        options={this.state.options}
+                                        onChange={this.onConferenceSelect}
+                                        className={"basic-multi-select"}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -332,7 +336,7 @@ class PresenterForm extends Component {
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3" style={{textAlign: "left"}}>
-                                    <label htmlFor="date" className="form-label">Date</label>
+                                    <label htmlFor="time" className="form-label">Time</label>
                                     <input
                                         type="Time"
                                         className="form-control"
@@ -346,12 +350,13 @@ class PresenterForm extends Component {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="mb-3" style={{textAlign: "left"}}>
-                                    <label htmlFor="file" className="form-label">Conference</label>
-                                    <Select
-                                        placeholder={this.state.selectedConference}
-                                        options={this.state.options}
-                                        onChange={this.onConferenceSelect}
-                                        className={"basic-multi-select"}
+                                    <label htmlFor="type" className="form-label">Description</label>
+                                    <textarea type="text"
+                                              name="description"
+                                              className="form-control"
+                                              placeholder="Description"
+                                              value={this.state.description}
+                                              onChange={this.onChange}
                                     />
                                 </div>
                             </div>
