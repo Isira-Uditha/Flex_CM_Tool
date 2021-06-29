@@ -56,7 +56,7 @@ class Speakers extends Component{
         return (
             <div className={"container"}>
                 <div className={"row"} style={{justifyContent:"center"}}>
-                    <h2 className={"text-center text-light"}>Key Note Speakers</h2>
+                    <h2 className={"text-center text-light text-uppercase"}>Key Note Speakers</h2>
                     {this.state.speakers.length > 0 && this.state.speakers.map((item, index) => (
                         <div className="card m-4 border-secondary border-4" style={{width: "18rem",background:"rgb(255,255,255,0.2)"}} key={index}>
                             <img className="card-img-top mx-auto mt-2" style={{  width: "100%", height: "15vw", objectFit: "cover"}} src={item.url} alt="Card image cap"/>
@@ -68,7 +68,7 @@ class Speakers extends Component{
                 </div>
                 <br/>
                 <div className={"row"} style={{justifyContent:"center"}} >
-                    <h2 className={"text-center text-light"} >Guest Speaker</h2>
+                    <h2 className={"text-center text-light text-uppercase"} >Guest Speaker</h2>
                     <div className="card m-4 border-secondary border-4" style={{width: "18rem",background:"rgb(255,255,255,0.2)"}}>
                             <img className="card-img-top mt-2" style={{ width: "100%", height: "15vw", objectFit: "cover"}} src={this.props.g_url} alt="Card image cap"/>
                             <div className="card-body">
