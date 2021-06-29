@@ -1,7 +1,6 @@
 const Post = require('../models/Post.model');
 const mongoose = require("mongoose");
 
-
 const getAmountOfResearchApproves = async (req, res) => {
     await Post.find({
         status: "approved",
