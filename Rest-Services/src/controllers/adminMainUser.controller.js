@@ -14,6 +14,18 @@ const createMainUser = async (req, res) => {
     }
 }
 
+const getAllUsers = async (req, res) => {
+    await User.find({})
+        .then(data => {
+            res.status(200).send({ data: data });
+        })
+        .catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+}
+
+
 module.exports = {
-    createMainUser
+    createMainUser,
+    getAllUsers
 };

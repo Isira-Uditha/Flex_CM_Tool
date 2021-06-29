@@ -4,6 +4,7 @@ import Select from 'react-select';
 import axios from "axios";
 import * as RoleTypes from "../../auth/rolesTypes.constants"
 import UserSession from "../../auth/userSession";
+import All_Users from "../adminViewUsers/adminViewUsers"
 
 const options = [
     { value: 'Editor', label: 'Editor' },
@@ -32,24 +33,24 @@ class AdminAddMainUsers extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.selectRole = this.selectRole.bind(this);
         this.state = initialState;
-        // this.validateContactNumber = this.validateContactNumber.bind(this);
+        this.validateContactNumber = this.validateContactNumber.bind(this);
     }
 
-    // validateContactNumber(e){
-    //     console.log(e.target.value.length);
-    //     if(e.target.value.length>10) {
-    //         alert("Insert a valid contact with ten digits.")
-    //     }
-    // }
+    validateContactNumber(e){
+        console.log(e.target.value.length);
+        if(e.target.value.length>10) {
+            alert("Insert a valid contact with ten digits.")
+        }
+    }
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
 
-        // if(this.state.contact.length>10) {
-        //     document.getElementById("InvalidContactAlert").style.display = "block";
-        // }else{
-        //     document.getElementById("InvalidContactAlert").style.display = "none";
-        // }
+        if(this.state.contact.length>10) {
+            document.getElementById("InvalidContactAlert").style.display = "block";
+        }else{
+            document.getElementById("InvalidContactAlert").style.display = "none";
+        }
     }
 
     selectRole(e) {
@@ -58,25 +59,31 @@ class AdminAddMainUsers extends React.Component {
     }
 
     onSubmit(e) {
+
         e.preventDefault();
-        let admin = {
-            name: this.state.name,
-            email: this.state.email,
-            password: this.state.password,
-            contact: this.state.contact,
-            address: this.state.address,
-            organization: this.state.organization,
-            role: this.state.role
-        };
-        console.log('DATA TO SEND', admin);
-        axios.post('http://localhost:8087/adminMainUser/createMainUser', admin)
-            .then(response => {
-                alert('Data successfully added') //adding data to the database
-            })
-            .catch(error => {
-                console.log(error.message);
-                alert(error.message)
-            })
+        if(this.state.contact.length<10){
+            document.getElementById("InvalidContactAlert").style.display = "block";
+        }
+        else {
+            let admin = {
+                name: this.state.name,
+                email: this.state.email,
+                password: this.state.password,
+                contact: this.state.contact,
+                address: this.state.address,
+                organization: this.state.organization,
+                role: this.state.role
+            };
+            console.log('DATA TO SEND', admin);
+            axios.post('http://localhost:8087/adminMainUser/createMainUser', admin)
+                .then(response => {
+                    alert('Data successfully added') //adding data to the database
+                })
+                .catch(error => {
+                    console.log(error.message);
+                    alert(error.message)
+                })
+        }
     }
 
     render() {
@@ -248,9 +255,16 @@ class AdminAddMainUsers extends React.Component {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="card-footer">
+                            <All_Users/>
+                        </div>
+
+
                     </form>
                 </div>
             </div>
+
 
         )
     }
