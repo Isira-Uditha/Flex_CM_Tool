@@ -45,11 +45,11 @@ class AdminAddMainUsers extends React.Component {
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
 
-        if(this.state.contact.length>10) {
-            document.getElementById("InvalidContactAlert").style.display = "block";
-        }else{
-            document.getElementById("InvalidContactAlert").style.display = "none";
-        }
+        // if(this.state.contact.length>10) {
+        //     document.getElementById("InvalidContactAlert").style.display = "block";
+        // }else{
+        //     document.getElementById("InvalidContactAlert").style.display = "none";
+        // }
     }
 
     selectRole(e) {
@@ -62,21 +62,21 @@ class AdminAddMainUsers extends React.Component {
         let admin = {
             name: this.state.name,
             email: this.state.email,
-            password: this.state.payload,
+            password: this.state.password,
             contact: this.state.contact,
             address: this.state.address,
             organization: this.state.organization,
             role: this.state.role
         };
         console.log('DATA TO SEND', admin);
-        // axios.post('http://localhost:8087/adminMainUser/createMainUser', admin)
-        //     .then(response => {
-        //         alert('Data successfully added') //adding data to the database
-        //     })
-        //     .catch(error => {
-        //         console.log(error.message);
-        //         alert(error.message)
-        //     })
+        axios.post('http://localhost:8087/adminMainUser/createMainUser', admin)
+            .then(response => {
+                alert('Data successfully added') //adding data to the database
+            })
+            .catch(error => {
+                console.log(error.message);
+                alert(error.message)
+            })
     }
 
     render() {
@@ -215,7 +215,7 @@ class AdminAddMainUsers extends React.Component {
                                             name="selectedRole"
                                             className="form-control"
                                             placeholder={"Select the Role"}
-                                            onChange={this.onRoleSelect}
+                                            onChange={this.selectRole}
                                             options={options}
                                             required
                                         />

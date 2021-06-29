@@ -159,7 +159,7 @@ class All_Conferences extends React.Component{
         })
     }
 
-    view(e , _id, title, date , location){
+    view(e , _id, title, date , location , time , ticket_price){
         console.log("id",_id)
         console.log("title",title)
         console.log("date",date)
@@ -173,7 +173,9 @@ class All_Conferences extends React.Component{
             id: _id,
             title: title,
             date: date,
-            location: location
+            location: location,
+            time: time,
+            ticket_price: ticket_price
            /* location: location,
             time: time,
             ticket_price: ticket_price,
@@ -261,7 +263,7 @@ class All_Conferences extends React.Component{
                 name: 'View',
                 cell: row => <div>
                     {(()=>{
-                        return  <input type="button" className="btn btn-primary" value="View"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop" onClick={e => this.view(e, row._id, row.title, row.date , row.location)}  disabled={false} />
+                        return  <input type="button" className="btn btn-primary" value="View"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop" onClick={e => this.view(e, row._id, row.title, row.date , row.location, row.time, row.ticket_price )}  disabled={false} />
                     })()}
                 </div>,
                 selector: ' ',
@@ -294,9 +296,9 @@ class All_Conferences extends React.Component{
 
         return (
             <div className={"container mt-4"}>
-                <div className={"card p-2"} style={{backgroundColor:"gray"}}>
-                <h3 htmlFor="title"  className="form-label" style={{textAlign:"center" ,color:"red"}} >Admin View</h3>
-                </div>
+                {/*<div className={"card p-2"} style={{backgroundColor:"gray"}}>*/}
+                {/*<h3 htmlFor="title"  className="form-label" style={{textAlign:"center" ,color:"red"}} >Admin View</h3>*/}
+                {/*</div>*/}
                 <br></br>
                 <div className={"card p-4"}>
 
@@ -358,24 +360,24 @@ class All_Conferences extends React.Component{
                                                 <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.location} </b></label>
                                             </div>
                                         </div>
-                                        {/*<div className={"row"}>*/}
+                                        <div className={"row"}>
 
-                                        {/*    <div className={"col-md-6"} >*/}
-                                        {/*        <label htmlFor="recipient-name" className="col-form-label">Time:</label>*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className={"col-md-6"} style={{textAlign: "left"}}>*/}
-                                        {/*        <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.time} </b></label>*/}
-                                        {/*    </div>*/}
-                                        {/*</div>*/}
-                                        {/*<div className={"row"}>*/}
+                                            <div className={"col-md-6"} >
+                                                <label htmlFor="recipient-name" className="col-form-label">Time:</label>
+                                            </div>
+                                            <div className={"col-md-6"} style={{textAlign: "left"}}>
+                                                <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.time} </b></label>
+                                            </div>
+                                        </div>
+                                        <div className={"row"}>
 
-                                        {/*    <div className={"col-md-6"} >*/}
-                                        {/*        <label htmlFor="recipient-name" className="col-form-label">Ticket Price</label>*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className={"col-md-6"} style={{textAlign: "left"}}>*/}
-                                        {/*        <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.ticket_price} </b></label>*/}
-                                        {/*    </div>*/}
-                                        {/*</div>*/}
+                                            <div className={"col-md-6"} >
+                                                <label htmlFor="recipient-name" className="col-form-label">Ticket Price(Rs.):</label>
+                                            </div>
+                                            <div className={"col-md-6"} style={{textAlign: "left"}}>
+                                                <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.ticket_price} </b></label>
+                                            </div>
+                                        </div>
 
                                     </form>
                                 </div>
