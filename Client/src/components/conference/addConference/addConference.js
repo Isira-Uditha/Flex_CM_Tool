@@ -273,8 +273,9 @@ class AddConference extends Component{
 
     render(){
         return (
-            <div className="container"><br/>
-                <div className={"card p-4"}>
+            <div className="container">
+                <br/>
+                <div className={"card p-4 mt-4"}>
                     {this.state.alert.map((item) => (
                         <div key={item} className={`alert ${this.state.alert_type} alert-dismissible fade show`} role="alert" hidden={this.state.hidden}>
                             <strong>{item}</strong>
