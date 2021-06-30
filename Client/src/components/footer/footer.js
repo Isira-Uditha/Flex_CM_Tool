@@ -31,12 +31,9 @@ class Footer extends Component{
                             <div className="col-sm-12 col-md-6">
                                 <h6>About</h6>
                                 <div className={"text-start"}>
-                                <p style={{textAlign:"justify"}}>Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an
-                                    initiative to help the upcoming programmers with the code. Scanfcode focuses on
-                                    providing the most efficient code or snippets as the code wants to be simple. We
-                                    will help programmers build up concepts in different programming languages that
-                                    include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and
-                                    Algorithm.</p>
+                                <p style={{textAlign:"justify"}}>Flex.com <i>MANAGEMENT WANTS TO BE SIMPLE </i> Large conferences are the center of your event program and marketing strategy.
+                                    Our conference management software delivers the insights, experience, and technology to enhance your revenue potential.
+                                    Whether you need an in-person conference platform, a virtual conference platform, or a hybrid conference platform, Cvent has you covered.</p>
                                 </div>
                             </div>
 
@@ -44,13 +41,13 @@ class Footer extends Component{
                                 <h6>Categories</h6>
                                 <ul className="footer-links">
                                     <div className={"text-start"} style={{marginLeft:"95px"}}>
-                                        <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-                                        <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a>
+                                        <li><a href="#">Conference</a></li>
+                                        <li><a href="#">Researches</a>
                                         </li>
-                                        <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-                                        <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-                                        <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-                                        <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
+                                        <li><a href="#">Workshops</a></li>
+                                        <li><a href="#">Ticketing</a></li>
+                                        <li><a href="#">Research Papers</a></li>
+                                        <li><a href="#">Templates</a></li>
                                     </div>
                                 </ul>
                             </div>
@@ -59,11 +56,11 @@ class Footer extends Component{
                                 <h6>Quick Links</h6>
                                 <ul className="footer-links">
                                     <div className={"text-start"} style={{marginLeft:"95px"}}>
-                                    <li><a href="http://scanfcode.com/about/">About Us</a></li>
-                                    <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-                                    <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-                                    <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-                                    <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Contribute</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Sitemap</a></li>
                                     </div>
                                 </ul>
                             </div>
