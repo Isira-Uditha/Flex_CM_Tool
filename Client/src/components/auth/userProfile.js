@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 import Select from "react-select";
 import UserSession from "./userSession";
 import React, { Component } from "react";
-import {common} from "@material-ui/core/colors";
 
 const options = [
     { value: 'Attendee', label: 'Attendee' },
@@ -38,20 +37,15 @@ class UserProfile extends React.Component{
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
-
         if(this.state.contact.length>10) {
             document.getElementById("InvalidContactAlert").style.display = "block";
         }else{
             document.getElementById("InvalidContactAlert").style.display = "none";
         }
-
-
     }
-
 
     componentDidMount() {
         const user = UserSession.getName();
-
       axios.get(`http://localhost:8087/user/getUser/${user}`)
            .then(response => {
                this.setState({id:response.data.data._id})
@@ -65,21 +59,15 @@ class UserProfile extends React.Component{
                const names = this.state.fullName.split(" ")
                this.setState({firstName:names[0]})
                this.setState({lastName:names[1]})
-
-
-               console.log(response.data.data)
            })
            .catch(error => {
                alert(error.message)
            })
-
     }
 
 
     onSubmit(e){
         e.preventDefault();
-
-
                 let user = {
                     name: this.state.firstName + " " + this.state.lastName,
                     email: this.state.email,
@@ -102,7 +90,6 @@ class UserProfile extends React.Component{
 
                         alert(error.message)
                     })
-
     }
 
     switchToEdit(e) {
@@ -110,12 +97,9 @@ class UserProfile extends React.Component{
         this.setState( {disabled: !this.state.disabled} )
     }
 
-
     render(){
         return(
-
-
-        <div className="container"><br/>
+        <div className="container"><br/><br/><br/>
             <center> <div className="col-md-4 ml-auto mr-auto">
                 <div className={"card p-4"} >
                     <div className="alert alert-danger" role="alert" style={{display:"none"}} id="InvalidContactAlert">
@@ -141,7 +125,6 @@ class UserProfile extends React.Component{
                         top: 35,}}>
                     <button type="button" className="btn btn-link" onClick={this.switchToEdit}>Edit</button>
                     </div>
-
                     <br/>
                     <form onSubmit={this.onSubmit}>
 
@@ -271,53 +254,21 @@ class UserProfile extends React.Component{
                                         />
 
                                     </div>
-
-
                         </div>
-
-                        {/* <div className="card-footer">*/}
 
                         <div className="row">
-
                             <div className="col-md-12" style={{textAlign:"center"}}>
-                           {/*  {
-                                        this.state.disabled && (
-                                            <button type="submit" className="btn btn-primary" hidden>Submit</button>
-                                        )
-                                    }
-
-                                    <button type="submit" className="btn btn-primary">Update</button>
-*/}
                                 { this.state.disabled ? "" : <button type="submit" className="btn btn-primary">Update</button>}
-
                             </div>
-                            {/*{
-                                    this.state.isSignUp && (
-                                        <a href="#" onClick={this.switchSignIn}>Already Have an Account? Click here for
-                                            Sign In</a>
-                                    )
-                                }
-                                <a href="#" onClick={this.switchSignUp}>Do Not have an Account? Click here for
-                                    Sign Up</a>*/}
                             <br/>
-
                         </div>
-
-
-                        {/* </div>*/}
-
-
                     </form>
-
                 </div>
             </div>
             </center>
         </div>
-
-
     )
     }
-
 
 }
 
