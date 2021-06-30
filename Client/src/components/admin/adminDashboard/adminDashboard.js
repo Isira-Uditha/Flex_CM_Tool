@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import AdminPieChart from "./adminPieChart";
 import ResearchSummaryChart from "./Charts/researchSummaryChart";
 import WorkshopSummaryChart from "./Charts/workshopSummaryChart";
 import UserSummaryBarChart from "./Charts/userSummaryBarChart";
-// import ConferenceSummaryChart from "./Charts/conferenceSummaryChart";
-// import UserSummaryChart from "./Charts/userChart";
 import ConferenceChart from "./Charts/conferenceChart";
-
 
 class AdminDashboard extends React.Component{
     constructor(props) {
@@ -15,12 +11,9 @@ class AdminDashboard extends React.Component{
 
     render() {
         return (
-
             <div className="container">
-
                 <br/>    <br/>       <br/>    <br/><br/>
                 <div className="row">
-
                     <div className={"col-md-5"}>
                         <UserSummaryBarChart/>
                     </div>
@@ -48,13 +41,11 @@ class AdminDashboard extends React.Component{
                                 <h5 className="card-title">Conference Management</h5>
                                 <p className="card-text">All Approval and Rejecetions of Conferences are managed by the Administrator..</p>
                                 <br/>
-                                <a href={"/"}
+                                <a href={"/admin-view"}
                                    style={{background: "rgb(8, 48, 84, 0.7)"}} className="btn btn-primary">Manage Conferences</a>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <br/>
                 <div className="row">
@@ -64,13 +55,8 @@ class AdminDashboard extends React.Component{
                     <div className={"col-md-5"}>
                         <ConferenceChart/>
                     </div>
-
                 </div>
-
             </div>
-
-
-
         );
     }
 }

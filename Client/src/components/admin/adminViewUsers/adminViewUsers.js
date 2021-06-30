@@ -40,9 +40,14 @@ class All_Users extends React.Component {
         console.log(value);
         axios.delete(`http://localhost:8087/adminMainUser/${value}`)
             .then(response => {
-                alert('Deleted successfully');
-                window.location.reload()
-            })
+                Swal.fire(
+                    'Successful!',
+                    'Deleted successfully!',
+                    'success'
+                )
+                setTimeout(()=>{
+                    window.location.reload();
+                },3000)            })
             .catch(error => {
                 console.log(error.message);
                 alert(error.message);
@@ -111,10 +116,9 @@ class All_Users extends React.Component {
         return (
 
             <div className={"container mt-4"}>
-
                 <br></br>
                 <div className={"card p-4"}>
-
+                    <h5 className={"text-start mb-3"}>User View</h5>
                     <DataTableExtensions {...tableData}>
                         <DataTable
                             columns={columns}

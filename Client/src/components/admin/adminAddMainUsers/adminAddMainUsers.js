@@ -47,11 +47,7 @@ class AdminAddMainUsers extends React.Component {
         this.state = initialState;
         this.validateContactNumber = this.validateContactNumber.bind(this);
         this.fetchData = this.fetchData.bind(this);
-        // this.onReset = this.onReset.bind(this);
         this.onUpdate = this.onUpdate.bind(this);
-        // this.editUser = this.editUser.bind(this);
-        // this.displayAlert = this.displayAlert.bind(this);
-
     }
 
     componentDidMount() {
@@ -73,16 +69,6 @@ class AdminAddMainUsers extends React.Component {
             this.setState({id: this.props.userId}, this.fetchData);
         }
     }
-
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     console.log('bbbbb',this.props.id);
-    //     this.fetchData()
-    //     if (this.props.id != prevProps.id) {
-    //         this.setState({id: this.props.id}, this.fetchData);
-    //
-    //     }
-    //
-    // }
 
     fetchData() {
         console.log('mmmm');
@@ -132,11 +118,6 @@ class AdminAddMainUsers extends React.Component {
         console.log("Author Selected :", this.state.role)
     }
 
-    // editUser(userId){
-    //     this.setState({id: userId})
-    // }
-
-
     onSubmit(e) {
 
         e.preventDefault();
@@ -155,7 +136,15 @@ class AdminAddMainUsers extends React.Component {
             console.log('DATA TO SEND', admin);
             axios.post('http://localhost:8087/adminMainUser/createMainUser', admin)
                 .then(response => {
-                    alert('Data successfully added') //adding data to the database
+                    Swal.fire(
+                        'Successful!',
+                        'Record successfully inserted!',
+                        'success'
+                    )
+                    setTimeout(()=>{
+                        window.location.reload();
+                    },3000)
+                   //adding data to the database
                 })
                 .catch(error => {
                     console.log(error.message);
@@ -236,8 +225,8 @@ class AdminAddMainUsers extends React.Component {
                             encType="multipart/form-data">
 
                             <div className="row">
+                                <h5 className={"text-start mb-3"}>User Form</h5>
                                 <div className="col-md-6">
-                                    <h5>User Form</h5>
                                     <div className="mb-3" style={{textAlign: "left"}}>
                                         <label htmlFor="file" className="form-label">First Name</label>
 
@@ -336,7 +325,6 @@ class AdminAddMainUsers extends React.Component {
                                         />
                                     </div>
                                 </div>
-
                                 <div className="col-md-6">
                                     <div className="mb-3" style={{textAlign: "left"}}>
                                         <label htmlFor="file" className="form-label">Role</label>
@@ -365,23 +353,13 @@ class AdminAddMainUsers extends React.Component {
                                         })()}
                                         &nbsp;
                                         &nbsp;
-                                        {/*<button className="btn btn-success" onClick={this.onReset}>Clear</button>*/}
                                         &nbsp;
-                                        {/*<button type="submit" className="btn btn-primary">Submit</button>*/}
 
                                     </div>
                                 </div>
                             </div>
-                            {/*<div className="card-footer">*/}
-                            {/*    <All_Users*/}
-                            {/*    editUser={*/}
-                            {/*        this.editUser*/}
-                            {/*    }*/}
-                            {/*    />*/}
-                            {/*</div>*/}
                         </form>
-                    }
-                </div>
+                     </div>
             </div>
         )
     }

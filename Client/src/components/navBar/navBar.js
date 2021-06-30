@@ -55,13 +55,7 @@ class NavBar extends React.Component{
                                 </li>: " "
                             }
                             <li className="nav-item">
-                                <a className="nav-link" style={{color:"whitesmoke"}} href="/approved-conferences">Approved Conferences</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" style={{color:"whitesmoke"}} href="/">All Conferences</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" style={{color:"whitesmoke"}} href=" /admin-view">Admin view</a>
+                                <a className="nav-link" style={{color:"whitesmoke"}} href=" /admin-view">Admin Conference view</a>
                             </li>
 
                             <li className="nav-item">

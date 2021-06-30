@@ -8,7 +8,7 @@ import UserProfile from "./components/auth/userProfile";
 import Conference from "./components/conference/conference";
 
 import UserPage from "./components/userProfile/userProfile/userProfile";
-import ConferencesAdmin from "./components/admin/adminViewConferences/adminViewConferences";
+// import ConferencesAdmin from "./components/admin/adminViewConferences/adminViewConferences";
 import ApprovedConferencesAdmin from "./components/admin/adminApprovedConferences/adminApprovedConferences";
 import RejectedConferencesAdmin from "./components/admin/adminRejectedConferences/adminRejectedConferences";
 import AdminView from "./components/admin/adminViewConferences/adminViewAllConferences";
@@ -37,7 +37,7 @@ function App() {
                         <Route path="/profile" exact component={UserProfile} />
                         <Route path="/reviewer" exact component={Reviewer} />
                         <Route path="/presenter" exact component={ResearchPresenter} />
-                        <Route path="/admin" component={ConferencesAdmin} />
+                        {/*<Route path="/admin" component={ConferencesAdmin} />*/}
                         <Route path="/approved-conferences" component={ApprovedConferencesAdmin}/>
                         <Route path="/rejected-conferences" component={RejectedConferencesAdmin}/>
                         <Route path="/Edit-admin-conferences/:id" component={EditConferenceAdmin}/>

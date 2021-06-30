@@ -4,7 +4,6 @@ const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 import axios from "axios";
 
-
 const initialState = {
     approved: 0,
     rejected: 0,
