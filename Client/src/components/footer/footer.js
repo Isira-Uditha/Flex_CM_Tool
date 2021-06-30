@@ -71,7 +71,7 @@ class Footer extends Component{
                         <div className="row">
                             <div className="col-md-6 col-sm-6 col-xs-12">
                                 <p className="copyright-text">Copyright &copy; 2017 All Rights Reserved by
-                                    <a href="#">Scanfcode</a>.
+                                    <a href="#">Flex</a>.
                                 </p>
                             </div>
 
