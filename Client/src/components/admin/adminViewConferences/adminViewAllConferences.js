@@ -111,6 +111,7 @@ class All_Conferences extends React.Component{
      }, () => {
          let approvedConferencePost = {
              status: this.state.status,
+             notify: "1"
          };
          Swal.fire({
              title: 'Are you sure?',
@@ -139,6 +140,7 @@ class All_Conferences extends React.Component{
         }, () => {
             let approvedConferencePost = {
                 status: this.state.status,
+                notify: "2"
             };
             Swal.fire({
                 title: 'Are you sure?',

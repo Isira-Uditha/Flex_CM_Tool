@@ -365,7 +365,7 @@ class AdminAddMainUsers extends React.Component {
                                         })()}
                                         &nbsp;
                                         &nbsp;
-                                        <button className="btn btn-success" onClick={this.onReset}>Clear</button>
+                                        {/*<button className="btn btn-success" onClick={this.onReset}>Clear</button>*/}
                                         &nbsp;
                                         {/*<button type="submit" className="btn btn-primary">Submit</button>*/}
 
