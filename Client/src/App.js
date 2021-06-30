@@ -20,6 +20,8 @@ import AdminAddMainUsers from "./components/admin/adminAddMainUsers/adminAddMain
 import Home from "./components/home/home";
 import Dashboard from "./components/reviewer/dashboard";
 import DownloadTemplate from "./components/downloadTemplates/downloadTemplate";
+import AdminUserhandle from "./components/admin/adminUserhandle/adminUserhandle";
+
 
 
 function App() {
@@ -46,6 +48,7 @@ function App() {
                         <Route path="/admin-add-users" component={AdminAddMainUsers}/>
                         <Route path="/dashboard" exact component={Dashboard} />
                         <Route path="/downloads" exact component={DownloadTemplate} />
+                        <Route path="/admin-add-users" component={AdminUserhandle}/>
                     </Switch>
                 </section>
             </Router>

@@ -26,12 +26,10 @@ class WorkshopSummaryChart extends Component {
                 console.log('USER ADDED WORKSHOPS', response.data.data);
                 this.setState({rejected: response.data.data});
                 console.log(response.data.data)
-                // this.setState({seriesPie: [this.state.rejected,this.state.approved]});
                 axios.get(`http://localhost:8087/admin/amountPendingWorkshops`).then(response => {
                     console.log('USER ADDED WORKSHOPS', response.data.data);
                     this.setState({pending: response.data.data});
                     console.log(response.data.data)
-                    // this.setState({seriesPie: [this.state.rejected,this.state.approved]});
                 })
 
             })
@@ -41,7 +39,7 @@ class WorkshopSummaryChart extends Component {
 
     render() {
         const options = {
-            theme: "dark1", // "light1", "dark1", "dark2",
+            theme: "dark1",
             size: -1,
             title: {
                 text: "Workshop Approval Status"
@@ -60,14 +58,7 @@ class WorkshopSummaryChart extends Component {
         }
         return (
             <div>
-
-                {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-
-
-                                <CanvasJSChart options = {options}
-                                    /* onRef={ref => this.chart = ref} */
-                                />
-
+                <CanvasJSChart options = {options} />
             </div>
         );
     }

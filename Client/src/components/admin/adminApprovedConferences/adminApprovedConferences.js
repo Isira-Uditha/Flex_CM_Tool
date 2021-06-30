@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class ApprovedConferences extends Component {
-
     render() {
         return (
-
             <div className="card">
                 <br/>
                 <h1 className="card-header">Approved Conferences</h1>

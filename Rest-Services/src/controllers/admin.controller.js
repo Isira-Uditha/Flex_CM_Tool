@@ -17,10 +17,9 @@ const approveConference = async (req, res) => {
 const getAmountOfConferenceApproves = async (req, res) => {
     await Conference.find({
         status: "A",
-    })
-
-        .then(data => {
+    }).then(data => {
             const  amount = data.length
+        console.log(amount);
             res.status(200).send({data: amount})
         })
         .catch(error => {
@@ -31,10 +30,9 @@ const getAmountOfConferenceApproves = async (req, res) => {
 const getAmountOfConferenceReject = async (req, res) => {
     await Conference.find({
         status: "R",
-    })
-
-        .then(data => {
+    }).then(data => {
             const  amount = data.length
+        console.log(amount)
             res.status(200).send({data: amount})
         })
         .catch(error => {

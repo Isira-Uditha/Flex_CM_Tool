@@ -36,7 +36,6 @@ class All_Conferences extends React.Component{
         this.showModal = this.showModal.bind(this);
         this.view = this.view.bind(this);
         this.sendConferenceApproval = this.sendConferenceApproval.bind(this);
-        // this.renderLabel = this.renderLabel(this);
     }
 
     componentDidMount() {
@@ -46,25 +45,6 @@ class All_Conferences extends React.Component{
                 console.log(this.state.conference);
             });
     }
-
-    // componentDidMount() {
-    //     this.setState({IsConference: this.props.IsConference});
-    //     console.log(this.state.IsConference)
-    //
-    //     if(this.props.IsConference == true) {
-    //         axios.get('http://localhost:8087/conference/').then(response => {
-    //             this.setState({entries: response.data.data});
-    //             console.log(this.state.entries)
-    //             {this.state.entries.length > 0 && this.state.entries.map((item,index) => (
-    //                 console.log(item.title)
-    //                 /* (item.user_id > 0 && item.user_id.map((item,index) => (
-    //                    /!*  console.log(item.name)*!/
-    //                  )))*/
-    //             ))}
-    //         })
-    //     }
-
-    // }
 
     deleteConference(e,value) {
         console.log(value);
@@ -111,6 +91,7 @@ class All_Conferences extends React.Component{
      }, () => {
          let approvedConferencePost = {
              status: this.state.status,
+             notify: "1"
          };
          Swal.fire({
              title: 'Are you sure?',
@@ -131,7 +112,6 @@ class All_Conferences extends React.Component{
      })
  }
 
-
     rejectConference(e , _id) {
 
         this.setState({
@@ -139,6 +119,7 @@ class All_Conferences extends React.Component{
         }, () => {
             let approvedConferencePost = {
                 status: this.state.status,
+                notify: "2"
             };
             Swal.fire({
                 title: 'Are you sure?',
@@ -159,7 +140,7 @@ class All_Conferences extends React.Component{
         })
     }
 
-    view(e , _id, title, date , location){
+    view(e , _id, title, date , location , time , ticket_price){
         console.log("id",_id)
         console.log("title",title)
         console.log("date",date)
@@ -173,7 +154,9 @@ class All_Conferences extends React.Component{
             id: _id,
             title: title,
             date: date,
-            location: location
+            location: location,
+            time: time,
+            ticket_price: ticket_price
            /* location: location,
             time: time,
             ticket_price: ticket_price,
@@ -218,13 +201,13 @@ class All_Conferences extends React.Component{
                 cell: row => <div>
                     {(()=>{
                         if(row.status === 'P'){
-                            return <h4><span style={{width:"100px"}} className="badge bg-warning">Pending</span></h4>
+                            return <h4><span className="btn btn-warning disabled" >Pending</span></h4>
 
                         } else if(row.status === 'A'){
-                            return <h4><span style={{width:"100px"}}  className="badge bg-success">Approved</span></h4>
+                            return <h4><span  className="btn btn-success disabled">Approved</span></h4>
 
                         } else {
-                            return <h4><span style={{width:"100px"}}  className="badge bg-danger">Reject</span></h4>
+                            return <h4><span  className="btn btn-danger disabled">Rejected</span></h4>
 
                         }
                     })()}
@@ -261,24 +244,13 @@ class All_Conferences extends React.Component{
                 name: 'View',
                 cell: row => <div>
                     {(()=>{
-                        return  <input type="button" className="btn btn-primary" value="View"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop" onClick={e => this.view(e, row._id, row.title, row.date , row.location)}  disabled={false} />
+                        return  <input type="button" className="btn btn-primary" value="View"  data-bs-toggle="modal"  data-bs-target="#staticBackdrop" onClick={e => this.view(e, row._id, row.title, row.date , row.location, row.time, row.ticket_price )}  disabled={false} />
                     })()}
                 </div>,
                 selector: ' ',
                 sortable: true,
                 left: true,
             },
-            {
-                name: 'Options',
-                cell: row => <div>
-                    <input  className="btn btn-primary" onClick={e => this.navigateToAdminEdit(e, row._id)}  value="Edit" type="button" aria-disabled="true"/>
-                    &nbsp;&nbsp;
-                    <input className="btn btn-danger" onClick={(e) => this.deleteConference(e,row._id)}  value="Delete" type="button" aria-disabled="true"/>
-                </div>,
-                selector: 'options',
-                sortable: true,
-                left: true,
-            }
         ];
 
         const data = this.state.conference;
@@ -294,12 +266,11 @@ class All_Conferences extends React.Component{
 
         return (
             <div className={"container mt-4"}>
-                <div className={"card p-2"} style={{backgroundColor:"gray"}}>
-                <h3 htmlFor="title"  className="form-label" style={{textAlign:"center" ,color:"red"}} >Admin View</h3>
-                </div>
-                <br></br>
+                <br/>
+                <br/>
+                <br/>
                 <div className={"card p-4"}>
-
+                    <h5 className={"text-start mb-3"}>Conference View</h5>
                     <DataTableExtensions {...tableData}>
                         <DataTable
                             columns={columns}
@@ -325,14 +296,10 @@ class All_Conferences extends React.Component{
                                 <div className={"col-md-12"}>
                                     <form >
                                         <div className={"row"}>
-
                                             {this.renderLabel()}
-
                                         </div>
 
-
                                         <div className={"row"}>
-
                                             <div className={"col-md-6"}>
                                                 <label htmlFor="recipient-name" className="col-form-label">Title:</label>
                                             </div>
@@ -340,8 +307,8 @@ class All_Conferences extends React.Component{
                                                 <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.title} </b></label>
                                             </div>
                                         </div>
-                                        <div className={"row"}>
 
+                                        <div className={"row"}>
                                             <div className={"col-md-6"}>
                                                 <label htmlFor="recipient-name" className="col-form-label">Date:</label>
                                             </div>
@@ -349,8 +316,8 @@ class All_Conferences extends React.Component{
                                                 <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.date} </b></label>
                                             </div>
                                         </div>
-                                        <div className={"row"}>
 
+                                        <div className={"row"}>
                                             <div className={"col-md-6"} >
                                                 <label htmlFor="recipient-name" className="col-form-label">Location:</label>
                                             </div>
@@ -358,38 +325,35 @@ class All_Conferences extends React.Component{
                                                 <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.location} </b></label>
                                             </div>
                                         </div>
-                                        {/*<div className={"row"}>*/}
 
-                                        {/*    <div className={"col-md-6"} >*/}
-                                        {/*        <label htmlFor="recipient-name" className="col-form-label">Time:</label>*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className={"col-md-6"} style={{textAlign: "left"}}>*/}
-                                        {/*        <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.time} </b></label>*/}
-                                        {/*    </div>*/}
-                                        {/*</div>*/}
-                                        {/*<div className={"row"}>*/}
+                                        <div className={"row"}>
+                                            <div className={"col-md-6"} >
+                                                <label htmlFor="recipient-name" className="col-form-label">Time:</label>
+                                            </div>
+                                            <div className={"col-md-6"} style={{textAlign: "left"}}>
+                                                <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.time} </b></label>
+                                            </div>
+                                        </div>
 
-                                        {/*    <div className={"col-md-6"} >*/}
-                                        {/*        <label htmlFor="recipient-name" className="col-form-label">Ticket Price</label>*/}
-                                        {/*    </div>*/}
-                                        {/*    <div className={"col-md-6"} style={{textAlign: "left"}}>*/}
-                                        {/*        <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.ticket_price} </b></label>*/}
-                                        {/*    </div>*/}
-                                        {/*</div>*/}
+                                        <div className={"row"}>
+                                            <div className={"col-md-6"} >
+                                                <label htmlFor="recipient-name" className="col-form-label">Ticket Price(Rs.):</label>
+                                            </div>
+                                            <div className={"col-md-6"} style={{textAlign: "left"}}>
+                                                <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.ticket_price} </b></label>
+                                            </div>
+                                        </div>
 
                                     </form>
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-danger" onClick={e => this.rejectConference(e,this.state.id)} >Reject
-                                </button>
+                                <button type="button" className="btn btn-danger" onClick={e => this.rejectConference(e,this.state.id)} >Reject</button>
                                 <button type="button" className="btn btn-primary" onClick={e => this.approveConference(e,this.state.id)} >Approve</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         )
     }

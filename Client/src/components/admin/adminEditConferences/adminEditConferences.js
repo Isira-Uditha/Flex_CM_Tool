@@ -128,20 +128,6 @@ class editConference extends Component {
         }
     }
 
-    // onClear(e) {
-    //     this.setState({
-    //         title: '',
-    //         description: '',
-    //         date: '',
-    //         time: '',
-    //         location: '',
-    //         speakers: [{index: Math.random(),speaker: '', url: ''}],
-    //         ticket_price: '',
-    //         tracks: '',
-    //         g_url: '',
-    //         g_speaker: '',
-    //     })
-    // };
 
     addNewRow = () => {
         this.setState((prevState) => ({
@@ -149,11 +135,7 @@ class editConference extends Component {
         }));
     }
 
-    // clickOnDelete(record) {
-    //     this.setState({
-    //         speakers: this.state.speakers.filter(r => r !== record)
-    //     });
-    // }
+
 
     onSubmit(e) {
         e.preventDefault();
