@@ -46,7 +46,7 @@ class Workshops extends Component{
                                     <div className="card-body">
                                         <h4 className="card-title text-uppercase" style={{color: "rgb(8, 48, 84)"}}>{item.title}</h4>
                                         <div className={"row"}>
-                                            <h6 className="card-title text-start text-white">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h6>
+                                            <h6 className="card-title text-start text-white">{item.description}</h6>
                                         </div>
                                         <p className="card-title text-start  text-white">Date: {item.date}</p>
                                         <p className="card-title text-start text-white">Time : {item.time}</p>

@@ -68,6 +68,10 @@ class PostTable extends Component {
                             'Your file has been deleted.',
                             'success'
                         )
+                        setTimeout(()=>{
+                            this.props.parentReload();
+                        },3000);
+
                     }).catch(error => {
                     console.log(error.message);
                     Swal.fire({
@@ -122,6 +126,9 @@ class PostTable extends Component {
             //API call to update payment details of the post
             axios.patch(`http://localhost:8087/post/update/${postId}`, this.state.postDetails).then(response => {
                 console.log(response);
+                setTimeout(() => {
+                    this.props.parentReload();
+                }, 3000);
             }).catch(error => {
                 console.log('Something went wrong in updating payment details!', error.message);
             })
@@ -152,12 +159,20 @@ class PostTable extends Component {
                 name: 'File',
                 cell: row => <div>
                     {(() => {
-                        return <a href={row.pdf_url}>Download</a>
+                        return <a download={row.title} href={row.pdf_url}>Download</a>
                     })()}
                 </div>,
                 selector: 'pdf_url',
                 sortable: true,
                 left: true,
+            },
+            {
+                name: 'View File',
+                cell: row => <div>
+                    {(() => {
+                        return <button className="btn btn-primary" onClick={()=>{this.props.loadPDF(row.pdf_url, row.title)}}>View</button>
+                    })()}
+                </div>
             },
             {
                 name: 'Approval Status',
@@ -183,29 +198,46 @@ class PostTable extends Component {
                 left: true,
             },
             {
-                name: 'Options',
+                name: 'Edit',
                 cell: row => <div>
                     {(() => {
                         if (row.status === 'approved') {
-                            return <div className="btn-group">
+                            return <div>
                                 <button className="btn btn-primary" onClick={() => this.props.editPost(row._id)}
                                         disabled={true}>Edit
                                 </button>
+                            </div>
+                        } else {
+                            return <div>
+                                <button className="btn btn-primary" onClick={() => this.props.editPost(row._id)}>Edit
+                                </button>
+                            </div>
+                        }
+                    })()}
+                </div>,
+                selector: 'edit',
+                sortable: true,
+                left: true,
+            },
+            {
+                name: 'Delete',
+                cell: row => <div>
+                    {(() => {
+                        if (row.status === 'approved') {
+                            return <div>
                                 <button className="btn btn-danger" onClick={e => this.deletePost(e, row._id)}
                                         disabled={true}>Delete
                                 </button>
                             </div>
                         } else {
-                            return <div className="btn-group">
-                                <button className="btn btn-primary" onClick={() => this.props.editPost(row._id)}>Edit
-                                </button>
+                            return <div>
                                 <button className="btn btn-danger" onClick={e => this.deletePost(e, row._id)}>Delete
                                 </button>
                             </div>
                         }
                     })()}
                 </div>,
-                selector: 'options',
+                selector: 'delete',
                 sortable: true,
                 left: true,
             },
@@ -220,7 +252,7 @@ class PostTable extends Component {
                         } else if (row.payment_status === 'paid') {
                             return <h5><span style={{width: "100px"}} className="badge bg-success">Paid</span></h5>
                         } else {
-                            return <button style={{width: "150px"}} className="invisible" onClick={e => this.currentPayPost(e, row._id)}>
+                            return <button style={{width: "150px", textAlign: "left"}} className="invisible" onClick={e => this.currentPayPost(e, row._id)}>
                                 <Stripe
                                     stripeKey="pk_test_51J5ViHAHA9nESvo0LpVRniSH1A8hx0Gq3uBya8uswpVIOaz1FeeRyRicbUXd5RYFpnJj6WKuf0HOwZIDXzGYjIJa008q7s35RK"
                                     token={this.tokenHandler}
@@ -244,7 +276,6 @@ class PostTable extends Component {
 
         return (
             <div className="container mt-4">
-
                 <div className="card p-4">
                     <h5 htmlFor="title" className="form-label" style={{textAlign: "left"}}>Uploads</h5>
                     <DataTableExtension {...tableData}>

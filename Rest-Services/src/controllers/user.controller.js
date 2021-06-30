@@ -28,16 +28,13 @@ const getAllUsers = async (req, res) => {
 const validateUser = async (req, res) => {
     if (req.body) {
         const query = { email: req.body.email , password:req.body.password};
-
         /*const options = {
             // sort matched documents in descending order by rating
             sort: {  },
             // Include only the `title` and `imdb` fields in the returned document
             projection: { _id: 0, name: 1, email: 1 ,role: 1 },
         };*/
-
         await User.findOne(query)
-
             .then(data => {
                 res.status(200).send({ data : data});
             })
