@@ -11,6 +11,7 @@ const initialState = {
     roleResearcher: false,
     roleWorkshop: false,
     roleDownloads: false,
+    roleAttendee: false
 }
 
 class NavBar extends React.Component{
@@ -46,6 +47,8 @@ class NavBar extends React.Component{
         }else if(UserSession.getRole() == RoleTypes.WORKSHOP_PRESENTEE){
             this.setState({roleWorkshop: true})
             this.setState({roleDownloads: true})
+        }else if(UserSession.getRole() == RoleTypes.ATTENDEE){
+            this.setState({roleAttendee: true})
         }
     }
 
@@ -84,7 +87,7 @@ class NavBar extends React.Component{
                                 <a className="nav-link" style={{color:"whitesmoke"}} href="/approved-conferences">Approved Conferences</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" style={{color:"whitesmoke"}} href="/">All Conferences</a>
+                                <a className="nav-link" style={{color:"whitesmoke"}} href="#">All Conferences</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" style={{color:"whitesmoke"}} href=" /admin-view">Admin view</a>
@@ -118,6 +121,12 @@ class NavBar extends React.Component{
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"
                                        href="/downloads">Downloads</a>
+                                </li>: " "
+                            }
+                            {this.state.roleAttendee ?
+                                <li className="nav-item">
+                                    <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"
+                                       href="/attendee">Payments</a>
                                 </li>: " "
                             }
 

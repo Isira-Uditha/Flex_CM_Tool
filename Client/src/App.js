@@ -29,9 +29,9 @@ function App() {
                 <NavBar/>
                 <section>
                     <Switch>
-                        <Route path="/" component={Home} />
+                        <Route path="/" component={Home} exact/>
                         <Route path="/userPage" component={UserPage} />
-                        <Route path="/conference" component={Conference} exact/>
+                        <Route path="/conference" component={Conference} />
                         <Route path="/auth" exact component={Auth} />
                         <Route path="/attendee" exact component={Attendee} />
                         <Route path="/profile" exact component={UserProfile} />
