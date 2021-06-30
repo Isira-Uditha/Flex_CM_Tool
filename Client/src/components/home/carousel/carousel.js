@@ -19,9 +19,6 @@ class Carousel extends Component{
         this.state = initialState;
     }
 
-    // componentDidMount() {
-    // }
-
     render(){
 
         return (

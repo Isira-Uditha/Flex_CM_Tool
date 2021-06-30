@@ -2,7 +2,6 @@ import CanvasJSReact from './canvasjs.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 import React, { Component } from "react";
-import  $ from 'jquery';
 import axios from "axios";
 
 const initialState = {

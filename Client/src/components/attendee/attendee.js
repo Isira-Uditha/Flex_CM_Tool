@@ -33,14 +33,6 @@ class Attendee extends Component {
             window.location = `/auth`
         }
 
-        //API call to get posted conference
-        // axios.get(`http://localhost:8087/conference/post/conference`).then(response => {
-        //     this.setState({conference: response.data.data[0]});
-        //     console.log('CONFERENCE FETCHED', this.state.conference._id);
-        // }).catch(error => {
-        //     console.log('CONFERENCE ISSUE', error.message);
-        // })
-
         // API call to get user details
         axios.get(`http://localhost:8087/user/getUser/${user}`).then(response => {
             this.setState({userDetails: response.data.data});
@@ -51,10 +43,7 @@ class Attendee extends Component {
             axios.get(`http://localhost:8087/conference/post/conference`).then(response => {
                 this.setState({conference: response.data.data[0]});
             }).then(response => {
-                // this.setState({conference_id: response.data.data[0]._id})
-                // this.setState({conference_date: response.data.data[0].date})
                 this.setState({conference_id: this.state.conference._id})
-                // this.setState({conference_title: this.state.conference.title})
                 this.setState({conference_date: this.state.conference.date})
                 this.state.load = true;
             }).catch(error => {

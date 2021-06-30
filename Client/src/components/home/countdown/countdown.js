@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import {css} from "@emotion/react";
-import axios from "axios";
 
 const initialState = {
     days:'',
@@ -26,7 +24,6 @@ class CountDown extends Component{
     countDown(){
         console.log(this.props.date)
         let now = new Date()
-        // let eventDate = new Date(this.state.conference.date.slice(0,4),this.state.conference.date.slice(5,7),this.state.conference.date.slice(8,10));
         let eventDate = new Date(this.props.date.slice(0,4),this.props.date.slice(5,7),this.props.date.slice(8,10));
 
         let currentTime = now.getTime();

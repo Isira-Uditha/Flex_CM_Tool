@@ -11,7 +11,6 @@ import AdminView from "./components/admin/adminViewConferences/adminViewAllConfe
 import AdminDashboard from "./components/admin/adminDashboard/adminDashboard";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ResearchPresenter from "./components/researchPresenter/presenter/researchPresenter";
-import AdminAddMainUsers from "./components/admin/adminAddMainUsers/adminAddMainUsers";
 import Home from "./components/home/home";
 import DownloadTemplate from "./components/downloadTemplates/downloadTemplate";
 import AdminUserhandle from "./components/admin/adminUserhandle/adminUserhandle";

@@ -2,7 +2,6 @@ import CanvasJSReact from './canvasjs.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 import React, { Component } from "react";
-import  $ from 'jquery';
 import axios from "axios";
 
 const initialState = {
@@ -26,12 +25,10 @@ class DrillDownChart extends Component {
                 console.log('USER ADDED WORKSHOPS', response.data.data);
                 this.setState({rejected: response.data.data});
                 console.log(response.data.data)
-                // this.setState({seriesPie: [this.state.rejected,this.state.approved]});
                 axios.get(`http://localhost:8087/reviewer/amountPendingWorkshops`).then(response => {
                     console.log('USER ADDED WORKSHOPS', response.data.data);
                     this.setState({pending: response.data.data});
                     console.log(response.data.data)
-                    // this.setState({seriesPie: [this.state.rejected,this.state.approved]});
                 })
 
             })
@@ -41,7 +38,7 @@ class DrillDownChart extends Component {
 
     render() {
         const options = {
-            theme: "dark2", // "light1", "dark1", "dark2",
+            theme: "dark2",
             animationEnabled: true,
             size: -2,
             title: {
@@ -59,13 +56,13 @@ class DrillDownChart extends Component {
                 indexLabel: "{name}: {y}",
                 yValueFormatString: "#,###'%'",
                 dataPoints:
-[
+                    [
 
-                { name: "Pending", y: this.state.pending},
-                { name: "Rejected", y: this.state.rejected },
-                { name: "Approved", y: this.state.approved },
+                        { name: "Pending", y: this.state.pending},
+                        { name: "Rejected", y: this.state.rejected },
+                        { name: "Approved", y: this.state.approved },
 
-]
+                    ]
 
             }]
         }
@@ -84,7 +81,7 @@ class DrillDownChart extends Component {
                             </div>
                             <div className="modal-body">
                                 <div className={"col-md-1"}>
-                                <CanvasJSChart options = {options}/>
+                                    <CanvasJSChart options = {options}/>
                                 </div>
                             </div>
                             <div className="modal-footer">

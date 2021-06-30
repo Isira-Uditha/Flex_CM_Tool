@@ -23,7 +23,6 @@ class Home extends Component{
     }
     render(){
         return (
-            // <div style={{marginTop:"56px"}}>
             <div>
             <div className={"text-white align-middle"} style={{background:"rgb(1,71,132,0.7)",backgroundImage:`url(${ConferenceImg})`,backgroundSize: "cover",height:"650px"}}  >
                 <div className={"row"}>
