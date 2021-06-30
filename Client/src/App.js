@@ -16,8 +16,10 @@ import EditConferenceAdmin from "./components/admin/adminEditConferences/adminEd
 import AdminDashboard from "./components/admin/adminDashboard/adminDashboard";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ResearchPresenter from "./components/researchPresenter/presenter/researchPresenter";
-import Home from "./components/home/home"
 import AdminAddMainUsers from "./components/admin/adminAddMainUsers/adminAddMainUsers";
+import Home from "./components/home/home";
+import Dashboard from "./components/reviewer/dashboard";
+import DownloadTemplate from "./components/downloadTemplates/downloadTemplate";
 
 
 function App() {
@@ -27,9 +29,9 @@ function App() {
                 <NavBar/>
                 <section>
                     <Switch>
-                        <Route path="/home" component={Home} />
+                        <Route path="/" component={Home} exact/>
                         <Route path="/userPage" component={UserPage} />
-                        <Route path="/conference" component={Conference} exact/>
+                        <Route path="/conference" component={Conference} />
                         <Route path="/auth" exact component={Auth} />
                         <Route path="/attendee" exact component={Attendee} />
                         <Route path="/profile" exact component={UserProfile} />
@@ -42,7 +44,8 @@ function App() {
                         <Route path="/admin-view" component={AdminView}/>
                         <Route path="/admin-dashboard" component={AdminDashboard}/>
                         <Route path="/admin-add-users" component={AdminAddMainUsers}/>
-
+                        <Route path="/dashboard" exact component={Dashboard} />
+                        <Route path="/downloads" exact component={DownloadTemplate} />
                     </Switch>
                 </section>
             </Router>

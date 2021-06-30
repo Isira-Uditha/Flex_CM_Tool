@@ -30,6 +30,7 @@ class ApproveTable extends React.Component{
         this.hideModal = this.hideModal.bind(this);
         this.rejectPaper = this.rejectPaper.bind(this);
         this.renderLabel = this.renderLabel.bind(this);
+        this.fileDownload = this.fileDownload.bind(this);
     }
 
     componentDidMount() {
@@ -42,7 +43,6 @@ class ApproveTable extends React.Component{
                 console.log(this.state.entries)
                 {this.state.entries.length > 0 && this.state.entries.map((item,index) => (
                     console.log(item.user_id.name)
-
                 ))}
             })
         }
@@ -61,11 +61,9 @@ class ApproveTable extends React.Component{
                 console.log(error.message)
                 alert(error.message)
             })
-
     }
 
     approvePaper(e , paperId) {
-   /*     e.preventDefault()*/
         this.setState({
             status: "approved"
         }, () => {
@@ -84,15 +82,12 @@ class ApproveTable extends React.Component{
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.sendApproval(paperId , approvedPost)
-
                 }
             })
-
         })
     }
 
     rejectPaper(e , paperId) {
-        /*     e.preventDefault()*/
         this.setState({
             status: "reject"
         }, () => {
@@ -111,11 +106,8 @@ class ApproveTable extends React.Component{
             }).then((result) => {
                 if (result.isConfirmed) {
                     this.sendApproval(paperId , approvedPost)
-
                 }
             })
-
-
         })
     }
 
@@ -130,11 +122,9 @@ class ApproveTable extends React.Component{
             pdf_url: pdf_url,
             created_date: created_date,
             statusView: status
-
         }, () => {
             console.log("Model123id",this.state.title)
         })
-
     }
 
     showModal = () => {
@@ -156,9 +146,22 @@ class ApproveTable extends React.Component{
         }
     }
 
+    fileDownload(file){
+        const fileWindow = window.open();
+        const url = file
+        fileWindow.document.write(
+            '<title>Visualisation</title>' +
+            '<body style="overflow: hidden; margin: 0">' +
+            '<object width="100%" width="-webkit-fill-available" height="100%" height="-webkit-fill-available" type="application/pdf" data="' + encodeURI(url) + '"></object>' +
+            '</body>'
+        );
+    }
+
 
     render(){
+
         const columns = [
+
             {
                 name: 'Researcher',
                 selector: 'user_id.name',
@@ -179,7 +182,7 @@ class ApproveTable extends React.Component{
                 name: 'File',
                 cell: row => <div>
                     {(()=>{
-                        return <a href={row.pdf_url}>Download</a>
+                        return <a href={row.pdf_url} download={row.title} onClick={()=>{this.fileDownload(row.pdf_url)}}>Download</a>
                     })()}
                 </div>,
                 selector: 'pdf_url',
@@ -201,18 +204,11 @@ class ApproveTable extends React.Component{
                 cell: row => <div>
                     {(()=>{
                         if(row.status === 'pending'){
-                          /*  return <input type="button" className="btn btn-warning" value="Pending"  data-bs-toggle="modal"  disabled={true} />*/
-                            return <h4><span style={{width:"100px"}} className="badge bg-warning">Pending</span></h4>
-                        /*    <input type="button" className="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</input>*/
-
+                            return <input type="button" style={{width:"100px"}} className="btn btn-warning" value="Pending"  data-bs-toggle="modal"  disabled={true} />
                         } else if(row.status === 'approved'){
-                         /*   return <input type="button" className="btn btn-success"  value="Approved" disabled={true} />*/
-                            return <h4><span style={{width:"100px"}}  className="badge bg-success">Approved</span></h4>
-
+                            return <input type="button" style={{width:"100px"}} className="btn btn-success"  value="Approved" disabled={true} />
                         } else {
-                            return <h4><span style={{width:"100px"}}  className="badge bg-danger">Rejected</span></h4>
-
+                            return <input type="button" style={{width:"100px"}} className="btn btn-danger"  value="Rejected" disabled={true} />
                         }
                     })()}
                 </div>,
@@ -225,32 +221,15 @@ class ApproveTable extends React.Component{
                 selector: 'createdAt',
                 sortable: true,
                 left: true,
-            }/*,
-            {
-                name: 'Options',
-                cell: row => <div>
-                    <div className="btn-group">
-                        <button className="btn btn-danger" onClick={e => this.deletePost(e, row._id)}>Delete</button>
-                        {/!*<button className="btn btn-primary" onClick={e => this.editPost(e, row._id)}>Edit</button>*!/}
-
-                    </div>
-                </div>,
-                selector: 'options',
-                sortable: true,
-                left: true,
-            }*/
-
+            }
         ]
 
         const data = this.state.entries;
-
         const tableData = {
             columns,
             data
         }
-
         const s = this.state.statusView
-
         return(
             <div className="container mt-4">
                 <div className="card p-4">
@@ -266,8 +245,6 @@ class ApproveTable extends React.Component{
                     </DataTableExtension>
                 </div>
 
-
-
                 <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                      tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -281,17 +258,9 @@ class ApproveTable extends React.Component{
                                 <div className={"col-md-12"}>
                                 <form >
                                     <div className={"row"}>
-
-
-
                                         {this.renderLabel()}
-                                        {/*<label htmlFor="recipient-name" className="col-form-label">{this.state.statusView} </label>*/}
-
                                     </div>
-
-
                                     <div className={"row"}>
-
                                         <div className={"col-md-6"}>
                                         <label htmlFor="recipient-name" className="col-form-label">Title:</label>
                                         </div>
@@ -300,7 +269,6 @@ class ApproveTable extends React.Component{
                                         </div>
                                     </div>
                                     <div className={"row"}>
-
                                         <div className={"col-md-6"}>
                                             <label htmlFor="recipient-name" className="col-form-label">Type:</label>
                                         </div>
@@ -309,7 +277,6 @@ class ApproveTable extends React.Component{
                                         </div>
                                     </div>
                                     <div className={"row"}>
-
                                         <div className={"col-md-6"} >
                                             <label htmlFor="recipient-name" className="col-form-label">File:</label>
                                         </div>
@@ -318,7 +285,6 @@ class ApproveTable extends React.Component{
                                         </div>
                                     </div>
                                     <div className={"row"}>
-
                                         <div className={"col-md-6"} >
                                             <label htmlFor="recipient-name" className="col-form-label">Created Date:</label>
                                         </div>
@@ -326,7 +292,6 @@ class ApproveTable extends React.Component{
                                             <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.created_date} </b></label>
                                         </div>
                                     </div>
-
                                 </form>
                                 </div>
                             </div>
@@ -338,15 +303,9 @@ class ApproveTable extends React.Component{
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
-
-
         )
     }
 }
-
 
 export default ApproveTable;
