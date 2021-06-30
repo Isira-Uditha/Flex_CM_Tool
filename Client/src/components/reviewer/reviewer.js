@@ -54,7 +54,7 @@ class Reviewer extends React.Component{
                         <ApproveWorkshopTable/>
                         <div style={{
                             position: 'absolute',
-                            right: 220,
+                            right: 320,
                             top: 160,
                         }}
                         >
@@ -70,10 +70,10 @@ class Reviewer extends React.Component{
                             <br/><br/>
                                 <div  style={{
                                     position: 'absolute',
-                                    right: 220,
+                                    right: 320,
                                     top: 160,
                                 }}>
-                                <Chart/>
+                                    <Chart/>
                                 </div>
                         <ApproveTable  isResearch = {this.state.isResearch} />
                             </div>

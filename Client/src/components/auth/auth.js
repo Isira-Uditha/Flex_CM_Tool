@@ -40,7 +40,7 @@ class Auth extends React.Component{
     validateContactNumber(e){
         console.log(e.target.value.length);
         if(e.target.value.length>10) {
-            alert("mBILE nUMBER SHOULD BE LESS THAN 10 DIGITS")
+            alert("MOBILE nUMBER SHOULD BE LESS THAN 10 DIGITS")
         }
     }
 
@@ -76,13 +76,20 @@ class Auth extends React.Component{
         e.preventDefault();
 
         if(this.state.isSignUp) {
-            if (this.state.password != this.state.confirmPassword) {
+           const { value } = this.state.password;
+            const re = new RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\\w\\s]).{8,}$");
+            const isOk = re.test(this.state.password);
+
+            if (!isOk) {
+                document.getElementById("WeakPasswordMatchAlert").style.display = "block";
+            }else if (this.state.password != this.state.confirmPassword) {
                 document.getElementById("InvalidPasswordMatchAlert").style.display = "block";
             }else if(this.state.contact.length<10){
                 document.getElementById("InvalidContactAlert").style.display = "block";
             }
             else {
                 document.getElementById("InvalidPasswordMatchAlert").style.display = "none";
+                document.getElementById("WeakPasswordMatchAlert").style.display = "none";
                 let user = {
                     name: this.state.firstName + " " + this.state.lastName,
                     email: this.state.email,
@@ -150,6 +157,9 @@ class Auth extends React.Component{
                         </div>
                         <div className="alert alert-danger" role="alert" style={{display:"none"}} id="InvalidPasswordMatchAlert">
                            Password and Confirm Passwords are mismatched!
+                        </div>
+                        <div className="alert alert-danger" role="alert" style={{display:"none"}} id="WeakPasswordMatchAlert">
+                           Password must cotain At least one upper case English letter, one lower case, one digit, one special character  and Minimum eight in length
                         </div>
                         <h5 htmlFor="title"  className="form-label mb-4" style={{textAlign:"center"}}>{this.state.isSignUp ? 'Sign Up' : 'Sign In'}</h5>
 

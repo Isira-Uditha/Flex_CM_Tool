@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import UserSession from "../auth/userSession";
 import Notification from "../reviewer/notification";
+import * as RoleTypes from "../auth/rolesTypes.constants"
 
 const initialState = {
     session: true,
+    roleAdmin: false,
+    roleEditor: false,
+    roleReviewer: false,
+    roleResearcher: false,
+    roleWorkshop: false,
+    roleDownloads: false,
 }
 
 class NavBar extends React.Component{
@@ -25,8 +32,21 @@ class NavBar extends React.Component{
     }
 
     componentDidMount() {
-        if(UserSession.getName() == "null")
-            this.setState({session:false})
+        if (UserSession.getName() == "null") {
+            this.setState({session: false})
+        }else if(UserSession.getRole() == RoleTypes.ADMIN ){
+            this.setState({roleAdmin: true})
+        }else if(UserSession.getRole() == RoleTypes.EDITOR){
+            this.setState({roleEditor: true})
+        }else if(UserSession.getRole() == RoleTypes.REVIEWER){
+            this.setState({roleReviewer: true})
+        }else if(UserSession.getRole() == RoleTypes.RESEARCHER){
+            this.setState({roleResearcher: true})
+            this.setState({roleDownloads: true})
+        }else if(UserSession.getRole() == RoleTypes.WORKSHOP_PRESENTEE){
+            this.setState({roleWorkshop: true})
+            this.setState({roleDownloads: true})
+        }
     }
 
     renderNotification(){
@@ -39,27 +59,52 @@ class NavBar extends React.Component{
         <div>
             <nav className="navbar navbar-expand-lg navbar-light fixed-top w-100" style={{background:"rgb(1,71,132,0.5)"}} >
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#" style={{color:"yellow"}}><b>FLEX</b></a>
+                    <a className="navbar-brand" href="/" style={{color:"yellow"}}><b>FLEX</b></a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link active" style={{color:"whitesmoke"}} aria-current="page" href="/home">Home</a>
+                                <a className="nav-link active" style={{color:"whitesmoke"}} aria-current="page" href="/">Home</a>
                             </li>
-                            {this.state.session ?
+                            {this.state.roleAdmin ?
+                                <li className="nav-item">
+                                    <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"
+                                       href="#">DashBoard</a>
+                                </li>: " "
+                            }
+                            {this.state.roleEditor ?
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"
                                        href="/conference">Conference</a>
                                 </li>: " "
                             }
-                            <li className="nav-item">
-                                <a className="nav-link" style={{color:"whitesmoke"}} href="/"></a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" style={{color:"whitesmoke"}} href="/"></a>
-                            </li>
+                            {this.state.roleReviewer ?
+                                <li className="nav-item">
+                                    <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"
+                                       href="/reviewer">Review</a>
+                                </li>: " "
+                            }
+                            {this.state.roleResearcher ?
+                                <li className="nav-item">
+                                    <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"
+                                       href="/userPage">Researches</a>
+                                </li>: " "
+                            }
+                            {this.state.roleWorkshop ?
+                                <li className="nav-item">
+                                    <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"
+                                       href="/presenter">Workshops</a>
+                                </li>: " "
+                            }
+                            {this.state.roleDownloads ?
+                                <li className="nav-item">
+                                    <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"
+                                       href="/downloads">Downloads</a>
+                                </li>: " "
+                            }
+
                             {this.state.session ?
                                 <li className="nav-item" style={{
                                 position: 'absolute',
@@ -90,9 +135,7 @@ class NavBar extends React.Component{
                                     </a>}
                                 </div>
                             </li>
-
                         </ul>
-
                     </div>
                 </div>
             </nav>
