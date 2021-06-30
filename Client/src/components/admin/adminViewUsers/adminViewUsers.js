@@ -90,7 +90,7 @@ class All_Users extends React.Component {
             {
                 name: 'Options',
                 cell: row => <div>
-                    <input  className="btn btn-primary" onClick={e => this.navigateToUserEdit(e, row._id)}  value="Edit" type="button" aria-disabled="true"/>
+                    <input  className="btn btn-primary" onClick={() => this.props.editUser(row._id)}  value="Edit" type="button" aria-disabled="true"/>
                     &nbsp;&nbsp;
                     <input className="btn btn-danger" onClick={(e) => this.deleteUsers(e,row._id)}  value="Delete" type="button" aria-disabled="true"/>
                 </div>,

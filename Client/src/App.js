@@ -18,6 +18,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ResearchPresenter from "./components/researchPresenter/presenter/researchPresenter";
 import Home from "./components/home/home"
 import AdminAddMainUsers from "./components/admin/adminAddMainUsers/adminAddMainUsers";
+import AdminUserhandle from "./components/admin/adminUserhandle/adminUserhandle";
 
 
 
@@ -42,7 +43,7 @@ function App() {
                         <Route path="/Edit-admin-conferences/:id" component={EditConferenceAdmin}/>
                         <Route path="/admin-view" component={AdminView}/>
                         <Route path="/admin-dashboard" component={AdminDashboard}/>
-                        <Route path="/admin-add-users" component={AdminAddMainUsers}/>
+                        <Route path="/admin-add-users" component={AdminUserhandle}/>
 
 
 
