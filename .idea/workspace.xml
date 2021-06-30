@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b28913d8-b9a3-41aa-8c09-6146de8f9305" name="Default Changelist" comment="init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.cache/5b/4b4c6a5b8c6ca1b3a879aa4337e508.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/5b/4b4c6a5b8c6ca1b3a879aa4337e508.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.cache/c5/65525e585464335146def266676e31.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/c5/65525e585464335146def266676e31.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.cache/e4/9eb1283289a719e7277ff4b8f54c9e.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/.cache/e4/9eb1283289a719e7277ff4b8f54c9e.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Rest-Services/src/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/Rest-Services/src/test/test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
