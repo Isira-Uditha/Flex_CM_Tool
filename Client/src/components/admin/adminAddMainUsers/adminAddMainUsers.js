@@ -13,8 +13,8 @@ const options = [
 ]
 
 const initialState = {
-    // firstName: '',
-    // lastName: '',
+    firstName: '',
+    lastName: '',
     name: '',
     email: '',
     password: '',
@@ -66,7 +66,7 @@ class AdminAddMainUsers extends React.Component {
         }
         else {
             let admin = {
-                name: this.state.name,
+                name: this.state.firstName + " " + this.state.lastName,
                 email: this.state.email,
                 password: this.state.password,
                 contact: this.state.contact,
@@ -91,43 +91,49 @@ class AdminAddMainUsers extends React.Component {
             <div className="container">
                 <br/><br/><br/><br/>
                 <div className="card p-4">
+                    <div className="alert alert-danger" role="alert" style={{display:"none"}} id="InvalidContactAlert">
+                        Invalid Contact Number! Contact Number should contain 10 digits
+                    </div>
+                    <div className="alert alert-danger" role="alert" style={{display:"none"}} id="InvalidPasswordMatchAlert">
+                        Password and Confirm Passwords are mismatched!
+                    </div>
                     <form onSubmit={this.onSubmit}>
 
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="mb-3" style={{textAlign: "left"}}>
                                     <label htmlFor="file" className="form-label">First Name</label>
-                                    <div className="form-floating mb-3">
+
                                         <input type="text"
-                                               id="name"
-                                               name="name"
+                                               id="firstName"
+                                               name="firstName"
                                                className="form-control"
                                                placeholder=""
-                                               value={this.state.name}
+                                               value={this.state.firstName}
                                                onChange={this.onChange}
                                                required
                                         />
-                                        <label htmlFor="title">name</label>
+
+
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="mb-3" style={{textAlign: "left"}}>
+                                    <label htmlFor="file" className="form-label">Last Name</label>
+                                    <div className="form-floating mb-3">
+                                        <input type="text"
+                                               id="lastName"
+                                               name="lastName"
+                                               className="form-control"
+                                               placeholder=""
+                                               value={this.state.lastName}
+                                               onChange={this.onChange}
+                                               required
+                                        />
+
                                     </div>
                                 </div>
                             </div>
-                            {/*<div className="col-md-6">*/}
-                            {/*    <div className="mb-3" style={{textAlign: "left"}}>*/}
-                            {/*        <label htmlFor="file" className="form-label">Last Name</label>*/}
-                            {/*        <div className="form-floating mb-3">*/}
-                            {/*            <input type="text"*/}
-                            {/*                   id="lastName"*/}
-                            {/*                   name="lastName"*/}
-                            {/*                   className="form-control"*/}
-                            {/*                   placeholder=""*/}
-                            {/*                   value={this.state.lastName}*/}
-                            {/*                   onChange={this.onChange}*/}
-                            {/*                   required*/}
-                            {/*            />*/}
-                            {/*            <label htmlFor="title">First Name</label>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
 
 
                             <div className="col-md-6">
@@ -215,7 +221,7 @@ class AdminAddMainUsers extends React.Component {
                             <div className="col-md-6">
                                 <div className="mb-3" style={{textAlign: "left"}}>
                                     <label htmlFor="file" className="form-label">Role</label>
-                                    <div className="form-floating">
+
                                         <Select
 
                                             classNamePrefix="select"
@@ -227,8 +233,8 @@ class AdminAddMainUsers extends React.Component {
                                             required
                                         />
                                         <label htmlFor="type"></label>
-                                    </div>
-                                </div>
+
+                             </div>
                             </div>
 
 

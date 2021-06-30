@@ -4,8 +4,8 @@ const controller = require('../controllers/admin.controller');
 
 module.exports = function () {
     router.patch('/approveConference/:id', controller.approveConference);
-    router.get('/amountApprovedConference', controller.getAmountOfConferenceApproves);
-    router.get('/amountRejectedConference', controller.getAmountOfConferenceReject);
+    router.get('/admin/amountApprovedConference', controller.getAmountOfConferenceApproves);
+    router.get('/admin/amountRejectedConference', controller.getAmountOfConferenceReject);
     router.get('/amountPendingConference', controller.getAmountOfConferencePending);
     router.get('/amountApprovesResearches', controller.getAmountOfResearchApproves);
     // router.get('/amountRejectedResearches', controller.getAmountOfResearchRejected);

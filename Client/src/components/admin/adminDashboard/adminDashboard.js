@@ -3,6 +3,9 @@ import AdminPieChart from "./adminPieChart";
 import ResearchSummaryChart from "./Charts/researchSummaryChart";
 import WorkshopSummaryChart from "./Charts/workshopSummaryChart";
 import UserSummaryBarChart from "./Charts/userSummaryBarChart";
+// import ConferenceSummaryChart from "./Charts/conferenceSummaryChart";
+// import UserSummaryChart from "./Charts/userChart";
+import ConferenceChart from "./Charts/conferenceChart";
 
 
 class AdminDashboard extends React.Component{
@@ -14,32 +17,43 @@ class AdminDashboard extends React.Component{
         return (
 
             <div className="container">
-                <br/><br/>                <br/><br/>
 
-                {/*<div className="card" style={{width: "18rem"}}>
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk
-                            of the card's content.</p>
-                        <a href="#" className="card-link">Card link</a>
-                        <a href="#" className="card-link">Another link</a>
-                    </div>
-                </div>
-*/}
-                <a href="/admin-view"><button type="button" className="btn btn-secondary">aprrove</button></a>
-
-
-                <a href="/admin-add-users"><button type="button" className="btn btn-secondary">add Users</button></a>
-                {/*<AdminPieChart></AdminPieChart>*/}
+                <br/>    <br/>       <br/>    <br/><br/>
                 <div className="row">
+
+                    <div className={"col-md-5"}>
+                        <UserSummaryBarChart/>
+                    </div>
                     <div className={"col-md-5"}>
                         <ResearchSummaryChart/>
                     </div>
-                    <div className={"col-md-5"}>
-                        <UserSummaryBarChart/>
-
+                    <br/>
+                    <div className={"col-md-2"}>
+                        <div className="card m-2 border-secondary border-4"
+                             style={{width: "18rem", background: "rgb(255,255,255,0.8)"}}>
+                            {/* <img className="card-img-top mx-auto mt-2" style={{  width: "100%", height: "15vw", objectFit: "cover"}}  alt="Card image cap"/>*/}
+                            <div className="card-body">
+                                <h5 className="card-title">User Management</h5>
+                                <p className="card-text">All Users Managed by the Administator</p>
+                                <br/>
+                                <a href={"/admin-add-users"}
+                                   style={{background: "rgb(8, 48, 84, 0.7)"}} className="btn btn-primary">Manage Users</a>
+                            </div>
+                        </div>
+                        <br/>
+                        <div className="card m-2 border-secondary border-4"
+                             style={{width: "18rem", background: "rgb(255,255,255,0.8)"}}>
+                            {/* <img className="card-img-top mx-auto mt-2" style={{  width: "100%", height: "15vw", objectFit: "cover"}}  alt="Card image cap"/>*/}
+                            <div className="card-body">
+                                <h5 className="card-title">Conference Management</h5>
+                                <p className="card-text">All Approval and Rejecetions of Conferences are managed by the Administrator..</p>
+                                <br/>
+                                <a href={"/"}
+                                   style={{background: "rgb(8, 48, 84, 0.7)"}} className="btn btn-primary">Manage Conferences</a>
+                            </div>
+                        </div>
                     </div>
+
 
                 </div>
                 <br/>
@@ -48,12 +62,13 @@ class AdminDashboard extends React.Component{
                         <WorkshopSummaryChart/>
                     </div>
                     <div className={"col-md-5"}>
-                      {/*  <UserSummaryBarChart/>*/}
-
+                        <ConferenceChart/>
                     </div>
 
                 </div>
-               </div>
+
+            </div>
+
 
 
         );

@@ -49,7 +49,9 @@ class All_Users extends React.Component {
             })
     }
 
-
+    navigateToUserEdit(e, _id){
+        window.location = `/Edit-admin-conferences/${_id}`;
+    }
 
     render() {
 
@@ -59,11 +61,7 @@ class All_Users extends React.Component {
                 selector: 'name',
                 sortable: true,
             },
-            {
-                name: 'name',
-                selector: 'name',
-                sortable: true,
-            },
+
             {
                 name: 'email',
                 selector: 'email',
