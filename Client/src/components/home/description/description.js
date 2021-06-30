@@ -29,7 +29,7 @@ class Description extends Component{
                     <div className={"row"}>
                         <div className={"col-md-2"}>&nbsp;</div>
                         <div className={"col-md-8"}>
-                            <span className={"align-middle text-warning"}  style={{fontSize:"40px",fontStyle: 'bold',fontFamily:'Georgia'}} >International Conference On Advancement In Computing {this.state.year}</span>
+                            <span className={"align-middle text-uppercase  text-warning"}  style={{fontSize:"30px",fontStyle: 'bold',fontFamily:'Georgia'}} >International Conference On Advancement In Computing <h1>{this.state.year}</h1></span>
                         </div>
                         <div className={"col-md-2"}>&nbsp;</div>
                     </div>

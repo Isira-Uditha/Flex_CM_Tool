@@ -80,6 +80,22 @@ class NavBar extends React.Component{
                                        href="/conference">Conference</a>
                                 </li>: " "
                             }
+                            <li className="nav-item">
+                                <a className="nav-link" style={{color:"whitesmoke"}} href="/approved-conferences">Approved Conferences</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" style={{color:"whitesmoke"}} href="/">All Conferences</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" style={{color:"whitesmoke"}} href=" /admin-view">Admin view</a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a className="nav-link" style={{color:"whitesmoke"}} href=" /admin-dashboard">Admin DashBoard</a>
+                            </li>
+                            <li className="nav-item">
+                                {/*<a className="nav-link" style={{color:"whitesmoke"}} href="/"></a>*/}
+                            </li>
                             {this.state.roleReviewer ?
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"

@@ -33,20 +33,13 @@ class Home extends Component{
                         <div className={"row mb-5"}>
                             <span className={"align-middle border-5"}  style={{fontSize:"2rem",fontStyle: 'italic'}} >Welcome To Flex Conference</span>
                         </div>
-                        <span className={"align-middle border border-5 p-3 mb-5"} style={{fontFamily:"Georgia",fontSize:"6rem"}}>{this.props.title}</span>
+                        <span className={"text-uppercase align-middle border border-5 p-3 mb-5"} style={{fontFamily:"Georgia",fontSize:"5rem"}}>{this.props.title}</span>
                         <div className={"row"}>
                             <div className={"mt-5"}>
                                 <div className={"row mb-3"}></div>
                                 <button type={"button"} style={{fontSize:"2rem",fontFamily:"Monospace",fontStyle:"bold"}} onClick={(e) => {this.canvasRender(e),this.props.displayCollapse(e)}}  className="btn btn-warning text-white">{(this.state.hidden == "" ?("Tell Me More") : "Close")}</button>
                             </div>
                         </div>
-                        {/*<div className={"row mt-3 text-start"}>*/}
-                        {/*    <div className={`collapse ${this.state.hidden} container col-md-5`} id="collapseExample">*/}
-                        {/*        <div className="card card-body bg-secondary text-white">*/}
-                        {/*            <div dangerouslySetInnerHTML={{ __html: this.props.tracks }}/>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
                     </div>
                 </div>
             </div>

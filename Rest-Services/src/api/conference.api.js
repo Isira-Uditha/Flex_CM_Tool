@@ -10,6 +10,7 @@ module.exports = function () {
     router.get('/:id', controller.getConference);
     router.get('/post/conference', controller.getConferenceForPost);
     router.delete('/:id', controller.deleteConference);
+    router.get('/workshop/:id', controller.getWorkshopsForConference);
     return router;
 }
 

@@ -90,16 +90,29 @@ class Auth extends React.Component{
             else {
                 document.getElementById("InvalidPasswordMatchAlert").style.display = "none";
                 document.getElementById("WeakPasswordMatchAlert").style.display = "none";
-                let user = {
-                    name: this.state.firstName + " " + this.state.lastName,
-                    email: this.state.email,
-                    password: this.state.password,
-                    contact: this.state.contact,
-                    address: this.state.address,
-                    organization: this.state.organization,
-                    role: this.state.selectedRole,
-
-                };
+                let user;
+                if(this.state.selectedRole == RoleTypes.ATTENDEE){
+                    user = {
+                        name: this.state.firstName + " " + this.state.lastName,
+                        email: this.state.email,
+                        password: this.state.password,
+                        contact: this.state.contact,
+                        address: this.state.address,
+                        organization: this.state.organization,
+                        role: this.state.selectedRole,
+                        payment_status:"pending"
+                    };
+                }else {
+                    user = {
+                        name: this.state.firstName + " " + this.state.lastName,
+                        email: this.state.email,
+                        password: this.state.password,
+                        contact: this.state.contact,
+                        address: this.state.address,
+                        organization: this.state.organization,
+                        role: this.state.selectedRole,
+                    };
+                }
                 console.log("Data to Send ", user);
                  axios.post('http://localhost:8087/user/create', user)
                      .then(response => {
@@ -169,7 +182,7 @@ class Auth extends React.Component{
                                     <div className={"row"}>
                                         <div className={"col-md-6"}>
                                             <div className="mb-3" style={{textAlign: "left"}}>
-                                                <div className="form-floating" >
+                                                <div className="form-floating">
                                                     <input
                                                         type="text"
                                                         className="form-control"
@@ -340,12 +353,11 @@ class Auth extends React.Component{
                                     )
                                 }
                             </div>
-
                             <div className="row">
                                 <div className="col-md-12" style={{textAlign:"center"}}>
-                                    { this.state.isSignUp ?   <button type="submit" className="btn btn-primary">Sign Up</button> :    <button type="submit" className="btn btn-primary">Sign In</button>}
+                                    { this.state.isSignUp ?   <button type="submit" className="btn btn-primary">Submit</button> :    <button type="submit" className="btn btn-primary">Sign In</button>}
                                 </div>
-                                <br/>      <br/>
+                                <br/>
                                 { this.state.isSignUp ? <a href="#" onClick={this.switchSignIn}>Already Have an Account? Click here for
                                     Sign In</a> :  <a href="#" onClick={this.switchSignUp}>Do Not have an Account? Click here for
                                     Sign Up</a>}

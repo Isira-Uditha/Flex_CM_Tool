@@ -32,6 +32,7 @@ const deletePost = async (req, res) => {
 
         if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post matched with the ID'); //id validation
         await Post.findByIdAndRemove(id); //Removing the post
+        res.json('Post deleted!');
     }
 }
 

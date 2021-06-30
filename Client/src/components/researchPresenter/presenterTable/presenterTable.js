@@ -26,7 +26,7 @@ class PresenterTable extends Component {
     }
 
     componentDidMount() {
-        //cheking the available user session
+        //checking the available user session
         const user = UserSession.getName();
 
         //API call to fetch user details
@@ -63,7 +63,9 @@ class PresenterTable extends Component {
                             'Your file has been deleted.',
                             'success'
                         )
-                        this.props.parentReload();
+                        setTimeout(()=>{
+                            this.props.parentReload();
+                        },3000);
                     }).catch(error => {
                     console.log(error.message);
                     Swal.fire({
@@ -167,7 +169,6 @@ class PresenterTable extends Component {
 
         return (
             <div className="container mt-4">
-                {this.renderNotification()}
                 <div className="card p-4">
                     <h5 htmlFor="title" className="form-label" style={{textAlign: "left"}}>Uploads</h5>
                     <DataTableExtension {...tableData}>

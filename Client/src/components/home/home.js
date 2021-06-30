@@ -8,6 +8,9 @@ import Description from "./description/description";
 import "./home.css";
 import CountDown from "./countdown/countdown";
 import Speakers from "./speakers/speakers";
+import Carousel from "./carousel/carousel";
+import Workshops from "./workshops/workshops";
+import Footer from "../footer/footer";
 
 const initialState = {
     conference: [],
@@ -72,6 +75,9 @@ class Home extends Component{
                     <Description date={this.state.conference.date} description={this.state.conference.description}/>
                     <CountDown date={this.state.conference.date}/>
                     <Speakers speakers={this.state.conference.speakers} g_speaker={this.state.conference.g_speaker} g_url={this.state.conference.g_url}/>
+                    <Carousel/>
+                    <Workshops conference_id={this.state.conference._id}/>
+                    <Footer/>
                 </div>
             ):''}
 

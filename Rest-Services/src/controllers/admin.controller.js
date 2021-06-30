@@ -1,7 +1,60 @@
+const Conference = require('../models/Conference.model');
 const Post = require('../models/Post.model');
 const Workshop = require('../models/Workshop.model');
 const mongoose = require("mongoose");
-const User = require('../models/User.model');
+const User = require("../models/User.model");
+
+const approveConference = async (req, res) => {
+    if (req.params && req.params.id) {
+        const {id} = req.params; //fetching the id of the post item
+        const conference = req.body;
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post With That id'); //Validating the Post id
+        const approveConference = await Conference.findByIdAndUpdate(id, conference,{new : true}); //Find and Update operation
+        res.json(approveConference);
+    }
+}
+
+const getAmountOfConferenceApproves = async (req, res) => {
+    await Conference.find({
+        status: "A",
+    })
+
+        .then(data => {
+            const  amount = data.length
+            res.status(200).send({data: amount})
+        })
+        .catch(error => {
+            res.status(500).send({error: error.message})
+        });
+}
+
+const getAmountOfConferenceReject = async (req, res) => {
+    await Conference.find({
+        status: "R",
+    })
+
+        .then(data => {
+            const  amount = data.length
+            res.status(200).send({data: amount})
+        })
+        .catch(error => {
+            res.status(500).send({error: error.message})
+        });
+}
+
+const getAmountOfConferencePending = async (req, res) => {
+    await Conference.find({
+        status: "P",
+    })
+
+        .then(data => {
+            const  amount = data.length
+            res.status(200).send({data: amount})
+        })
+        .catch(error => {
+            res.status(500).send({error: error.message})
+        });
+}
 
 const getAmountOfResearchApproves = async (req, res) => {
     await Post.find({
@@ -43,51 +96,6 @@ const getAmountOfResearchPending= async (req, res) => {
             res.status(500).send({error: error.message})
         });
 }
-
-const summaryOfResearchesStatus = async (req, res) => {
-    await Post.aggregate([
-        {
-            $match: {
-                createdAt: {
-                    $gte: new Date(new Date().getTime() - 1000 * 3600 * 24 * 7),
-                    $lt: new Date(),
-                },
-            },
-        },
-        {
-            $group: {
-                _id: {
-                    "name": "$user_id",
-                  "status":  "$status"
-                },
-                count: {
-                    $sum: 1,
-                },
-            },
-        },
-    ])
-        .then(data => {
-            const  amount = data.length
-            res.status(200).send({data: data})
-            console.log(new Date(new Date().getTime() - 1000 * 3600 * 24 * 7))
-        })
-        .catch(error => {
-            res.status(500).send({error: error.message})
-        });
-}
-
-//Workshops
-const approveWorkshopPaper = async (req, res) => {
-    if (req.params && req.params.id) {
-        const {id} = req.params; //fetching the id of the post item
-        const workshop = req.body;
-
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post With That id'); //Validating the Post id
-        const approvedWorkshop = await Workshop.findByIdAndUpdate(id, workshop,{new : true}); //Find and Update operation
-        res.json(approvedWorkshop);
-    }
-}
-
 const getAmountOfWorkshopApproves = async (req, res) => {
     await Workshop.find({
         status: "approved",
@@ -142,8 +150,8 @@ const summaryOfUsers = async (req, res) => {
             $group: {
                 _id:
 
-                     "$role"
-               ,
+                    "$role"
+                ,
                 count: {
                     $sum: 1,
                 },
@@ -162,14 +170,22 @@ const summaryOfUsers = async (req, res) => {
 
 
 
+
 module.exports = {
+    approveConference,
+    getAmountOfConferenceApproves,
+    getAmountOfConferenceReject,
+    getAmountOfConferencePending,
     getAmountOfResearchApproves,
+
     getAmountOfResearchRejected,
-    summaryOfResearchesStatus,
-    approveWorkshopPaper,
     getAmountOfResearchPending,
+
     getAmountOfWorkshopApproves,
     getAmountOfWorkshopRejected,
     getAmountOfWorkshopPending,
+
     summaryOfUsers
-};
+
+
+}

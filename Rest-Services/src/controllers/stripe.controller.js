@@ -21,7 +21,7 @@ router.post('/pay', (req, res, next) => {
         source: token
     }).then(customer => {
         stripe.charges.create({
-            amount: amount * 100,
+            amount: amount,
             currency: 'usd',
             customer: customer.id,
             receipt_email: token.email
