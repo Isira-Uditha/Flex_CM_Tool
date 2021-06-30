@@ -13,14 +13,6 @@ class Footer extends Component{
         this.state = initialState;
     }
 
-    componentWillMount() {
-
-    }
-
-    componentDidMount() {
-
-    }
-
     render(){
 
         return (

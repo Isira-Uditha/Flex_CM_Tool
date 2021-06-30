@@ -8,8 +8,6 @@ module.exports = function () {
     router.get('/admin/amountRejectedConference', controller.getAmountOfConferenceReject);
     router.get('/amountPendingConference', controller.getAmountOfConferencePending);
     router.get('/amountApprovesResearches', controller.getAmountOfResearchApproves);
-    // router.get('/amountRejectedResearches', controller.getAmountOfResearchRejected);
-    // router.get('/summaryOfResearchesStatus', controller.summaryOfResearchesStatus);
     router.get('/amountRejectedResearches', controller.getAmountOfResearchRejected)
     router.get('/amountPendingResearches', controller.getAmountOfResearchPending);
     router.get('/amountApprovesWorkshops', controller.getAmountOfWorkshopApproves);

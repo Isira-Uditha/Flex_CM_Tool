@@ -58,7 +58,7 @@ const summaryOfResearchesStatus = async (req, res) => {
             $group: {
                 _id: {
                     "name": "$user_id",
-                  "status":  "$status"
+                    "status":  "$status"
                 },
                 count: {
                     $sum: 1,
@@ -140,10 +140,7 @@ const summaryOfUsers = async (req, res) => {
         },
         {
             $group: {
-                _id:
-
-                     "$role"
-               ,
+                _id: "$role",
                 count: {
                     $sum: 1,
                 },

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 
 
 const initialState = {
@@ -15,19 +14,6 @@ class Speakers extends Component{
         this.setProps  = this.setProps.bind(this);
 
     }
-
-    // componentDidMount() {
-    //     axios.get(`http://localhost:8087/conference/post/conference`)
-    //         .then(response => {
-    //             this.setState({ conference: response.data.data[0] });
-    //             console.log(this.state.conference);
-    //         }).then(
-    //         response =>{
-    //             setTimeout(() => {
-    //                 this.setState({loading:false})
-    //             },1500)
-    //         });
-    // }
 
     componentDidMount() {
         this.setProps();

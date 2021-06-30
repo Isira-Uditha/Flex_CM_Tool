@@ -23,12 +23,10 @@ class Chart extends Component {
                 console.log('USER ADDED WORKSHOPS', response.data.data);
                 this.setState({rejected: response.data.data});
                 console.log(response.data.data)
-                // this.setState({seriesPie: [this.state.rejected,this.state.approved]});
                 axios.get(`http://localhost:8087/reviewer/amountPendingResearches`).then(response => {
                     console.log('USER ADDED WORKSHOPS', response.data.data);
                     this.setState({pending: response.data.data});
                     console.log(response.data.data)
-                    // this.setState({seriesPie: [this.state.rejected,this.state.approved]});
                 })
             })
         })
@@ -39,7 +37,7 @@ class Chart extends Component {
         const options = {
             animationEnabled: true,
             exportEnabled: true,
-            theme: "dark2", // "light1", "dark1", "dark2",
+            theme: "dark2",
             size: 1,
             title:{
                 text: "Approval Status "
@@ -76,9 +74,7 @@ class Chart extends Component {
                                 <CanvasJSChart options = {options}
                                 />
                             </div>
-                            <div className="modal-footer">
-
-                            </div>
+                            <div className="modal-footer"></div>
                         </div>
                     </div>
                 </div>
