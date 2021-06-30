@@ -112,11 +112,11 @@ class PresenterTable extends Component {
                 cell: row => <div>
                     {(() => {
                         if (row.status === 'pending') {
-                            return <h5><span style={{width: "100px"}} className="badge bg-warning">Pending</span></h5>
+                            return <h5><span className="btn btn-warning disabled">Pending</span></h5>
                         } else if (row.status === 'approved') {
-                            return <h5><span style={{width: "100px"}} className="badge bg-success">Approved</span></h5>
+                            return <h5><span className="btn btn-success disabled">Approved</span></h5>
                         } else {
-                            return <h5><span style={{width: "100px"}} className="badge bg-danger">Rejected</span></h5>
+                            return <h5><span className="btn btn-danger disabled">Rejected</span></h5>
                         }
                     })()}
                 </div>,
@@ -135,19 +135,19 @@ class PresenterTable extends Component {
                 cell: row => <div>
                     {(() => {
                         if (row.status === 'approved') {
-                            return <div className="btn-group">
+                            return <div>
                                 <button className="btn btn-primary" onClick={() => this.props.editWorkshop(row._id)}
                                         disabled={true}>Edit
-                                </button>
+                                </button>&nbsp;&nbsp;
                                 <button className="btn btn-danger" onClick={e => this.deleteWorkshop(e, row._id)}
                                         disabled={true}>Delete
                                 </button>
                             </div>
                         } else {
-                            return <div className="btn-group">
+                            return <div>
                                 <button className="btn btn-primary"
                                         onClick={() => this.props.editWorkshop(row._id)}>Edit
-                                </button>
+                                </button>&nbsp;&nbsp;
                                 <button className="btn btn-danger" onClick={e => this.deleteWorkshop(e, row._id)}>Delete
                                 </button>
                             </div>

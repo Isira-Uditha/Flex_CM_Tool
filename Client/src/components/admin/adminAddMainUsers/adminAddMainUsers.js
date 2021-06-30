@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import Swal from "sweetalert2";
 import Select from 'react-select';
 import axios from "axios";
-import * as RoleTypes from "../../auth/rolesTypes.constants"
-import All_Users from "../adminViewUsers/adminViewUsers";
 import UserSession from "../../auth/userSession";
-import PostForm from "../../userProfile/postForm/postForm";
 
 const options = [
     { value: 'Editor', label: 'Editor' },

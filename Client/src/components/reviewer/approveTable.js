@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Stripe from "react-stripe-checkout";
 import DataTableExtension from "react-data-table-component-extensions";
 import DataTable from "react-data-table-component";
 import Swal from "sweetalert2";
-import Modal from "./approveModel";
 
 const initialState = {
     IsResearch: true,
@@ -146,11 +144,11 @@ class ApproveTable extends React.Component{
         }
     }
 
-    fileDownload(file){
+    fileDownload(file,title){
         const fileWindow = window.open();
         const url = file
         fileWindow.document.write(
-            '<title>Visualisation</title>' +
+            '<title>'+ title +'</title>' +
             '<body style="overflow: hidden; margin: 0">' +
             '<object width="100%" width="-webkit-fill-available" height="100%" height="-webkit-fill-available" type="application/pdf" data="' + encodeURI(url) + '"></object>' +
             '</body>'
@@ -182,7 +180,7 @@ class ApproveTable extends React.Component{
                 name: 'File',
                 cell: row => <div>
                     {(()=>{
-                        return <a href={row.pdf_url} download={row.title} onClick={()=>{this.fileDownload(row.pdf_url)}}>Download</a>
+                        return <a href={row.pdf_url} download={row.title} onClick={()=>{this.fileDownload(row.pdf_url,row.title)}}>Download</a>
                     })()}
                 </div>,
                 selector: 'pdf_url',
@@ -274,14 +272,6 @@ class ApproveTable extends React.Component{
                                         </div>
                                         <div className={"col-md-6"} style={{textAlign: "left"}}>
                                             <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.type} </b></label>
-                                        </div>
-                                    </div>
-                                    <div className={"row"}>
-                                        <div className={"col-md-6"} >
-                                            <label htmlFor="recipient-name" className="col-form-label">File:</label>
-                                        </div>
-                                        <div className={"col-md-6"} style={{textAlign: "left"}}>
-                                            <label htmlFor="recipient-name" className="col-form-label"><b>{this.state.pdf_url} </b></label>
                                         </div>
                                     </div>
                                     <div className={"row"}>

@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Stripe from "react-stripe-checkout";
 import DataTable from 'react-data-table-component';
 import DataTableExtensions from 'react-data-table-component-extensions';
 import 'react-data-table-component-extensions/dist/index.css';
 import Swal from "sweetalert2";
-import AdminPieChart from "../adminDashboard/adminPieChart";
-import ResearchSummaryChart from "../adminDashboard/Charts/researchSummaryChart";
+
 
 const initialState = {
     users: [],

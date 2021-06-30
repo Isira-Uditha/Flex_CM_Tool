@@ -3,7 +3,6 @@ import ApproveTable from "./approveTable";
 import ApproveWorkshopTable from "./approveWorkshopTable";
 import Chart from "./chart";
 import DrillDownChart from "./DrillDownChart";
-import UserSummaryChart from "./userSummaryChart";
 
 const initialState = {
     approveResearch: true,

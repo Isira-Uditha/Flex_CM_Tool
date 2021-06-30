@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 import Select from "react-select";
 import UserSession from "./userSession";
 import React, { Component } from "react";
-import {common} from "@material-ui/core/colors";
 import * as RoleTypes from "./rolesTypes.constants"
 
 const options = [
@@ -146,7 +145,7 @@ class Auth extends React.Component{
                     }else if(response.data.data.role == RoleTypes.WORKSHOP_PRESENTEE){
                         window.location = `/presenter`
                     }else if(response.data.data.role == RoleTypes.ADMIN){
-                        /*window.location = `/attendee`*/
+                        window.location = `/admin-dashboard`
                     }else if(response.data.data.role == RoleTypes.REVIEWER){
                         window.location = `/reviewer`
                     }else if(response.data.data.role == RoleTypes.EDITOR){
@@ -154,10 +153,12 @@ class Auth extends React.Component{
                     }
                 })
                 .catch(error => {
-                    console.log(error.message)
-                    alert(error.message)
+                    Swal.fire(
+                        'Invalid Request',
+                        'Please try again shortly',
+                        'question'
+                    )
                 })
-            console.log("Data to Send ", user);
         }
     }
     render() {

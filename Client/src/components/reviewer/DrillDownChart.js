@@ -84,9 +84,7 @@ class DrillDownChart extends Component {
                             </div>
                             <div className="modal-body">
                                 <div className={"col-md-1"}>
-                                <CanvasJSChart options = {options}
-                                    /* onRef={ref => this.chart = ref} */
-                                />
+                                <CanvasJSChart options = {options}/>
                                 </div>
                             </div>
                             <div className="modal-footer">

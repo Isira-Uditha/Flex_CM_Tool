@@ -110,18 +110,18 @@ class Notification extends React.Component{
                     })
             }
         }
-      this.setState({notified: 0});
+        this.setState({notified: 0});
     }
 
     render(){
 
-    return(
-        <div>
-            <button style={{ background:  "rgb(8, 48, 84, 0.5)"}} type="button" className="btn btn-dark" onClick={e => this.show(e)}>
-                Notifications <span className="badge bg-danger">{this.state.notified.length}</span>
-            </button>
+        return(
+            <div>
+                <button style={{ background:  "rgb(8, 48, 84, 0.5)"}} type="button" className="btn btn-dark" onClick={e => this.show(e)}>
+                    Notifications <span className="badge bg-danger">{this.state.notified.length}</span>
+                </button>
                 <ToastContainer />
-        </div>
+            </div>
         )
     }
 }

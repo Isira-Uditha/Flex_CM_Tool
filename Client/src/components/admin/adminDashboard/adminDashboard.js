@@ -36,7 +36,6 @@ class AdminDashboard extends React.Component{
                         <br/>
                         <div className="card m-2 border-secondary border-4"
                              style={{width: "18rem", background: "rgb(255,255,255,0.8)"}}>
-                            {/* <img className="card-img-top mx-auto mt-2" style={{  width: "100%", height: "15vw", objectFit: "cover"}}  alt="Card image cap"/>*/}
                             <div className="card-body">
                                 <h5 className="card-title">Conference Management</h5>
                                 <p className="card-text">All Approval and Rejecetions of Conferences are managed by the Administrator..</p>

@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
-import UserSession from "../../auth/userSession";
 import AdminAddMainUsers from "../adminAddMainUsers/adminAddMainUsers";
 import AdminViewUsers from "../adminViewUsers/adminViewUsers";
 
@@ -14,15 +12,6 @@ class AdminUserhandle extends Component {
         super(props);
         this.state = initialState;
         this.editUser = this.editUser.bind(this);
-    }
-
-    componentDidMount() {
-        // const user = UserSession.getName();
-        //
-        // if (user === 'null') {
-        //     window.location = '/auth';
-        // }
-
     }
 
     editUser(id) {

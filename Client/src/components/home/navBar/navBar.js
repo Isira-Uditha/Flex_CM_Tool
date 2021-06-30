@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import UserSession from "../auth/userSession";
-import Notification from "../reviewer/notification";
-import * as RoleTypes from "../auth/rolesTypes.constants"
+import UserSession from "../../auth/userSession";
+import Notification from "../../reviewer/notification";
+import * as RoleTypes from "../../auth/rolesTypes.constants"
 
 const initialState = {
     session: true,
@@ -74,7 +74,7 @@ class NavBar extends React.Component{
                             {this.state.roleAdmin ?
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"
-                                       href="#">DashBoard</a>
+                                       href="/admin-dashboard">DashBoard</a>
                                 </li>: " "
                             }
                             {this.state.roleEditor ?
@@ -83,19 +83,6 @@ class NavBar extends React.Component{
                                        href="/conference">Conference</a>
                                 </li>: " "
                             }
-                            <li className="nav-item">
-                                <a className="nav-link" style={{color:"whitesmoke"}} href="/approved-conferences">Approved Conferences</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" style={{color:"whitesmoke"}} href="#">All Conferences</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" style={{color:"whitesmoke"}} href=" /admin-view">Admin Conference view</a>
-                            </li>
-
-                            <li className="nav-item">
-                                <a className="nav-link" style={{color:"whitesmoke"}} href=" /admin-dashboard">Admin DashBoard</a>
-                            </li>
                             {this.state.roleReviewer ?
                                 <li className="nav-item">
                                     <a className="nav-link active" style={{color: "whitesmoke"}} aria-current="page"

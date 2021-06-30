@@ -383,7 +383,7 @@ class PresenterForm extends Component {
                                     })()}
                                     &nbsp;
                                     &nbsp;
-                                    <button className="btn btn-success" onClick={this.onReset}>Clear</button>
+                                    <button className="btn btn-secondary" onClick={this.onReset}>Clear</button>
                                 </div>
                             </div>
                         </div>

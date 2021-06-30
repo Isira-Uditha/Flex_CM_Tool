@@ -10,7 +10,7 @@ import CountDown from "./countdown/countdown";
 import Speakers from "./speakers/speakers";
 import Carousel from "./carousel/carousel";
 import Workshops from "./workshops/workshops";
-import Footer from "../footer/footer";
+import Footer from "./footer/footer";
 
 const initialState = {
     conference: [],

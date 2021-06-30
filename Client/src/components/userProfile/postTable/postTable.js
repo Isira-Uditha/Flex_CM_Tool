@@ -179,11 +179,11 @@ class PostTable extends Component {
                 cell: row => <div>
                     {(() => {
                         if (row.status === 'pending') {
-                            return <h5><span style={{width: "100px"}} className="badge bg-warning">Pending</span></h5>
+                            return <h5><span className="btn btn-warning disabled">Pending</span></h5>
                         } else if (row.status === 'approved') {
-                            return <h5><span style={{width: "100px"}} className="badge bg-success">Approved</span></h5>
+                            return <h5><span className="btn btn-success disabled">Approved</span></h5>
                         } else {
-                            return <h5><span style={{width: "100px"}} className="badge bg-danger">Rejected</span></h5>
+                            return <h5><span className="btn btn-danger disabled">Rejected</span></h5>
                         }
                     })()}
                 </div>,
@@ -246,11 +246,11 @@ class PostTable extends Component {
                 cell: row => <div>
                     {(() => {
                         if (row.status === 'pending') {
-                            return <h5><span style={{width: "100px"}} className="badge bg-warning">Pending</span></h5>
+                            return <h5><span style={{width: "100px"}} className="btn btn-warning disabled">Pending</span></h5>
                         } else if (row.status === 'reject') {
-                            return <h5><span style={{width: "100px"}} className="badge bg-danger">Rejected</span></h5>
+                            return <h5><span style={{width: "100px"}} className="btn btn-danger disabled">Rejected</span></h5>
                         } else if (row.payment_status === 'paid') {
-                            return <h5><span style={{width: "100px"}} className="badge bg-success">Paid</span></h5>
+                            return <h5><span style={{width: "100px"}} className="btn btn-success disabled">Paid</span></h5>
                         } else {
                             return <button style={{width: "150px", textAlign: "left"}} className="invisible" onClick={e => this.currentPayPost(e, row._id)}>
                                 <Stripe

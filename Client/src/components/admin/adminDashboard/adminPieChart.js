@@ -35,13 +35,11 @@ class AdminPieChart extends Component {
                     console.log('USER ADDED WORKSHOPS', response.data.data);
                     this.setState({pending: response.data.data});
                     console.log(response.data.data)
-                    ///
 
                     this.setState({seriesPie: [this.state.rejected,this.state.approved,this.state.pending]});
                 })
 
 
-               // this.setState({seriesPie: [this.state.rejected,this.state.approved]});
             })
 
 
