@@ -19,8 +19,8 @@ const updatePost = async (req, res) => {
         const {id} = req.params; //id of the post
         const post = req.body;
 
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post matched with the ID'); //id validation
-        const updatedPost = await Post.findByIdAndUpdate(id, post,{new : true}); //Find & update
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post matched with the ID'); //id validation
+        const updatedPost = await Post.findByIdAndUpdate(id, post, {new: true}); //Find & update
         res.json(updatedPost);
     }
 }
@@ -30,14 +30,16 @@ const deletePost = async (req, res) => {
         const {id} = req.params; //id of the post
         const post = req.body;
 
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post matched with the ID'); //id validation
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post matched with the ID'); //id validation
         await Post.findByIdAndRemove(id); //Removing the post
+        res.json('Post deleted!');
     }
 }
 
 const getAllPosts = async (req, res) => {
     //retrieve all the posts available in the database
     await Post.find({})
+        .populate('user_id', 'name')
         .then(data => {
             res.status(200).send({data: data})
         })
@@ -58,10 +60,35 @@ const getPost = async (req, res) => {
     }
 }
 
+const getUserPost = async (req, res) => {
+    if (req.params && req.params.id) {
+        const posts = await Post.find({'user_id': req.params.id})
+            .then(data => {
+                res.status(200).send({data: data});
+            }).catch(error => {
+                res.status(500).send({error: error.message});
+            });
+    }
+}
+
+const approvePost = async (req, res) => {
+    if (req.params && req.params.id) {
+        const {id} = req.params; //fetching the id of the post item
+        const post = req.body;
+
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No Post With That id'); //Validating the Post id
+        const approvedPost = await Post.findByIdAndUpdate(id, post,{new : true}); //Find and Update operation
+        res.json(approvedPost);
+    }
+}
+
+
 module.exports = {
     createPost,
     updatePost,
     deletePost,
     getAllPosts,
-    getPost
+    getPost,
+    getUserPost,
+    approvePost
 };

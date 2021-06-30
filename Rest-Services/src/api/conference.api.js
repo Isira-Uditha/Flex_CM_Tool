@@ -4,10 +4,13 @@ const controller = require('../controllers/conference.controller');
 
 module.exports = function () {
     router.post('/create', controller.createConference);
-    router.patch('/update/:id', controller.updateConference);
+    router.patch('/:id', controller.updateConference);
+    router.patch('/post/:id', controller.updatePost);
     router.get('/', controller.getAllConference);
     router.get('/:id', controller.getConference);
+    router.get('/post/conference', controller.getConferenceForPost);
     router.delete('/:id', controller.deleteConference);
+    router.get('/workshop/:id', controller.getWorkshopsForConference);
     return router;
 }
 
