@@ -299,5 +299,82 @@ test('Approve Conference', async () => {
 })
 
 
+//user
+test('Create User', async () => {
+    await request(app).post('/user/create').send({
+        name: "Test name",
+        email: "Test email",
+        contact: "Test contact",
+        address: "Test address",
+        organization: "Test organization",
+        role: "Researcher",
+        password: "12345",
+        notify: "0",
+
+    }).expect(200).then((res) => {
+        id = res.body._id;
+    });
+})
+
+test('Logging Validation', async () => {
+    await request(app).post('/user/login').send({
+        email: "Test email",
+        password: "12345"
+    }).expect(200).then((res) => {
+        id = res.body._id;
+    });
+})
+
+test('Get specific User', async () => {
+    await request(app).get('/user/getUser/60dc2dcf39df592c880fa0f2').send({
+
+    }).expect(200).then((res) => {
+        id = res.body._id;
+    });
+})
+test('Update specific User', async () => {
+    await request(app).patch('/user/updateUser/60d82df48508293f642b797f').send({
+        name: "Test title updated",
+        address: "Test address updated",
+    }).expect(200).then((res) => {
+        id = res.body;
+    });
+})
+
+//reviewer
+test('Approve a Research Paper', async () => {
+    await request(app).patch('/post/approvePost/60dc2b50a1a9922008716ed1').send({
+        status: "approved"
+
+    }).expect(200).then((res) => {
+        id = res.body;
+    });
+})
+
+test('Decline a Research Paper', async () => {
+    await request(app).patch('/post/approvePost/60dc2b50a1a9922008716ed1').send({
+        status: "reject"
+
+    }).expect(200).then((res) => {
+        id = res.body;
+    });
+})
+
+test('Approve a Workshop Proposal', async () => {
+    await request(app).patch('/reviewer/approveWorkshop/60db19097105602c04a3d58e').send({
+        status: "approved"
+
+    }).expect(200).then((res) => {
+        id = res.body;
+    });
+})
+
+test('Decline a Workshop Proposal', async () => {
+    await request(app).patch('/reviewer/approvePost/60db19097105602c04a3d58e').send({
+        status: "reject"
+
+    }).expect(200).then((res) => {
+        id = res.body;});
+})
 
 
