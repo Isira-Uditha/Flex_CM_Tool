@@ -69,7 +69,7 @@ class AdminAddMainUsers extends React.Component {
 
     fetchData() {
         console.log('mmmm');
-        axios.get(`http://localhost:8087/adminMainUser/getUser/${this.state.id}`).then(response =>{
+        axios.get(`https://flexconferencetool.herokuapp.com/adminMainUser/getUser/${this.state.id}`).then(response =>{
             console.log('Userdafa',response.data.data);
             this.setState({fetchedData: response.data.data});
             // this.setState({firstName: response.data.data.firstName});
@@ -131,7 +131,7 @@ class AdminAddMainUsers extends React.Component {
                 role: this.state.role
             };
             console.log('DATA TO SEND', admin);
-            axios.post('http://localhost:8087/adminMainUser/createMainUser', admin)
+            axios.post('https://flexconferencetool.herokuapp.com/adminMainUser/createMainUser', admin)
                 .then(response => {
                     Swal.fire(
                         'Successful!',
@@ -181,7 +181,7 @@ class AdminAddMainUsers extends React.Component {
             if (result.isConfirmed) {
                 // if (res) {
                     console.log('UPDATE DATA', submission);
-                    axios.patch(`http://localhost:8087/adminMainUser/updateUser/${this.state.id}`, submission).then(response => {
+                    axios.patch(`https://flexconferencetool.herokuapp.com/adminMainUser/updateUser/${this.state.id}`, submission).then(response => {
                         console.log(response);
                         Swal.fire('Saved!', '', 'success')
                         // this.onReset();

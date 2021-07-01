@@ -39,7 +39,7 @@ class PostForm extends Component {
         }
 
         //API call to get the user that is currently
-        axios.get(`http://localhost:8087/user/getUser/${user}`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/user/getUser/${user}`).then(response => {
             this.setState({userDetails: response.data.data});
             this.setState({user_id: this.state.userDetails._id});
         })
@@ -53,7 +53,7 @@ class PostForm extends Component {
 
     fetchData() {
         // API call to fetch the post data for the update purpose
-        axios.get(`http://localhost:8087/post/${this.state.post_id}`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/post/${this.state.post_id}`).then(response => {
             this.setState({fetchedData: response.data.data});
             this.setState({title: response.data.data.title});
             this.setState({type: response.data.data.type});
@@ -136,7 +136,7 @@ class PostForm extends Component {
         if (result) {
             console.log('DATA TO SEND ', submission);
             //API call to create a new post
-            axios.post('http://localhost:8087/post/create', submission).then(response => {
+            axios.post('https://flexconferencetool.herokuapp.com/post/create', submission).then(response => {
                 console.log(response)
                 this.displayAlert('Uploaded Successfully', 'alert-success');
                 Swal.fire(
@@ -187,7 +187,7 @@ class PostForm extends Component {
                 if (res) {
                     console.log('UPDATE DATA', submission);
                     // API call to update the post
-                    axios.patch(`http://localhost:8087/post/update/${this.props.postId}`, submission).then(response => {
+                    axios.patch(`https://flexconferencetool.herokuapp.com/post/update/${this.props.postId}`, submission).then(response => {
                         console.log(response);
                         Swal.fire('Saved!', '', 'success')
 

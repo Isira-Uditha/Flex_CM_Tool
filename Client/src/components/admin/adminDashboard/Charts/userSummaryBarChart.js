@@ -19,7 +19,7 @@ class UserSummaryBarChart extends Component {
 
     componentDidMount() {
         //API call to fetch user added workshops
-        axios.get(`http://localhost:8087/admin/summaryOfUsers`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/admin/summaryOfUsers`).then(response => {
             console.log('USER ADDED WORKSHOPS', response.data.data);
             this.setState({options: response.data.data});
             let data = [];

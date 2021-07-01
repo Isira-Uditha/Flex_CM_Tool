@@ -50,12 +50,12 @@ class PresenterForm extends Component {
             window.location = '/auth';
         }
 
-        axios.get(`http://localhost:8087/user/getUser/${user}`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/user/getUser/${user}`).then(response => {
             this.setState({userDetails: response.data.data});
             this.setState({user_id: this.state.userDetails._id});
         })
 
-        axios.get('http://localhost:8087/conference/').then(response => {
+        axios.get('https://flexconferencetool.herokuapp.com/conference/').then(response => {
             console.log('CONFERENCE DATA', response.data.data);
             this.setState({conference: response.data.data}, () => {
                 let data = [];
@@ -78,7 +78,7 @@ class PresenterForm extends Component {
     }
 
     fetchData() {
-        axios.get(`http://localhost:8087/workshop/${this.state.workshop_id}`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/workshop/${this.state.workshop_id}`).then(response => {
             console.log(response.data.data);
             this.setState({fetchedData: response.data.data});
             this.setState({title: response.data.data.title});
@@ -90,7 +90,7 @@ class PresenterForm extends Component {
 
         }).then(response => {
             console.log('ID',this.state.fetchedSelect);
-            axios.get(`http://localhost:8087/conference/${this.state.fetchedSelect}`).then(response => {
+            axios.get(`https://flexconferencetool.herokuapp.com/conference/${this.state.fetchedSelect}`).then(response => {
                 console.log(response.data.data);
                 this.setState({selectedConference: response.data.data.title});
             })
@@ -186,7 +186,7 @@ class PresenterForm extends Component {
 
         if (result) {
             console.log('DATA TO SEND ', submission);
-            axios.post('http://localhost:8087/workshop/create', submission).then(response => {
+            axios.post('https://flexconferencetool.herokuapp.com/workshop/create', submission).then(response => {
                 console.log(response)
                 this.displayAlert('Uploaded Successfully', 'alert-success');
                 Swal.fire(
@@ -244,7 +244,7 @@ class PresenterForm extends Component {
             if (result.isConfirmed) {
                 if (res) {
                     console.log('UPDATE DATA', submission);
-                    axios.patch(`http://localhost:8087/workshop/update/${this.props.workshopId}`, submission).then(response => {
+                    axios.patch(`https://flexconferencetool.herokuapp.com/workshop/update/${this.props.workshopId}`, submission).then(response => {
                         console.log(response);
                         Swal.fire('Saved!', '', 'success')
 

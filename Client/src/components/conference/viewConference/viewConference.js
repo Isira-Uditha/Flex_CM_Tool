@@ -18,7 +18,7 @@ class ViewConference extends Component{
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8087/conference`)
+        axios.get(`https://flexconferencetool.herokuapp.com/conference`)
             .then(response => {
                 this.setState({ conference: response.data.data });
                 console.log(this.state.conference);
@@ -37,7 +37,7 @@ class ViewConference extends Component{
             confirmButtonText: 'Yes, Update it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.patch(`http://localhost:8087/conference/post/${id}`)
+                axios.patch(`https://flexconferencetool.herokuapp.com/conference/post/${id}`)
                     .then(response => {
                         console.log(response)
                         Swal.fire(
@@ -78,7 +78,7 @@ class ViewConference extends Component{
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:8087/conference/${value}`)
+                axios.delete(`https://flexconferencetool.herokuapp.com/conference/${value}`)
                     .then(response => {
                         Swal.fire(
                             'Deleted!',

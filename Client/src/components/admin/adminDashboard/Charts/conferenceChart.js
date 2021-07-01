@@ -18,16 +18,16 @@ class ConferenceSummary extends Component{
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8087/admin/admin/amountApprovedConference`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/admin/admin/amountApprovedConference`).then(response => {
             const data = response.data.data;
             this.setState({approved: data});
         }).then(data => {
-            axios.get(`http://localhost:8087/admin/admin/amountRejectedConference`).then(response => {
+            axios.get(`https://flexconferencetool.herokuapp.com/admin/admin/amountRejectedConference`).then(response => {
                 console.log('rejected xxxxxx', response.data.data);
                 this.setState({rejected: response.data.data});
                 console.log(response.data.data)
             }).then(data => {
-                axios.get(`http://localhost:8087/admin/amountPendingResearches`).then(response => {
+                axios.get(`https://flexconferencetool.herokuapp.com/admin/amountPendingResearches`).then(response => {
                     console.log('consference pending', response.data.data);
                     this.setState({pending: response.data.data});
                     console.log(response.data.data)

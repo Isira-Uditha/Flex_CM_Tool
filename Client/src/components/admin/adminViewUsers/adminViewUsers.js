@@ -27,7 +27,7 @@ class All_Users extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8087/adminMainUser/')
+        axios.get('https://flexconferencetool.herokuapp.com/adminMainUser/')
             .then(response => {
                 this.setState({ users: response.data.data });
                 console.log(this.state.users);
@@ -36,7 +36,7 @@ class All_Users extends React.Component {
 
     deleteUsers(e,value) {
         console.log(value);
-        axios.delete(`http://localhost:8087/adminMainUser/${value}`)
+        axios.delete(`https://flexconferencetool.herokuapp.com/adminMainUser/${value}`)
             .then(response => {
                 Swal.fire(
                     'Successful!',

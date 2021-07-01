@@ -16,14 +16,14 @@ class Chart extends Component {
     }
     componentDidMount() {
         //API call to fetch user added workshops
-        axios.get(`http://localhost:8087/reviewer/amountApprovesResearches`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/reviewer/amountApprovesResearches`).then(response => {
             console.log('USER ADDED WORKSHOPS', response.data.data);
             this.setState({approved: response.data.data});
-            axios.get(`http://localhost:8087/reviewer/amountRejectedResearches`).then(response => {
+            axios.get(`https://flexconferencetool.herokuapp.com/reviewer/amountRejectedResearches`).then(response => {
                 console.log('USER ADDED WORKSHOPS', response.data.data);
                 this.setState({rejected: response.data.data});
                 console.log(response.data.data)
-                axios.get(`http://localhost:8087/reviewer/amountPendingResearches`).then(response => {
+                axios.get(`https://flexconferencetool.herokuapp.com/reviewer/amountPendingResearches`).then(response => {
                     console.log('USER ADDED WORKSHOPS', response.data.data);
                     this.setState({pending: response.data.data});
                     console.log(response.data.data)

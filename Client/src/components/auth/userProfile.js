@@ -46,7 +46,7 @@ class UserProfile extends React.Component{
 
     componentDidMount() {
         const user = UserSession.getName();
-      axios.get(`http://localhost:8087/user/getUser/${user}`)
+      axios.get(`https://flexconferencetool.herokuapp.com/user/getUser/${user}`)
            .then(response => {
                this.setState({id:response.data.data._id})
                this.setState({email:response.data.data.email})
@@ -77,7 +77,7 @@ class UserProfile extends React.Component{
                     role: this.state.selectedRole,
                 };
                 console.log("Data to Send ", user);
-                axios.patch(`http://localhost:8087/user/updateUser/${this.state.id}`, user)
+                axios.patch(`https://flexconferencetool.herokuapp.com/user/updateUser/${this.state.id}`, user)
                     .then(response => {
                         Swal.fire({
                             icon: 'success',

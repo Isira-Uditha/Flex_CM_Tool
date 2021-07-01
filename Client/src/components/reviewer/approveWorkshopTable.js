@@ -42,7 +42,7 @@ class ApproveWorkshopTable extends React.Component{
 
     componentDidMount() {
         //API call to fetch user added workshops
-        axios.get(`http://localhost:8087/workshop/`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/workshop/`).then(response => {
             console.log('USER ADDED WORKSHOPS', response.data.data);
             this.setState({entries: response.data.data});
             {this.state.entries.length > 0 && this.state.entries.map((item,index) => (
@@ -103,7 +103,7 @@ class ApproveWorkshopTable extends React.Component{
     }
 
     sendApproval(paperId , approvedWorkshop) {
-        axios.patch(`http://localhost:8087/reviewer/approveWorkshop/${paperId}`, approvedWorkshop)
+        axios.patch(`https://flexconferencetool.herokuapp.com/reviewer/approveWorkshop/${paperId}`, approvedWorkshop)
             .then(response => {
                 window.location.reload ()
             })

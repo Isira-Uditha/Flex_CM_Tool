@@ -27,7 +27,7 @@ class Home extends Component{
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8087/conference/post/conference`)
+        axios.get(`https://flexconferencetool.herokuapp.com/conference/post/conference`)
             .then(response => {
                 this.setState({ conference: response.data.data[0] });
                 console.log(this.state.conference);

@@ -21,7 +21,7 @@ class Workshops extends Component{
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8087/conference/workshop/${this.state.conferenceId}`)
+        axios.get(`https://flexconferencetool.herokuapp.com/conference/workshop/${this.state.conferenceId}`)
             .then(response => {
                 console.log(response.data)
                     this.setState({ workshops: response.data.data });

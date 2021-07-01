@@ -23,15 +23,15 @@ class AdminPieChart extends Component {
 
     componentDidMount() {
         //API call to fetch user added workshops
-        axios.get(`http://localhost:8087/admin/amountApprovedConference`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/admin/amountApprovedConference`).then(response => {
             console.log('USER ADDED WORKSHOPS', response.data.data);
             this.setState({approved: response.data.data});
-            axios.get(`http://localhost:8087/admin/amountRejectedConference`).then(response => {
+            axios.get(`https://flexconferencetool.herokuapp.com/admin/amountRejectedConference`).then(response => {
                 console.log('USER ADDED WORKSHOPS', response.data.data);
                 this.setState({rejected: response.data.data});
                 console.log(response.data.data)
 
-                axios.get(`http://localhost:8087/admin/amountPendingConference`).then(response => {
+                axios.get(`https://flexconferencetool.herokuapp.com/admin/amountPendingConference`).then(response => {
                     console.log('USER ADDED WORKSHOPS', response.data.data);
                     this.setState({pending: response.data.data});
                     console.log(response.data.data)

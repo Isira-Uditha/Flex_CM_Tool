@@ -39,7 +39,7 @@ class All_Conferences extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8087/conference/')
+        axios.get('https://flexconferencetool.herokuapp.com/conference/')
             .then(response => {
                 this.setState({ conference: response.data.data });
                 console.log(this.state.conference);
@@ -48,7 +48,7 @@ class All_Conferences extends React.Component{
 
     deleteConference(e,value) {
         console.log(value);
-        axios.delete(`http://localhost:8087/conference/${value}`)
+        axios.delete(`https://flexconferencetool.herokuapp.com/conference/${value}`)
             .then(response => {
                 alert('Author deleted successfully');
             })
@@ -70,7 +70,7 @@ class All_Conferences extends React.Component{
 
         console.log("Data to Send ", this.state.status);
         console.log("id ", _id);
-        axios.patch(`http://localhost:8087/admin/approveConference/${_id}`, approvedConferencePost)
+        axios.patch(`https://flexconferencetool.herokuapp.com/admin/approveConference/${_id}`, approvedConferencePost)
             .then(response => {
                 window.location.reload ()
                 Swal.fire(

@@ -18,14 +18,14 @@ class DrillDownChart extends Component {
 
     componentDidMount() {
         //API call to fetch user added workshops
-        axios.get(`http://localhost:8087/reviewer/amountApprovesWorkshops`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/reviewer/amountApprovesWorkshops`).then(response => {
             console.log('USER ADDED WORKSHOPS', response.data.data);
             this.setState({approved: response.data.data});
-            axios.get(`http://localhost:8087/reviewer/amountRejectedWorkshops`).then(response => {
+            axios.get(`https://flexconferencetool.herokuapp.com/reviewer/amountRejectedWorkshops`).then(response => {
                 console.log('USER ADDED WORKSHOPS', response.data.data);
                 this.setState({rejected: response.data.data});
                 console.log(response.data.data)
-                axios.get(`http://localhost:8087/reviewer/amountPendingWorkshops`).then(response => {
+                axios.get(`https://flexconferencetool.herokuapp.com/reviewer/amountPendingWorkshops`).then(response => {
                     console.log('USER ADDED WORKSHOPS', response.data.data);
                     this.setState({pending: response.data.data});
                     console.log(response.data.data)

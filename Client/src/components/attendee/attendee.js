@@ -34,13 +34,13 @@ class Attendee extends Component {
         }
 
         // API call to get user details
-        axios.get(`http://localhost:8087/user/getUser/${user}`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/user/getUser/${user}`).then(response => {
             this.setState({userDetails: response.data.data});
             this.setState({user_id: this.state.userDetails._id});
 
         }).then(() => {
 
-            axios.get(`http://localhost:8087/conference/post/conference`).then(response => {
+            axios.get(`https://flexconferencetool.herokuapp.com/conference/post/conference`).then(response => {
                 this.setState({conference: response.data.data[0]});
             }).then(response => {
                 this.setState({conference_id: this.state.conference._id})
@@ -56,7 +56,7 @@ class Attendee extends Component {
 
     handleToken(totalAmount, token) {
         //API call to stripe payment gateway
-        axios.post('http://localhost:8087/payment/pay', {
+        axios.post('https://flexconferencetool.herokuapp.com/payment/pay', {
             token: token.id,
             amount: totalAmount,
             customer_name: this.state.user_id

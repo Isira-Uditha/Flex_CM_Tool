@@ -25,7 +25,7 @@ class ResearchPresenter extends Component {
             window.location = '/auth';
         }
 
-        axios.get(`http://localhost:8087/user/getUser/${user}`).then(response => {
+        axios.get(`https://flexconferencetool.herokuapp.com/user/getUser/${user}`).then(response => {
             // console.log(response.data.data);
             this.setState({userDetails: response.data.data});
             this.setState({user_id: this.state.userDetails._id});
